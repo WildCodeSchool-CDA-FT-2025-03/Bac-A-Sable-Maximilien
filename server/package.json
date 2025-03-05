@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "fetchData": "gh repo list --json id,url,isPrivate,languages > ./src/api/static_data.json"
+    "fetchData": "gh repo list --json id,url,isPrivate,languages > ./src/api/static_data.json",
+    "dev": "ts-node src/index.ts"
   },
   "repository": {
     "type": "git",
