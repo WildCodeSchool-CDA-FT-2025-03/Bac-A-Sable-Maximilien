@@ -24,9 +24,9 @@ const StaticContoller = {
     },
 
     addRepository: (req: Request, res: Response) => {
-
+        console.log(req.body);
+        res.status(200).send(req.body);
     },
-    
 }
 
 export default StaticContoller;

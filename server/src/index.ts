@@ -7,6 +7,8 @@ const server_port = process.env.SERVER_PORT || 8000;
 
 const server = express();
 
+server.use(express.json());
+
 server.use("/", root);
 
 server.listen(server_port, () =>  {
