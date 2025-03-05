@@ -8,6 +8,7 @@ router.get("/", StaticContoller.getAllRepository);
 
 router.get("/:reposid", StaticContoller.findRepositoryWithID);
 
+router.post("/:reposid", StaticContoller.addRepository);
 
 
 export default router;

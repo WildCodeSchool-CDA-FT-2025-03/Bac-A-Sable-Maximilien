@@ -22,6 +22,10 @@ const StaticContoller = {
             res.status(500).json(`repository with id ${repo_id} dosn't exist`);
         }
     },
+
+    addRepository: (req: Request, res: Response) => {
+
+    },
     
 }
 
