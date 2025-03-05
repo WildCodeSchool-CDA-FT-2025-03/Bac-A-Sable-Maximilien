@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+pushd ./server
+
+npm run lint
+ESLINT=$?
+
+popd
+
+exit $ESLINT
