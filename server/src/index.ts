@@ -1,6 +1,5 @@
 import express from 'express'
 import "dotenv/config"
-
 import 'module-alias/register';
 
 import root from './router/root'

@@ -25,8 +25,8 @@ const StaticContoller = {
         }
     },
 
-    addRepository: (req: Request, res: Response) => {
-        const data = toGitHubRepository(req.body as ClientAddRepoRequest);
+    addRepository: (_: Request, res: Response) => {
+        const data = res.locals.data as GitHubRepository;
         staticData.push(data);
         res.status(200).send(data.id);
     },
