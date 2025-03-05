@@ -1,11 +1,11 @@
-import express from 'express'
+import express, {Request, Response} from 'express'
 import "dotenv/config"
 
 const server_port = process.env.SERVER_PORT || 8000;
 
 const server = express();
 
-server.get("/", (req, res) => {
+server.get("/", (_: Request, res: Response) => {
     res.send("hello");
 });
 
