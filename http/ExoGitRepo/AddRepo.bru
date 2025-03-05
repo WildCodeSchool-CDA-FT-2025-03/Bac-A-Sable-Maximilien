@@ -1,0 +1,19 @@
+meta {
+  name: AddRepo
+  type: http
+  seq: 4
+}
+
+post {
+  url: http://localhost:8089/repos
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "HelloWorld",
+    "isPrivate": false,
+    "user": "Maxwellmilien"
+  }
+}
