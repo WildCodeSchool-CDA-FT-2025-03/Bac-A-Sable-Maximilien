@@ -13,7 +13,6 @@ const StaticContoller = {
     
         const repo = staticData.find(r => {
             return r.id === repo_id
-    
         }) as GitHubRepository;
     
         if(repo) {
