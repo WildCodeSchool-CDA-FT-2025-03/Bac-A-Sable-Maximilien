@@ -1,7 +1,9 @@
 import express, { Request, Response } from "express";
 
-import { GitHubRepository } from "../../types/github.types";
 import staticData from '../../data/static_data.json';
+import { GitHubRepository } from "../../types/github.types";
+import { ClientAddRepoRequest } from "../../types/client.types";
+import { toGitHubRepository } from "../../utiles/repos";
 
 const StaticContoller = {
     getAllRepository: (_: Request, res: Response) => {
@@ -24,8 +26,9 @@ const StaticContoller = {
     },
 
     addRepository: (req: Request, res: Response) => {
-        console.log(req.body);
-        res.status(200).send(req.body);
+        const data = toGitHubRepository(req.body as ClientAddRepoRequest);
+        staticData.push(data);
+        res.status(200).send(data.id);
     },
 }
 
