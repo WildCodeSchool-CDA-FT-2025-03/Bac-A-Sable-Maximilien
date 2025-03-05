@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "fetchData": "gh repo list --json id,url,isPrivate,languages > ./src/api/static_data.json",
-    "dev": "nodemon"
+    "dev": "nodemon",
+    "lint": "eslint . --ext .ts"
   },
   "repository": {
     "type": "git",

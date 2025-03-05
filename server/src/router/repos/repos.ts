@@ -1,4 +1,4 @@
-import express, { Request, Response } from "express";
+import express from "express";
 import StaticContoller from "@/controllers/static/static_data.controllers";
 import { validateClientAddRepo } from "@/middlewares/validation.middlewares";
 import { reposNotExist } from "@/middlewares/check_repos.middlewares";

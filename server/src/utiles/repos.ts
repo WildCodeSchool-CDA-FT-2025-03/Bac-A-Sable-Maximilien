@@ -3,7 +3,7 @@ import { ClientAddRepoRequest } from "@/types/client.types";
 import { GitHubRepository } from "@/types/github.types";
 
 export function toGitHubRepository(data: ClientAddRepoRequest): GitHubRepository {
-    let hash = md5.create();
+    const hash = md5.create();
     hash.update(data.user + data.name);
 
     return {
