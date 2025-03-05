@@ -1,6 +1,6 @@
 import express, { Response } from "express";
 
-import staticData from "../../data/static_data.json";
+import staticData from 'data/static_data.json'
 
 const router = express.Router();
 
