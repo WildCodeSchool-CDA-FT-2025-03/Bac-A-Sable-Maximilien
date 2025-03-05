@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
 
-import staticData from '../../datas/static_data.json';
-import { GitHubRepository } from "../../types/github.types";
-import { ClientAddRepoRequest } from "../../types/client.types";
-import { toGitHubRepository } from "../../utiles/repos";
+import staticData from '@/datas/static_data.json';
+import { GitHubRepository } from "@/types/github.types";
+import { ClientAddRepoRequest } from "@/types/client.types";
+import { toGitHubRepository } from "@/utiles/repos";
 
 const StaticContoller = {
     getAllRepository: (_: Request, res: Response) => {

@@ -1,6 +1,6 @@
 import { md5 } from "js-md5";
-import { ClientAddRepoRequest } from "../types/client.types";
-import { GitHubRepository } from "../types/github.types";
+import { ClientAddRepoRequest } from "@/types/client.types";
+import { GitHubRepository } from "@/types/github.types";
 
 export function toGitHubRepository(data: ClientAddRepoRequest): GitHubRepository {
     let hash = md5.create();

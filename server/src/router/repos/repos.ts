@@ -1,6 +1,6 @@
 import express, { Request, Response } from "express";
-import StaticContoller from "../../controllers/static/static_data.controllers";
-import { validateClientAddRepo } from "../../middlewares/validation.middlewares";
+import StaticContoller from "@/controllers/static/static_data.controllers";
+import { validateClientAddRepo } from "@/middlewares/validation.middlewares";
 
 const router = express.Router();
 
