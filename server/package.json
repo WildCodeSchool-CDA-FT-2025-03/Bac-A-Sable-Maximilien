@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/WildCodeSchool-CDA-FT-2025-03/Bac-A-Sable-Maximilien/issues"
   },
-  "homepage": "https://github.com/WildCodeSchool-CDA-FT-2025-03/Bac-A-Sable-Maximilien#readme"
+  "homepage": "https://github.com/WildCodeSchool-CDA-FT-2025-03/Bac-A-Sable-Maximilien#readme",
+  "devDependencies": {
+    "ts-node": "^10.9.2"
+  }
 }
