@@ -14,6 +14,16 @@ export type GitHubRepositoryLanguage = {
     }
 };
 
+
+export type RepositoryFields = "id" | "isPrivate" | "languages" | "url";
+
+export type RepositorysFilter = {
+    id?: string,
+    isPrivate?: boolean,
+    languages?: string,
+    url?: string,
+};
+
 export type Repositorys = GitHubRepository[];
 
 
@@ -24,7 +34,7 @@ export const create_url = (user: string, repo_name: string): string => {
 export default class {
     static add (repos: Repositorys, new_repo: GitHubRepository): boolean {
         const result = this.exist(repos, new_repo);
-        if(result) {
+        if(result === false) {
             repos.push(new_repo);
             return true;
         }
@@ -46,6 +56,45 @@ export default class {
             return r.id === id;
         });
     }
+
+    static filter (repos: Repositorys, filter: RepositorysFilter): Repositorys {
+        const filtersKeys = Object.keys(filter);
+
+        const result = repos.filter((r) => {
+
+            if(filtersKeys.includes("id")) {
+                if(r.id !== filter.id) {
+                    return false;
+                }
+            }
+            if(filtersKeys.includes("isPrivate")) {
+                if(r.isPrivate !== filter.isPrivate) {
+                    return false;
+                }
+            }
+            if(filtersKeys.includes("url")) {
+                if(r.url !== filter.url) {
+                    return false;
+                }
+            }
+            if(filtersKeys.includes("languages")) {
+                if(filter.languages !== undefined) {
+                    const langs = r.languages.map(l => l.node.name);
+                    const intersection = filter.languages
+                                .split(',')
+                                .filter(l => langs.includes(l));
+
+                    if(intersection.length === 0){
+                        return false;
+                    }
+                }
+            }
+
+            return true;
+        });
+
+        return result;
+    } 
 
     static updateId(repo: GitHubRepository) {
         repo.id = createID(repo);
