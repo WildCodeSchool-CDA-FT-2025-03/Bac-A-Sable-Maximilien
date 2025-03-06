@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "fetchData": "gh repo list --json id,url,isPrivate,languages > ./src/api/static_data.json",
     "dev": "nodemon",
     "lint": "eslint . --ext .ts"
@@ -24,11 +24,13 @@
   "devDependencies": {
     "@eslint/js": "^9.21.0",
     "@types/express": "^5.0.0",
+    "@types/jest": "^29.5.14",
     "@types/node": "^22.13.9",
     "eslint": "^9.21.0",
     "globals": "^16.0.0",
     "jest": "^29.7.0",
     "nodemon": "^3.1.9",
+    "ts-jest": "^29.2.6",
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
     "typescript-eslint": "^8.26.0"
