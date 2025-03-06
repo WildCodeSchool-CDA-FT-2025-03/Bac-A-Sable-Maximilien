@@ -5,7 +5,11 @@ meta {
 }
 
 get {
-  url: http://{{HOST}}:{{PORT}}/repos
+  url: http://{{HOST}}:{{PORT}}/repos?isPrivate=true
   body: none
   auth: none
+}
+
+params:query {
+  isPrivate: true
 }
