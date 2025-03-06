@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import repos from "@/datas/static_data.json"
+import repos from "@/datas/static_data"
 import repository, {GitHubRepository, RepositorysFilter} from "@/core/repository";
 
 export const reposNotExist = (_: Request, res: Response, next: NextFunction) => {

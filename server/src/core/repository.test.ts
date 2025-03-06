@@ -90,3 +90,11 @@ test("repository: filter", () => {
         expect(Object.keys(result[0])[1]).toBe("url");
     }
 });
+
+test("repository: delete", () => {
+    {    
+        expect(repos.length).toBe(1);
+        repository.deleteByID(repos, "foo");
+        expect(repos.length).toBe(0);
+    }
+});

@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 
-import staticData from '@/datas/static_data.json';
+import staticData from '@/datas/static_data';
 import repository, { GitHubRepository, Repositorys, RepositoryFields } from "@/core/repository";
 
 const StaticContoller = {
@@ -38,6 +38,13 @@ const StaticContoller = {
         if(result)
         res.status(200).send(data.id);
     },
+
+    deleteByID: (req: Request, res: Response) => {
+        const repo_id = req.params.reposid;
+
+        repository.deleteByID(staticData, repo_id);
+        res.status(200).send("OK");
+    }
 }
 
 export default StaticContoller;

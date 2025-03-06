@@ -172,6 +172,17 @@ export default class {
         return result;
     }
 
+    static deleteByID(repos: Repositorys, id: string) {
+        const index = repos.findIndex(r => {
+            console.log(`${r.id} === ${id}`);
+            return r.id === id;
+        });
+
+        if(index !== -1) {
+            repos = repos.splice(index, 1);
+        }
+    }
+
     /**
      * Updates repository ID using MD5 hash of its URL
      * @param repo - Repository object to modify

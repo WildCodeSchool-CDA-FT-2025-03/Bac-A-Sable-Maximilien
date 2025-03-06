@@ -10,6 +10,8 @@ router.get("/", checkQueryParameter, getRepositorys, StaticContoller.getReposito
 
 router.get("/:reposid", StaticContoller.findRepositoryWithID);
 
+router.delete("/:reposid", StaticContoller.deleteByID);
+
 router.post("/", checkAddRepoRequest, reposNotExist, StaticContoller.addRepository);
 
 
