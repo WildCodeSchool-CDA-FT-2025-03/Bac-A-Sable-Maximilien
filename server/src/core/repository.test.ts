@@ -65,7 +65,28 @@ test("repository: filter - languages", () => {
         expect(result.length).toBe(1);
     }
     {    
+        const result = repository.filter(repos, {languages: "rust,python"});
+        expect(result.length).toBe(1);
+    }
+    {    
         const result = repository.filter(repos, {languages: "foo"});
         expect(result.length).toBe(0);
+    }
+});
+
+
+test("repository: filter", () => {
+    {    
+        const result = repository.selectFields(repos, ["id"]);
+        expect(result.length).toBe(1);
+        expect(Object.keys(result[0]).length).toBe(1);
+        expect(Object.keys(result[0])[0]).toBe("id");
+    }
+    {    
+        const result = repository.selectFields(repos, ["id", "url"]);
+        expect(result.length).toBe(1);
+        expect(Object.keys(result[0]).length).toBe(2);
+        expect(Object.keys(result[0])[0]).toBe("id");
+        expect(Object.keys(result[0])[1]).toBe("url");
     }
 });

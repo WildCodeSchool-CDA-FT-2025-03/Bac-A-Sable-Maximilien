@@ -94,7 +94,21 @@ export default class {
         });
 
         return result;
-    } 
+    }
+
+    static selectFields(repos: Repositorys,  fields: RepositoryFields[]): RepositorysFilter[] {
+        const result = repos.map((r) => {
+            const new_repo = {} as any;
+
+            for(const f of fields) {
+                new_repo[f] = (r as any)[f];
+            }
+
+            return new_repo;
+        });
+
+        return result;
+    }
 
     static updateId(repo: GitHubRepository) {
         repo.id = createID(repo);
