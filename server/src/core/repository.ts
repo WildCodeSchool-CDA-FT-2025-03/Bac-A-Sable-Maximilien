@@ -174,7 +174,6 @@ export default class {
 
     static deleteByID(repos: Repositorys, id: string) {
         const index = repos.findIndex(r => {
-            console.log(`${r.id} === ${id}`);
             return r.id === id;
         });
 
