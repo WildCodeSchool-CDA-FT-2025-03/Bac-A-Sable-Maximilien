@@ -5,11 +5,11 @@ import repository, { GitHubRepository, Repositorys, RepositoryFields } from "@/c
 
 const StaticContoller = {
     getRepository: (_: Request, res: Response) => {
-        let repos = res.locals.repository as Repositorys;
+        const repos = res.locals.repository as Repositorys;
         const fields = res.locals.fields as RepositoryFields[];
 
         if(fields !== undefined) {
-            let repos_fields = repository.selectFields(repos, fields);
+            const repos_fields = repository.selectFields(repos, fields);
             res.status(200).json(repos_fields);
         }
         else {
