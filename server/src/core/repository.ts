@@ -16,6 +16,11 @@ export type GitHubRepositoryLanguage = {
 
 export type Repositorys = GitHubRepository[];
 
+
+export const create_url = (user: string, repo_name: string): string => {
+    return `https://github.com/${user}/${repo_name}`;
+}
+
 export default class {
     static add (repos: Repositorys, new_repo: GitHubRepository): boolean {
         const result = this.exist(repos, new_repo);
