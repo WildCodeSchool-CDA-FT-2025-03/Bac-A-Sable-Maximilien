@@ -1,11 +1,20 @@
 import { Request, Response } from "express";
 
 import staticData from '@/datas/static_data.json';
-import repository, { GitHubRepository } from "@/core/repository";
+import repository, { GitHubRepository, Repositorys, RepositoryFields } from "@/core/repository";
 
 const StaticContoller = {
-    getAllRepository: (_: Request, res: Response) => {
-        res.status(200).json(staticData);
+    getRepository: (_: Request, res: Response) => {
+        let repos = res.locals.repository as Repositorys;
+        const fields = res.locals.fields as RepositoryFields[];
+
+        if(fields !== undefined) {
+            let repos_fields = repository.selectFields(repos, fields);
+            res.status(200).json(repos_fields);
+        }
+        else {
+            res.status(200).json(repos);
+        }
     },
 
     findRepositoryWithID: (req: Request, res: Response) => {

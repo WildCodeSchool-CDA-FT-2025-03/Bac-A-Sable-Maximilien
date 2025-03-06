@@ -26,6 +26,7 @@ export type GitHubRepositoryLanguage = {
  */
 export type RepositoryFields = "id" | "isPrivate" | "languages" | "url";
 
+
 /**
  * Filter criteria for searching repositories
  * All properties are optional for partial matching
@@ -53,6 +54,16 @@ export const create_url = (user: string, repo_name: string): string => {
  * Main repository management class with static CRUD operations
  */
 export default class {
+    static readonly AcceptFilterRepository: string[] = [
+        "id", "isPrivate", "languages", "url"
+    ];
+
+    /**
+     * Adds a new repository to the collection if it doesn't exist
+     * @param repos - Existing repository collection
+     * @param new_repo - Repository to add
+     * @returns True if added, false if already exists
+     */
     static add (repos: Repositorys, new_repo: GitHubRepository): boolean {
         const result = this.exist(repos, new_repo);
         if(result === false) {
@@ -65,10 +76,10 @@ export default class {
     }
 
     /**
-     * Adds a new repository to the collection if it doesn't exist
-     * @param repos - Existing repository collection
-     * @param new_repo - Repository to add
-     * @returns True if added, false if already exists
+     * Checks if a repository exists in the collection by ID match
+     * @param repos - Repository collection to search
+     * @param repo - Repository to check
+     * @returns True if repository exists in collection
      */
     static exist (repos: Repositorys, repo: GitHubRepository): boolean {
         const result = repos.findIndex(r => {
@@ -79,10 +90,10 @@ export default class {
     }
 
     /**
-     * Checks if a repository exists in the collection by ID match
+     * Finds a repository by its ID
      * @param repos - Repository collection to search
-     * @param repo - Repository to check
-     * @returns True if repository exists in collection
+     * @param id - Repository ID to find
+     * @returns The found repository or undefined
      */
     static findId (repos: Repositorys, id: string): GitHubRepository | undefined {
         return repos.find(r => {
@@ -97,6 +108,11 @@ export default class {
      * @returns Filtered array of repositories that match ALL criteria
      */
     static filter (repos: Repositorys, filter: RepositorysFilter): Repositorys {
+        
+        if(filter === undefined) {
+            return repos;
+        }
+
         const filtersKeys = Object.keys(filter);
 
         const result = repos.filter((r) => {
@@ -119,11 +135,11 @@ export default class {
             if(filtersKeys.includes("languages")) {
                 if(filter.languages !== undefined) {
                     const langs = r.languages.map(l => l.node.name);
-                    const intersection = filter.languages
-                                .split(',')
+                    const langsList = filter.languages.split(',');
+                    const intersection = langsList
                                 .filter(l => langs.includes(l));
 
-                    if(intersection.length === 0){
+                    if(intersection.length !== langsList.length){
                         return false;
                     }
                 }
@@ -142,11 +158,12 @@ export default class {
      * @returns Array of objects containing only the specified fields
      */
     static selectFields(repos: Repositorys,  fields: RepositoryFields[]): RepositorysFilter[] {
+        //TODO: check any
         const result = repos.map((r) => {
             const new_repo = {} as any;
 
             for(const f of fields) {
-                new_repo[f] = (r as any)[f];
+                new_repo[f] = (r)[f] as any;
             }
 
             return new_repo;
