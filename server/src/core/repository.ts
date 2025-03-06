@@ -1,5 +1,8 @@
 import { md5 } from "js-md5";
 
+/**
+ * Represents a GitHub repository with its core properties
+ */
 export type GitHubRepository = {
     id: string,
     isPrivate: boolean,
@@ -7,6 +10,9 @@ export type GitHubRepository = {
     url: string,
 };
 
+/**
+ * Represents a programming language in a GitHub repository with size information
+ */
 export type GitHubRepositoryLanguage = {
     size: number,
     node: {
@@ -14,9 +20,16 @@ export type GitHubRepositoryLanguage = {
     }
 };
 
-
+/**
+ * Valid field names for GitHubRepository type
+ * Used for field selection operations
+ */
 export type RepositoryFields = "id" | "isPrivate" | "languages" | "url";
 
+/**
+ * Filter criteria for searching repositories
+ * All properties are optional for partial matching
+ */
 export type RepositorysFilter = {
     id?: string,
     isPrivate?: boolean,
@@ -26,11 +39,19 @@ export type RepositorysFilter = {
 
 export type Repositorys = GitHubRepository[];
 
-
+/**
+ * Generates a GitHub repository URL from username and repository name
+ * @param user - GitHub username or organization name
+ * @param repo_name - Repository name
+ * @returns Full GitHub URL in format: https://github.com/{user}/{repo_name}
+ */
 export const create_url = (user: string, repo_name: string): string => {
     return `https://github.com/${user}/${repo_name}`;
 }
 
+/**
+ * Main repository management class with static CRUD operations
+ */
 export default class {
     static add (repos: Repositorys, new_repo: GitHubRepository): boolean {
         const result = this.exist(repos, new_repo);
@@ -43,6 +64,12 @@ export default class {
         }
     }
 
+    /**
+     * Adds a new repository to the collection if it doesn't exist
+     * @param repos - Existing repository collection
+     * @param new_repo - Repository to add
+     * @returns True if added, false if already exists
+     */
     static exist (repos: Repositorys, repo: GitHubRepository): boolean {
         const result = repos.findIndex(r => {
             return r.id === repo.id;
@@ -51,12 +78,24 @@ export default class {
         return result !== -1;
     }
 
+    /**
+     * Checks if a repository exists in the collection by ID match
+     * @param repos - Repository collection to search
+     * @param repo - Repository to check
+     * @returns True if repository exists in collection
+     */
     static findId (repos: Repositorys, id: string): GitHubRepository | undefined {
         return repos.find(r => {
             return r.id === id;
         });
     }
 
+    /**
+     * Filters repositories based on multiple criteria
+     * @param repos - Repository collection to filter
+     * @param filter - Filter criteria object
+     * @returns Filtered array of repositories that match ALL criteria
+     */
     static filter (repos: Repositorys, filter: RepositorysFilter): Repositorys {
         const filtersKeys = Object.keys(filter);
 
@@ -96,6 +135,12 @@ export default class {
         return result;
     }
 
+    /**
+     * Selects specific fields from repositories
+     * @param repos - Repository collection to process
+     * @param fields - Array of fields to select
+     * @returns Array of objects containing only the specified fields
+     */
     static selectFields(repos: Repositorys,  fields: RepositoryFields[]): RepositorysFilter[] {
         const result = repos.map((r) => {
             const new_repo = {} as any;
@@ -110,11 +155,20 @@ export default class {
         return result;
     }
 
+    /**
+     * Updates repository ID using MD5 hash of its URL
+     * @param repo - Repository object to modify
+     */
     static updateId(repo: GitHubRepository) {
         repo.id = createID(repo);
     }
 }
 
+/**
+ * Generates a unique ID for a repository using MD5 hash of its URL
+ * @param repo - Repository object containing the URL
+ * @returns MD5 hash string of the repository URL
+ */
 function createID(repo: GitHubRepository): string {
     const hash = md5.create();
     hash.update(repo.url);
