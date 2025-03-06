@@ -1,15 +1,17 @@
-import { md5 } from "js-md5";
 import { ClientAddRepoRequest } from "@/types/client.types";
-import { GitHubRepository } from "@/types/github.types";
+import { GitHubRepository } from "@/core/repository";
+import repository from "@/core/repository";
 
 export function toGitHubRepository(data: ClientAddRepoRequest): GitHubRepository {
-    const hash = md5.create();
-    hash.update(data.user + data.name);
 
-    return {
-        id: hash.toString(),
+    const new_repo = {
+        id: "",
         isPrivate: data.isPrivate,
         languages: [],
         url: "http://test",
     } as GitHubRepository;
+
+    repository.updateId(new_repo);
+
+    return new_repo;
 }

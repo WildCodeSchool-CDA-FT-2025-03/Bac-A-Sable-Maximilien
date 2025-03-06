@@ -1,19 +1,16 @@
 import { Request, Response, NextFunction } from "express";
-
 import repos from "@/datas/static_data.json"
-import { GitHubRepository } from "@/types/github.types";
+import repository, {GitHubRepository} from "@/core/repository";
 
-export const reposNotExist = (req: Request, res: Response, next: NextFunction) => {
+export const reposNotExist = (_: Request, res: Response, next: NextFunction) => {
     const data = res.locals.data as GitHubRepository;
 
-    const index = repos.findIndex(r => {
-        return r.id === data.id;
-    });
+    const result = repository.exist(repos, data);
 
-    if (index !== -1) {
-      res.status(422).send("Repos already exist");
+    if (result) {
+      next();
     } 
     else {
-      next();
+      res.status(422).send("Repos already exist");
     }
 };

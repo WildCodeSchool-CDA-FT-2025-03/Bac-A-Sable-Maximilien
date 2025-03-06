@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 
 import staticData from '@/datas/static_data.json';
-import { GitHubRepository } from "@/types/github.types";
+import repository, { GitHubRepository } from "@/core/repository";
 
 const StaticContoller = {
     getAllRepository: (_: Request, res: Response) => {
@@ -11,9 +11,7 @@ const StaticContoller = {
     findRepositoryWithID: (req: Request, res: Response) => {
         const repo_id = req.params.reposid;
     
-        const repo = staticData.find(r => {
-            return r.id === repo_id
-        }) as GitHubRepository;
+        const repo = repository.findId(staticData, repo_id);
     
         if(repo) {
             res.status(200).json(repo);
@@ -25,7 +23,10 @@ const StaticContoller = {
 
     addRepository: (_: Request, res: Response) => {
         const data = res.locals.data as GitHubRepository;
-        staticData.push(data);
+        
+        const result = repository.add(staticData, data);
+
+        if(result)
         res.status(200).send(data.id);
     },
 }
