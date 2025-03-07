@@ -182,12 +182,25 @@ export default class {
         }
     }
 
+    /**
+     * Returns a slice of repositories for pagination
+     * @param repos - Repository collection to slice
+     * @param count - Number of repositories to return per page
+     * @param page - Page number (0-based index)
+     * @returns Array of repositories for the specified page
+     */
     static slice(repos: Repositorys, count: number, page: number = 0): Repositorys {
         const start = page * count;
         const result = repos.slice(start, start + count);
         return result;
     }
 
+    /**
+     * Updates a repository's properties by ID
+     * @param repos - Repository collection to update
+     * @param update - Partial repository object containing the fields to update
+     * @param id - ID of the repository to update
+     */
     static updateRepo(repos: Repositorys, update: PartialRepository, id: string) {
         const repo_find = repos.find(r => {
             return r.id === id;
