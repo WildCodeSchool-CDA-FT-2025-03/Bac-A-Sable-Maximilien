@@ -40,6 +40,8 @@ export type RepositorysFilter = {
 
 export type Repositorys = GitHubRepository[];
 
+export type PartialRepository = Partial<GitHubRepository>;
+
 /**
  * Generates a GitHub repository URL from username and repository name
  * @param user - GitHub username or organization name
@@ -184,6 +186,15 @@ export default class {
         const start = page * count;
         const result = repos.slice(start, start + count);
         return result;
+    }
+
+    static updateRepo(repos: Repositorys, update: PartialRepository, id: string) {
+        const repo_find = repos.find(r => {
+            return r.id === id;
+        });
+        if(repo_find){
+            Object.assign(repo_find, {...repo_find, ...update } as GitHubRepository);
+        }
     }
 
     /**

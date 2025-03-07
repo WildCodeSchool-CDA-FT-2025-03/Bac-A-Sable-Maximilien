@@ -91,6 +91,17 @@ test("repository: filter", () => {
     }
 });
 
+test("repository: update", () => {
+    {    
+        expect(repos.length).toBe(1);
+        expect(repos[0].isPrivate).toBeFalsy();
+        expect(repos[0].url).toBe("foo@bar.com");
+        repository.updateRepo(repos, {isPrivate: true, url: "panda@gmail.com"}, "foo");
+        expect(repos[0].isPrivate).toBeTruthy();
+        expect(repos[0].url).toBe("panda@gmail.com");
+    }
+});
+
 test("repository: delete", () => {
     {    
         expect(repos.length).toBe(1);
@@ -98,3 +109,5 @@ test("repository: delete", () => {
         expect(repos.length).toBe(0);
     }
 });
+
+
