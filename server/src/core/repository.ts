@@ -158,15 +158,13 @@ export default class {
      * @returns Array of objects containing only the specified fields
      */
     static selectFields(repos: Repositorys,  fields: RepositoryFields[]): RepositorysFilter[] {
-        //TODO: check any
-        const result = repos.map((r) => {
-            const new_repo = {} as any;
 
-            for(const f of fields) {
-                new_repo[f] = (r)[f] as any;
-            }
-
-            return new_repo;
+        const result = repos.map(r => {
+            return fields.reduce(
+                (acc,f)=> {
+                    return {...acc, [f]: r[f]}
+                },{} as RepositorysFilter
+            );
         });
 
         return result;
