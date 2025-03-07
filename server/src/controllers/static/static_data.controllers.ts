@@ -35,8 +35,9 @@ const StaticContoller = {
         
         const result = repository.add(staticData, data);
 
-        if(result)
-        res.status(200).send(data.id);
+        if(result){
+            res.status(200).send(data.id);
+        }
     },
 
     deleteByID: (req: Request, res: Response) => {
@@ -44,7 +45,16 @@ const StaticContoller = {
 
         repository.deleteByID(staticData, repo_id);
         res.status(200).send("OK");
-    }
+    },
+
+    updateRepository: (req: Request, res: Response) => {
+        const repo_id = req.params.reposid;
+       // const data = res.locals.data as GitHubRepository;
+        
+        repository.updateRepo(staticData, req.body, repo_id);
+
+        res.status(200).send("ok");
+    },
 }
 
 export default StaticContoller;

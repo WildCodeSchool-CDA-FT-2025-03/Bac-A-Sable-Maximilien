@@ -13,6 +13,8 @@ router.get("/:reposid", StaticContoller.findRepositoryWithID);
 
 router.delete("/:reposid", StaticContoller.deleteByID);
 
+router.put("/:reposid", StaticContoller.updateRepository);
+
 router.post("/", checkAddRepoRequest, reposNotExist, StaticContoller.addRepository);
 
 
