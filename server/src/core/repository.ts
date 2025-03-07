@@ -180,6 +180,12 @@ export default class {
         }
     }
 
+    static slice(repos: Repositorys, count: number, page: number = 0): Repositorys {
+        const start = page * count;
+        const result = repos.slice(start, start + count);
+        return result;
+    }
+
     /**
      * Updates repository ID using MD5 hash of its URL
      * @param repo - Repository object to modify

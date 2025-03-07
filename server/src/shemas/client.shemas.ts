@@ -16,4 +16,6 @@ export const CheckQueryRequest = Joi.object({
     languages: Joi.string().optional(),
     user: Joi.string().optional(),
     fields: Joi.string().optional(),
+    limit: Joi.number().optional(),
+    page: Joi.number().optional(),
 });

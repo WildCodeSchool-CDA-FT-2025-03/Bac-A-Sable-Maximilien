@@ -10,3 +10,14 @@ export const paramsFilter = (req: Request, res: Response, next: NextFunction) =>
 
     next();
 };
+
+export const limit = (req: Request, res: Response, next: NextFunction) => {
+    const repos = res.locals.repository; 
+    const filters =  res.locals.filters;
+    const page = filters.page ? +filters.page : 0;
+    res.locals.repository = repository.slice(repos, +filters.limit, page);
+
+    next();
+};
+
+
