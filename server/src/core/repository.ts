@@ -36,6 +36,7 @@ export type RepositorysFilter = {
     isPrivate?: boolean,
     languages?: string,
     url?: string,
+    limit?: number,
 };
 
 export type Repositorys = GitHubRepository[];
@@ -110,7 +111,7 @@ export default class {
      * @returns Filtered array of repositories that match ALL criteria
      */
     static filter (repos: Repositorys, filter: RepositorysFilter): Repositorys {
-        
+
         if(filter === undefined) {
             return repos;
         }

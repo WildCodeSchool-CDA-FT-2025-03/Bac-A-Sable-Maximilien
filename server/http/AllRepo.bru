@@ -5,11 +5,13 @@ meta {
 }
 
 get {
-  url: http://{{HOST}}:{{PORT}}/repos?isPrivate=true
+  url: http://{{HOST}}:{{PORT}}/repos?limit=1&languages=CMake&fields=isPrivate
   body: none
   auth: none
 }
 
 params:query {
-  isPrivate: true
+  limit: 1
+  languages: CMake
+  fields: isPrivate
 }

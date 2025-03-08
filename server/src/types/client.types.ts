@@ -1,4 +1,4 @@
-import { RepositoryFields } from "@/core/repository";
+import { RepositoryFields, RepositorysFilter } from "@/core/repository";
 
 export type ClientAddRepoRequest = {
     name: string,
@@ -7,3 +7,8 @@ export type ClientAddRepoRequest = {
 };
 
 export type QueryTypeRequest = RepositoryFields | "fields";
+
+export type GetRepositoryRequest = {
+        filter?: RepositorysFilter,
+        fields?: RepositoryFields[],
+};
