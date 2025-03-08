@@ -1,9 +1,7 @@
 import { Request, Response, NextFunction } from "express";
-import { CheckClientAddRepo, CheckQueryRequest } from "@/shemas/client.shemas";
-import { toGitHubRepository } from "@/utiles/repos";
+import { CheckQueryRequest } from "@/shemas/client.shemas";
 import { GetRepositoryRequest } from "@/types/client.types";
 import { RepositoryFields } from "@/core/repository";
-import data_repo from "@/datas/static_data";
 
 export default {
   getRepositorys: (req: Request, res: Response, next: NextFunction) => {
@@ -32,7 +30,6 @@ export default {
 
       console.log(config)
       res.locals.config = config;
-      res.locals.datas = data_repo;
 
       next();
     }
