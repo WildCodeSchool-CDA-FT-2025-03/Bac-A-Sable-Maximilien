@@ -46,7 +46,7 @@ export default {
     const { error } = CheckClientAddRepo.validate(req.body);
 
     if (error) {
-      res.status(422).json(error);
+      throw new BadRequestError("Invalid query parameters");
     }
     else {
       const new_repo = {
@@ -64,11 +64,11 @@ export default {
     const { error } = CheckUpdateRepository.validate(req.body);
 
     if(req.params.repoid === undefined) {
-      //TODO: handle error
+      throw new BadRequestError("Invalid query parameters, missing id");
     }
 
     if (error) {
-      res.status(422).json(error);
+      throw new BadRequestError("Invalid query parameters");
     }
     else {
       const update_repo = {} as UpdateRepository;

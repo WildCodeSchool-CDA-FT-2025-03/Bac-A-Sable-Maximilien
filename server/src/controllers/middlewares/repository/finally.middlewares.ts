@@ -7,7 +7,7 @@ export default {
         const config = res.locals.config;
         const repos = await repositoryModel.get(config);
 
-        res.json(repos);
+        res.status(200).json(repos);
     },
 
     getOneRepository: async (_: Request, res: Response) => {
@@ -15,7 +15,7 @@ export default {
         const config = res.locals.config;
         const repos = await repositoryModel.get(config);
 
-        res.json(repos);
+        res.status(200).json(repos);
     },
 
     deleteRepository: async (req: Request, res: Response) => {
@@ -26,18 +26,18 @@ export default {
             count = await repositoryModel.removeByID([ req.params.repoid ]);
         }
 
-        res.json({delete: count});
+        res.status(200).json({delete: count});
     },
 
     addRepository: async (_: Request, res: Response) => {
         const result = await repositoryModel.add(res.locals.repo);
-        res.json({id: result});
+        res.status(201).json({id: result});
     },
 
     updateRepository: async (_: Request, res: Response) => {
         const id = res.locals.id;
         const result = await repositoryModel.updateByID(id, res.locals.repo);
-        res.json({id: result});
+        res.status(200).json({id: result});
     },
 }
 
