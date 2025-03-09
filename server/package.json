@@ -38,6 +38,7 @@
   },
   "dependencies": {
     "@types/winston": "^2.4.4",
+    "chalk": "^5.4.1",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "joi": "^17.13.3",
