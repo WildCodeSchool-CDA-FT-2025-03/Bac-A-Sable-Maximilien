@@ -20,4 +20,8 @@ export default {
         repository.validation.newRepository,
         repository.finally.addRepository
     ],
+
+    Update: [
+        
+    ]
 }

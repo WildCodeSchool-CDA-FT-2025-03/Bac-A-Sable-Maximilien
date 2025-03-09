@@ -1,5 +1,5 @@
 import express, { Response } from "express";
-import repos from "./repos/repos";
+import repos from "./repository/repository.router";
 
 const router = express.Router();
 
