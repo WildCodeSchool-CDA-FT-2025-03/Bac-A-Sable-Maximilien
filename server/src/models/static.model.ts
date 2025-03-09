@@ -1,4 +1,4 @@
-import { GitHubRepository, Repositorys, ConstructGitHubRepository, Limit, RepositorysFilter, GetRepositorysConfig, PartialRepository, RepositoryFields, UpdateRepository } from "@/core/repository.d";
+import { GitHubRepository, Repositories, ConstructGitHubRepository, Limit, RepositoriesFilter, GetRepositoriesConfig, PartialRepository, RepositoryFields, UpdateRepository } from "@/core/repository.d";
 import { create_url, create_id } from "@/core/repository";
 import { IRepository } from "@/core/repositorys.interface";
 import static_data  from "@/datas/static_data.json"
@@ -49,7 +49,7 @@ export class StaticModel implements IRepository {
      * @param config - Configuration object containing filter, fields, and limit
      * @returns Promise resolving to filtered repositories or selected fields
      */
-    async get(config: GetRepositorysConfig): Promise<Repositorys | PartialRepository[]> {
+    async get(config: GetRepositoriesConfig): Promise<Repositories | PartialRepository[]> {
         // Filter repositories based on the provided filter criteria
         let repos = StaticModel.filter(StaticModel.repository, config.filter);
 
@@ -122,7 +122,7 @@ export class StaticModel implements IRepository {
      * @param filter - Filter criteria object containing optional id, isPrivate, url, and languages
      * @returns Filtered array of repositories that match ALL criteria
      */
-    private static filter (repos: Repositorys, filter: RepositorysFilter): Repositorys {
+    private static filter (repos: Repositories, filter: RepositoriesFilter): Repositories {
         if(Object.keys(filter).length === 0) {
             return repos;
         }
@@ -168,7 +168,7 @@ export class StaticModel implements IRepository {
      * @param limit - Limit object containing count and page for pagination
      * @returns Sliced array of repositories
      */
-    private static slice(repos: Repositorys, limit?: Limit): Repositorys {
+    private static slice(repos: Repositories, limit?: Limit): Repositories {
         if(limit === undefined) {
             return repos;
         }
@@ -185,7 +185,7 @@ export class StaticModel implements IRepository {
      * @param fields - Array of fields to select
      * @returns Array of objects containing only the specified fields
      */
-    private static selectFields(repos: Repositorys,  fields: RepositoryFields[]): PartialRepository[] {
+    private static selectFields(repos: Repositories,  fields: RepositoryFields[]): PartialRepository[] {
 
         const result = repos.map(r => {
             return fields.reduce(
@@ -204,7 +204,7 @@ export class StaticModel implements IRepository {
      * @param id - Repository ID to find
      * @returns The found repository or undefined
      */
-    private static getByID(repos: Repositorys, id: string): GitHubRepository | undefined {
+    private static getByID(repos: Repositories, id: string): GitHubRepository | undefined {
         return repos.find(r => r.id === id);
     }
 }

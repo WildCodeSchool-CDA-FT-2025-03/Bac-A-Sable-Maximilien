@@ -1,7 +1,7 @@
 import { StaticModel } from './static.model';
 import { 
   ConstructGitHubRepository, 
-  GetRepositorysConfig, 
+  GetRepositoriesConfig, 
   GitHubRepository,
   RepositoryFields,
   UpdateRepository
@@ -57,7 +57,7 @@ describe('StaticModel', () => {
       expect(id).toBe(create_id(create_url(newRepo.user, newRepo.name)));
       
       // Verify the repository was added
-      const config = new GetRepositorysConfig();
+      const config = new GetRepositoriesConfig();
       config.filter.id = id;
       const repos = await staticModel.get(config);
       
@@ -87,7 +87,7 @@ describe('StaticModel', () => {
   describe('get method', () => {
     it('should return all repositories when no filters are provided', async () => {
       // Arrange
-      const config = new GetRepositorysConfig();
+      const config = new GetRepositoriesConfig();
       
       // Act
       const repos = await staticModel.get(config);
@@ -98,7 +98,7 @@ describe('StaticModel', () => {
     
     it('should filter repositories by id', async () => {
       // Arrange
-      const config = new GetRepositorysConfig();
+      const config = new GetRepositoriesConfig();
       config.filter.id = '123';
       
       // Act
@@ -111,7 +111,7 @@ describe('StaticModel', () => {
     
     it('should filter repositories by isPrivate', async () => {
       // Arrange
-      const config = new GetRepositorysConfig();
+      const config = new GetRepositoriesConfig();
       config.filter.isPrivate = 'true';
       
       // Act
@@ -124,7 +124,7 @@ describe('StaticModel', () => {
     
     it('should filter repositories by url', async () => {
       // Arrange
-      const config = new GetRepositorysConfig();
+      const config = new GetRepositoriesConfig();
       config.filter.url = 'https://github.com/user1/repo1';
       
       // Act
@@ -137,7 +137,7 @@ describe('StaticModel', () => {
     
     it('should filter repositories by languages', async () => {
       // Arrange
-      const config = new GetRepositorysConfig();
+      const config = new GetRepositoriesConfig();
       config.filter.languages = 'Python';
       
       // Act
@@ -150,7 +150,7 @@ describe('StaticModel', () => {
     
     it('should filter repositories by multiple languages', async () => {
       // Arrange
-      const config = new GetRepositorysConfig();
+      const config = new GetRepositoriesConfig();
       config.filter.languages = 'TypeScript,JavaScript';
       
       // Act
@@ -163,7 +163,7 @@ describe('StaticModel', () => {
     
     it('should return selected fields when fields are specified', async () => {
       // Arrange
-      const config = new GetRepositorysConfig();
+      const config = new GetRepositoriesConfig();
       config.fields = ['id', 'url'] as RepositoryFields[];
       
       // Act
@@ -178,7 +178,7 @@ describe('StaticModel', () => {
     
     it('should apply pagination correctly', async () => {
       // Arrange
-      const config = new GetRepositorysConfig();
+      const config = new GetRepositoriesConfig();
       config.limit = { count: 1, page: 0 };
       
       // Act
@@ -198,7 +198,7 @@ describe('StaticModel', () => {
     
     it('should combine filters, fields, and pagination', async () => {
       // Arrange
-      const config = new GetRepositorysConfig();
+      const config = new GetRepositoriesConfig();
       config.fields = ['id', 'url'] as RepositoryFields[];
       config.limit = { count: 1, page: 0 };
       
@@ -224,7 +224,7 @@ describe('StaticModel', () => {
       expect(removedCount).toBe(1);
       
       // Verify repository was removed
-      const config = new GetRepositorysConfig();
+      const config = new GetRepositoriesConfig();
       const repos = await staticModel.get(config);
       expect(repos).toHaveLength(2);
       expect((repos[0] as GitHubRepository).id).toBe('456');
@@ -259,7 +259,7 @@ describe('StaticModel', () => {
       expect(removedCount).toBe(0);
       
       // Verify no repositories were removed
-      const config = new GetRepositorysConfig();
+      const config = new GetRepositoriesConfig();
       const repos = await staticModel.get(config);
       expect(repos).toHaveLength(2);
     });
@@ -300,7 +300,7 @@ describe('StaticModel', () => {
       expect(result).toBe(true);
       
       // Verify repository was updated
-      const config = new GetRepositorysConfig();
+      const config = new GetRepositoriesConfig();
       config.filter.id = '456';
       const repos = await staticModel.get(config);
       
@@ -328,7 +328,7 @@ describe('StaticModel', () => {
 
   it('should handle empty array of languages in filter', async () => {
     // Arrange
-    const config = new GetRepositorysConfig();
+    const config = new GetRepositoriesConfig();
     config.filter.languages = '';
     
     // Act
@@ -340,7 +340,7 @@ describe('StaticModel', () => {
 
   it('should handle pagination beyond available items', async () => {
     // Arrange
-    const config = new GetRepositorysConfig();
+    const config = new GetRepositoriesConfig();
     config.limit = { count: 1, page: 10 };
     
     // Act

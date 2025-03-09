@@ -37,7 +37,7 @@ export type RepositoryFields = "id" | "isPrivate" | "languages" | "url";
  * Filter criteria for searching repositories
  * All properties are optional for partial matching
  */
-export type RepositorysFilter = {
+export type RepositoriesFilter = {
     id?: string,
     isPrivate?: string,
     languages?: string,
@@ -45,7 +45,7 @@ export type RepositorysFilter = {
     limit?: number,
 };
 
-export type Repositorys = GitHubRepository[];
+export type Repositories = GitHubRepository[];
 
 export type PartialRepository = Partial<GitHubRepository>;
 
@@ -54,8 +54,8 @@ export type Limit = {
     page: number,
 }
 
-export class GetRepositorysConfig {
-    filter: RepositorysFilter = {};
+export class GetRepositoriesConfig {
+    filter: RepositoriesFilter = {};
     fields: RepositoryFields[] = [];
     limit: Limit = {count: 0, page: 0};
 };
