@@ -14,7 +14,9 @@ export default (
       status: err.status,
       code: err.code,
     });
-    logger.error(`${req.method} ${req.get("host") + req.originalUrl}: ${err.message}`);
+    logger.error(
+      `${req.method} ${req.get("host") + req.originalUrl}: ${err.message}`,
+    );
   } else {
     res.status(500).json({ error: "Unknown error" });
   }

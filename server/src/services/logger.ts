@@ -1,45 +1,24 @@
-import { createLogger, format, loggers, transports } from "winston";
+import { createLogger, format, transports } from "winston";
 import chalk from "chalk";
 
+const toText = format.printf(({ timestamp, message, level }) => {
+  if (level === "error") {
+    return chalk.red(`${timestamp} [${level}] ${JSON.stringify(message)}`);
+  }
 
-const toText = format.printf(
-  ({ timestamp, message, level }) =>
-    `${timestamp} [${level}] ${JSON.stringify(message)}`,
-);
+  return `${timestamp} [${level}] ${JSON.stringify(message)}`;
+});
 
-const toTextError = format.printf(
-  ({ timestamp, message, level }) =>
-    chalk.red(`${timestamp} [${level}] ${JSON.stringify(message)}`),
-);
+const loggerTransporter = [];
 
-const loggerInfoTransporter = [];
-const loggerErrorTransporter = [];
-
-loggerInfoTransporter.push(
+loggerTransporter.push(
   new transports.Console({
     format: format.combine(format.timestamp(), toText),
   }),
 );
 
-loggerErrorTransporter.push(
-    new transports.Console({
-      format: format.combine(format.timestamp(), toTextError),
-    })
-  );
-
-const infoLogger = createLogger({
-  transports: loggerInfoTransporter,
+const logger = createLogger({
+  transports: loggerTransporter,
 });
 
-const errorLogger = createLogger({
-    transports: loggerErrorTransporter,
-  });
-
-export default {
-    info: (message: string) => {
-        infoLogger.info(message);
-    },
-    error: (message: string) => {
-        errorLogger.error(message);
-    }
-};
+export default logger;
