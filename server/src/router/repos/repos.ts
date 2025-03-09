@@ -16,7 +16,7 @@ router.delete("/:repoid", repositoryController.Delete);
 
 // router.put("/:repoid", repositoryController.GetRepositorys);
 
-// router.post("/", checkAddRepoRequest, reposNotExist, StaticContoller.addRepository);
+router.post("/", repositoryController.Add);
 
 
 export default router;

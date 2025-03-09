@@ -1,5 +1,5 @@
-import repository from "@/controllers/middlewares/repository/repository";
-import { Repositorys, GitHubRepository, Limit, RepositorysFilter, GetRepositorysConfig, PartialRepository, RepositoryFields } from "@/core/repository";
+import { createID, GitHubRepository, Repositorys, ConstructGitHubRepository, Limit, RepositorysFilter, GetRepositorysConfig, PartialRepository, RepositoryFields } from "@/core/repository";
+import { create_url } from "@/core/repository";
 import { IRepository } from "@/core/repositorys.interface";
 import static_data  from "@/datas/static_data.json"
 import obj from "@/utiles/obj";
@@ -19,16 +19,35 @@ export class StaticModel implements IRepository {
      * @param repo - The GitHub repository to add
      * @returns Promise resolving to the ID of the added repository
      */
-    async add(repo: GitHubRepository): Promise<string> {
-        StaticModel.repository.push(repo);
-        return repo.id; 
+    async add(repo: ConstructGitHubRepository): Promise<string> {
+        const new_url = create_url(repo.user, repo.name);
+        const new_id = createID(new_url);
+
+        const exist = await this.existByID(new_id);
+
+        if(!exist) {
+            const new_repo = {
+                    isPrivate: repo.isPrivate, 
+                    id: new_id, 
+                    url: new_url,
+                    languages: [],
+                } as GitHubRepository;
+            StaticModel.repository.push(new_repo);
+            return new_repo.id;
+        }
+        else {
+            return "";
+        }
     }
 
 
     async get(config: GetRepositorysConfig): Promise<Repositorys | PartialRepository[]> {
         let repos = StaticModel.filter(StaticModel.repository, config.filter);
-        repos = StaticModel.slice(repos, config.limit)
-        
+
+        if(config.limit.count > 0) {
+            repos = StaticModel.slice(repos, config.limit)
+        }
+
         if(config.fields.length > 0) {
             return StaticModel.selectFields(repos, config.fields);
         }
@@ -38,7 +57,6 @@ export class StaticModel implements IRepository {
 
 
     async removeByID(list_id: string[]): Promise<number> {
-        let size = StaticModel.repository.length;
         let count = 0;
         StaticModel.repository = StaticModel.repository
             .filter(r => {

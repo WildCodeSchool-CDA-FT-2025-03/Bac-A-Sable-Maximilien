@@ -12,6 +12,12 @@ export default {
     ],
 
     Delete: [
+        repository.validation.newRepository,
         repository.finally.deleteRepository,
+    ],
+
+    Add: [
+        repository.validation.newRepository,
+        repository.finally.addRepository
     ],
 }

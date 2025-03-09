@@ -1,7 +1,4 @@
 import { Request, Response } from "express";
-import data_repo from "@/datas/static_data";
-import repository, {Repositorys} from "@/core/repository";
-
 import repositoryModel from "@/models/repository.model";
 
 export default {
@@ -31,5 +28,10 @@ export default {
 
         res.json({delete: count});
     },
+
+    addRepository: async (_: Request, res: Response) => {
+        const result = await repositoryModel.add(res.locals.repo);
+        res.json({id: result});
+    }
 }
 

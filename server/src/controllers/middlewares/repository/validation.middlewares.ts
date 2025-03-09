@@ -1,7 +1,6 @@
 import { Request, Response, NextFunction } from "express";
-import { CheckQueryRequest } from "@/shemas/client.shemas";
-import { GetRepositoryRequest } from "@/types/client.types";
-import { RepositoryFields, GetRepositorysConfig } from "@/core/repository";
+import { CheckQueryRequest, CheckClientAddRepo } from "@/shemas/client.shemas";
+import { RepositoryFields, GetRepositorysConfig, ConstructGitHubRepository } from "@/core/repository";
 
 export default {
   getRepositorys: (req: Request, res: Response, next: NextFunction) => {
@@ -41,4 +40,22 @@ export default {
       next();
     }
   },
+
+  newRepository: (req: Request, res: Response, next: NextFunction) => {
+    const { error } = CheckClientAddRepo.validate(req.body);
+
+    if (error) {
+      res.status(422).json(error);
+    }
+    else {
+      const new_repo = {
+        user: req.body.user,
+        name: req.body.name,
+        isPrivate: req.body.isPrivate,
+      } as ConstructGitHubRepository;
+
+      res.locals.repo = new_repo;
+      next();
+    }
+  }
 }

@@ -1,8 +1,8 @@
-import { Repositorys, GitHubRepository, GetRepositorysConfig, PartialRepository } from "./repository";
+import { Repositorys, ConstructGitHubRepository, GetRepositorysConfig, PartialRepository } from "./repository";
 
 
 export interface IRepository {
-    add(repo: GitHubRepository): Promise<string>;
+    add(repo: ConstructGitHubRepository): Promise<string>;
 
     get(config: GetRepositorysConfig) : Promise<Repositorys | PartialRepository[]>;
 

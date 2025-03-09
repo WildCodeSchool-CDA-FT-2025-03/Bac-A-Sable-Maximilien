@@ -10,6 +10,13 @@ export type GitHubRepository = {
     url: string,
 };
 
+export type ConstructGitHubRepository = {
+    user: string,
+    name: string,
+    isPrivate: boolean,
+    //languages: GitHubRepositoryLanguage[],
+}
+
 /**
  * Represents a programming language in a GitHub repository with size information
  */
@@ -248,7 +255,7 @@ export default class {
      * @param repo - Repository object to modify
      */
     static updateId(repo: GitHubRepository) {
-        repo.id = createID(repo);
+        repo.id = createID(repo.url);
     }
 }
 
@@ -257,8 +264,8 @@ export default class {
  * @param repo - Repository object containing the URL
  * @returns MD5 hash string of the repository URL
  */
-function createID(repo: GitHubRepository): string {
+export function createID(url: string): string {
     const hash = md5.create();
-    hash.update(repo.url);
+    hash.update(url);
     return hash.toString();
 }

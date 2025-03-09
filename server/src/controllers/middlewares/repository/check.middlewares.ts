@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import repos from "@/datas/static_data"
-import repository, {GitHubRepository, RepositorysFilter} from "@/core/repository";
+import repository, {GitHubRepository} from "@/core/repository";
 
 
 export default {
