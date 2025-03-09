@@ -1,176 +1,176 @@
 [
-    {
-        "id": "R_kgDOKA1w5w",
-        "isPrivate": true,
-        "languages": [
-            {
-                "size": 703,
-                "node": {
-                    "name": "CMake"
-                }
-            }
-        ],
-        "url": "https://github.com/Maxwellmilien/book"
-    },
-    {
-        "id": "R_kgDOJLeFaA",
-        "isPrivate": true,
-        "languages": [
-            {
-                "size": 1223,
-                "node": {
-                    "name": "Rust"
-                }
-            }
-        ],
-        "url": "https://github.com/Maxwellmilien/note"
-    },
-    {
-        "id": "R_kgDOJBtR-w",
-        "isPrivate": true,
-        "languages": [
-            {
-                "size": 37665,
-                "node": {
-                    "name": "Rust"
-                }
-            }
-        ],
-        "url": "https://github.com/Maxwellmilien/gemo-log"
-    },
-    {
-        "id": "R_kgDOI-U6pg",
-        "isPrivate": true,
-        "languages": [
-            {
-                "size": 24821,
-                "node": {
-                    "name": "Rust"
-                }
-            }
-        ],
-        "url": "https://github.com/Maxwellmilien/dbgm-curses"
-    },
-    {
-        "id": "R_kgDOIpqitg",
-        "isPrivate": true,
-        "languages": [
-            {
-                "size": 16,
-                "node": {
-                    "name": "RenderScript"
-                }
-            },
-            {
-                "size": 2291,
-                "node": {
-                    "name": "Rust"
-                }
-            }
-        ],
-        "url": "https://github.com/Maxwellmilien/G4x2"
-    },
-    {
-        "id": "R_kgDOHGY4Kw",
-        "isPrivate": true,
-        "languages": [
-            {
-                "size": 3875,
-                "node": {
-                    "name": "Rust"
-                }
-            }
-        ],
-        "url": "https://github.com/Maxwellmilien/g4x"
-    },
-    {
-        "id": "MDEwOlJlcG9zaXRvcnkxOTk3MTczODY=",
-        "isPrivate": true,
-        "languages": [
-            {
-                "size": 5037,
-                "node": {
-                    "name": "Shell"
-                }
-            },
-            {
-                "size": 587,
-                "node": {
-                    "name": "Vim Script"
-                }
-            }
-        ],
-        "url": "https://github.com/Maxwellmilien/config"
-    },
-    {
-        "id": "MDEwOlJlcG9zaXRvcnkyNzg5MDI1NDQ=",
-        "isPrivate": true,
-        "languages": [
-            {
-                "size": 423,
-                "node": {
-                    "name": "CMake"
-                }
-            },
-            {
-                "size": 7011,
-                "node": {
-                    "name": "C++"
-                }
-            }
-        ],
-        "url": "https://github.com/Maxwellmilien/labyrinthe"
-    },
-    {
-        "id": "MDEwOlJlcG9zaXRvcnkyMTk4NTA1MTU=",
-        "isPrivate": true,
-        "languages": [
-            {
-                "size": 5972,
-                "node": {
-                    "name": "Rust"
-                }
-            }
-        ],
-        "url": "https://github.com/Maxwellmilien/dr-parser"
-    },
-    {
-        "id": "MDEwOlJlcG9zaXRvcnkxOTk3MjI2MzU=",
-        "isPrivate": true,
-        "languages": [
-            {
-                "size": 741,
-                "node": {
-                    "name": "Shell"
-                }
-            }
-        ],
-        "url": "https://github.com/Maxwellmilien/scripts-install"
-    },
-    {
-        "id": "MDEwOlJlcG9zaXRvcnkyMDA5MjI0NjI=",
-        "isPrivate": true,
-        "languages": [
-            {
-                "size": 345,
-                "node": {
-                    "name": "Shell"
-                }
-            }
-        ],
-        "url": "https://github.com/Maxwellmilien/powerlevel9k-segments"
-    },
-    {
-        "id": "MDEwOlJlcG9zaXRvcnkxOTk4Njc1NDA=",
-        "isPrivate": true,
-        "languages": [
-            {
-                "size": 57,
-                "node": {
-                    "name": "Shell"
-                }
-            }
-        ],
-        "url": "https://github.com/Maxwellmilien/script-utility"
-    }
+  {
+    "id": "R_kgDOKA1w5w",
+    "isPrivate": true,
+    "languages": [
+      {
+        "size": 703,
+        "node": {
+          "name": "CMake"
+        }
+      }
+    ],
+    "url": "https://github.com/Maxwellmilien/book"
+  },
+  {
+    "id": "R_kgDOJLeFaA",
+    "isPrivate": true,
+    "languages": [
+      {
+        "size": 1223,
+        "node": {
+          "name": "Rust"
+        }
+      }
+    ],
+    "url": "https://github.com/Maxwellmilien/note"
+  },
+  {
+    "id": "R_kgDOJBtR-w",
+    "isPrivate": true,
+    "languages": [
+      {
+        "size": 37665,
+        "node": {
+          "name": "Rust"
+        }
+      }
+    ],
+    "url": "https://github.com/Maxwellmilien/gemo-log"
+  },
+  {
+    "id": "R_kgDOI-U6pg",
+    "isPrivate": true,
+    "languages": [
+      {
+        "size": 24821,
+        "node": {
+          "name": "Rust"
+        }
+      }
+    ],
+    "url": "https://github.com/Maxwellmilien/dbgm-curses"
+  },
+  {
+    "id": "R_kgDOIpqitg",
+    "isPrivate": true,
+    "languages": [
+      {
+        "size": 16,
+        "node": {
+          "name": "RenderScript"
+        }
+      },
+      {
+        "size": 2291,
+        "node": {
+          "name": "Rust"
+        }
+      }
+    ],
+    "url": "https://github.com/Maxwellmilien/G4x2"
+  },
+  {
+    "id": "R_kgDOHGY4Kw",
+    "isPrivate": true,
+    "languages": [
+      {
+        "size": 3875,
+        "node": {
+          "name": "Rust"
+        }
+      }
+    ],
+    "url": "https://github.com/Maxwellmilien/g4x"
+  },
+  {
+    "id": "MDEwOlJlcG9zaXRvcnkxOTk3MTczODY=",
+    "isPrivate": true,
+    "languages": [
+      {
+        "size": 5037,
+        "node": {
+          "name": "Shell"
+        }
+      },
+      {
+        "size": 587,
+        "node": {
+          "name": "Vim Script"
+        }
+      }
+    ],
+    "url": "https://github.com/Maxwellmilien/config"
+  },
+  {
+    "id": "MDEwOlJlcG9zaXRvcnkyNzg5MDI1NDQ=",
+    "isPrivate": true,
+    "languages": [
+      {
+        "size": 423,
+        "node": {
+          "name": "CMake"
+        }
+      },
+      {
+        "size": 7011,
+        "node": {
+          "name": "C++"
+        }
+      }
+    ],
+    "url": "https://github.com/Maxwellmilien/labyrinthe"
+  },
+  {
+    "id": "MDEwOlJlcG9zaXRvcnkyMTk4NTA1MTU=",
+    "isPrivate": true,
+    "languages": [
+      {
+        "size": 5972,
+        "node": {
+          "name": "Rust"
+        }
+      }
+    ],
+    "url": "https://github.com/Maxwellmilien/dr-parser"
+  },
+  {
+    "id": "MDEwOlJlcG9zaXRvcnkxOTk3MjI2MzU=",
+    "isPrivate": true,
+    "languages": [
+      {
+        "size": 741,
+        "node": {
+          "name": "Shell"
+        }
+      }
+    ],
+    "url": "https://github.com/Maxwellmilien/scripts-install"
+  },
+  {
+    "id": "MDEwOlJlcG9zaXRvcnkyMDA5MjI0NjI=",
+    "isPrivate": true,
+    "languages": [
+      {
+        "size": 345,
+        "node": {
+          "name": "Shell"
+        }
+      }
+    ],
+    "url": "https://github.com/Maxwellmilien/powerlevel9k-segments"
+  },
+  {
+    "id": "MDEwOlJlcG9zaXRvcnkxOTk4Njc1NDA=",
+    "isPrivate": true,
+    "languages": [
+      {
+        "size": 57,
+        "node": {
+          "name": "Shell"
+        }
+      }
+    ],
+    "url": "https://github.com/Maxwellmilien/script-utility"
+  }
 ]

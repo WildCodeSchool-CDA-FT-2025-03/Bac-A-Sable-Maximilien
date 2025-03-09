@@ -7,8 +7,8 @@ import { md5 } from "js-md5";
  * @returns Full GitHub URL in format: https://github.com/{user}/{repo_name}
  */
 export const create_url = (user: string, repo_name: string): string => {
-    return `https://github.com/${user}/${repo_name}`;
-}
+  return `https://github.com/${user}/${repo_name}`;
+};
 
 /**
  * Generates a unique ID for a repository using MD5 hash of its URL
@@ -16,7 +16,7 @@ export const create_url = (user: string, repo_name: string): string => {
  * @returns MD5 hash string of the repository URL
  */
 export function create_id(url: string): string {
-    const hash = md5.create();
-    hash.update(url);
-    return hash.toString();
+  const hash = md5.create();
+  hash.update(url);
+  return hash.toString();
 }

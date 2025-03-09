@@ -7,9 +7,7 @@ router.use("/repos", repos);
 
 // server root
 router.get("/", (_, res: Response) => {
-    res.status(200).send("OK");
+  res.status(200).send("OK");
 });
-
-
 
 export default router;

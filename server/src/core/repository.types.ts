@@ -6,10 +6,10 @@
  * - `url`: URL of the repository on GitHub
  */
 export type GitHubRepository = {
-    id: string,
-    isPrivate: boolean,
-    languages: GitHubRepositoryLanguage[],
-    url: string,
+  id: string;
+  isPrivate: boolean;
+  languages: GitHubRepositoryLanguage[];
+  url: string;
 };
 
 /**
@@ -19,11 +19,11 @@ export type GitHubRepository = {
  * - `isPrivate`: Boolean indicating if the repository should be private
  */
 export type ConstructGitHubRepository = {
-    user: string,
-    name: string,
-    isPrivate: boolean,
-    //languages: GitHubRepositoryLanguage[],
-}
+  user: string;
+  name: string;
+  isPrivate: boolean;
+  //languages: GitHubRepositoryLanguage[],
+};
 
 /**
  * Represents a programming language in a GitHub repository with size information
@@ -31,17 +31,17 @@ export type ConstructGitHubRepository = {
  * - `node.name`: Name of the programming language
  */
 export type GitHubRepositoryLanguage = {
-    size: number,
-    node: {
-        name: string,
-    }
+  size: number;
+  node: {
+    name: string;
+  };
 };
 
 /**
  * Represents fields that can be updated in a GitHub repository
  * Excludes `id` and `url` as they are immutable
  */
-export type UpdateRepository = Partial<Omit<GitHubRepository, "id" | "url">>
+export type UpdateRepository = Partial<Omit<GitHubRepository, "id" | "url">>;
 
 /**
  * Valid field names for GitHubRepository type
@@ -59,11 +59,11 @@ export type RepositoryFields = "id" | "isPrivate" | "languages" | "url";
  * - `limit`: Limit the number of results
  */
 export type RepositoriesFilter = {
-    id?: string,
-    isPrivate?: string,
-    languages?: string,
-    url?: string,
-    limit?: number,
+  id?: string;
+  isPrivate?: string;
+  languages?: string;
+  url?: string;
+  limit?: number;
 };
 
 /**
@@ -83,9 +83,9 @@ export type PartialRepository = Partial<GitHubRepository>;
  * - `page`: Page number (0-based index)
  */
 export type Paging = {
-    count: number,
-    page: number,
-}
+  count: number;
+  page: number;
+};
 
 /**
  * Configuration for retrieving repositories
@@ -94,7 +94,7 @@ export type Paging = {
  * - `limit`: Pagination limits
  */
 export class GetRepositoriesConfig {
-    filter: RepositoriesFilter = {};
-    fields: RepositoryFields[] = [];
-    limit: Paging = {count: 0, page: 0};
-};
+  filter: RepositoriesFilter = {};
+  fields: RepositoryFields[] = [];
+  limit: Paging = { count: 0, page: 0 };
+}

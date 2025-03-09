@@ -1,5 +1,5 @@
 export default {
-    exist<T>(key: T): boolean {
-        return key !== undefined;
-    }
-}
+  exist<T>(key: T): boolean {
+    return key !== undefined;
+  },
+};
