@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import { CheckQueryRequest, CheckClientAddRepo, CheckUpdateRepository } from "@/shemas/client.shemas";
 import { RepositoryFields, GetRepositoriesConfig, ConstructGitHubRepository, UpdateRepository } from "@/core/repository.types";
+import { BadRequestError } from "@/types/errors.types";
 
 export default {
   getRepositorys: (req: Request, res: Response, next: NextFunction) => {
@@ -8,7 +9,7 @@ export default {
     const config = new GetRepositoriesConfig(); 
 
     if (error) {
-      res.status(422).json(error);
+      throw new BadRequestError("Invalid query parameters");
     }
     else {
       const fields = req.query.fields as string;
