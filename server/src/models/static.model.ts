@@ -20,12 +20,15 @@ export class StaticModel implements IRepository {
      * @returns Promise resolving to the ID of the added repository
      */
     async add(repo: ConstructGitHubRepository): Promise<string> {
+        // Create a new URL and ID for the repository
         const new_url = create_url(repo.user, repo.name);
         const new_id = createID(new_url);
 
+        // Check if the repository already exists by ID
         const exist = await this.existByID(new_id);
 
         if(!exist) {
+            // If it doesn't exist, create a new repository object and add it to the static storage
             const new_repo = {
                     isPrivate: repo.isPrivate, 
                     id: new_id, 
@@ -36,18 +39,26 @@ export class StaticModel implements IRepository {
             return new_repo.id;
         }
         else {
+            // Return an empty string if the repository already exists
             return "";
         }
     }
 
-
+    /**
+     * Retrieves repositories based on configuration
+     * @param config - Configuration object containing filter, fields, and limit
+     * @returns Promise resolving to filtered repositories or selected fields
+     */
     async get(config: GetRepositorysConfig): Promise<Repositorys | PartialRepository[]> {
+        // Filter repositories based on the provided filter criteria
         let repos = StaticModel.filter(StaticModel.repository, config.filter);
 
+        // Apply pagination if a limit is specified
         if(config.limit.count > 0) {
             repos = StaticModel.slice(repos, config.limit)
         }
 
+        // Select specific fields if specified
         if(config.fields.length > 0) {
             return StaticModel.selectFields(repos, config.fields);
         }
@@ -55,10 +66,15 @@ export class StaticModel implements IRepository {
         return repos;
     }
 
-
+    /**
+     * Removes repositories by their IDs
+     * @param list_id - Array of repository IDs to remove
+     * @returns Promise resolving to the number of repositories removed
+     */
     async removeByID(list_id: string[]): Promise<number> {
         let count = 0;
         
+        // Filter out repositories with IDs in the list_id array
         StaticModel.repository = StaticModel.repository
             .filter(r => {
                 if(list_id.includes(r.id)) {
@@ -71,10 +87,18 @@ export class StaticModel implements IRepository {
         return count;
     }
 
+    /**
+     * Updates a repository's fields by its ID
+     * @param id - ID of the repository to update
+     * @param fields - Fields to update in the repository
+     * @returns Promise resolving to true if the update was successful, false otherwise
+     */
     async updateByID(id: string, fields: UpdateRepository): Promise<boolean> {
+        // Find the repository by ID
         let repo = StaticModel.getByID(StaticModel.repository, id);
 
         if(repo) {
+            // Merge the existing repository with the new fields
             Object.assign(repo, {...repo, ...fields});
             return true;
         }
@@ -121,7 +145,7 @@ export class StaticModel implements IRepository {
             }
 
             // Filter by programming languages if specified
-            if(filter.languages !== undefined) {
+            if(filter.languages !== undefined && filter.languages !== '') {
                 const langs = r.languages.map(l => l.node.name);
                 const langsList = filter.languages.split(',');
                 const intersection = langsList
@@ -138,6 +162,12 @@ export class StaticModel implements IRepository {
         return result;
     }
 
+    /**
+     * Slices the repository collection for pagination
+     * @param repos - Repository collection to slice
+     * @param limit - Limit object containing count and page for pagination
+     * @returns Sliced array of repositories
+     */
     private static slice(repos: Repositorys, limit?: Limit): Repositorys {
         if(limit === undefined) {
             return repos;
@@ -149,6 +179,12 @@ export class StaticModel implements IRepository {
         return result;
     }
 
+    /**
+     * Selects specific fields from repositories
+     * @param repos - Repository collection to process
+     * @param fields - Array of fields to select
+     * @returns Array of objects containing only the specified fields
+     */
     private static selectFields(repos: Repositorys,  fields: RepositoryFields[]): PartialRepository[] {
 
         const result = repos.map(r => {
@@ -162,6 +198,12 @@ export class StaticModel implements IRepository {
         return result;
     }
 
+    /**
+     * Finds a repository by its ID
+     * @param repos - Repository collection to search
+     * @param id - Repository ID to find
+     * @returns The found repository or undefined
+     */
     private static getByID(repos: Repositorys, id: string): GitHubRepository | undefined {
         return repos.find(r => r.id === id);
     }
