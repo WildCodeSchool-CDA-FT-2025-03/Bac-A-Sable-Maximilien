@@ -27,6 +27,9 @@ export type GitHubRepositoryLanguage = {
     }
 };
 
+
+export type UpdateRepository = Partial<Omit<GitHubRepository, "id" | "url">>
+
 /**
  * Valid field names for GitHubRepository type
  * Used for field selection operations

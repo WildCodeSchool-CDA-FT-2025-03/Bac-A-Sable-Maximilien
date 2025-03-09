@@ -1,4 +1,4 @@
-import { Repositorys, ConstructGitHubRepository, GetRepositorysConfig, PartialRepository } from "./repository";
+import { Repositorys, UpdateRepository, ConstructGitHubRepository, GetRepositorysConfig, PartialRepository } from "./repository";
 
 
 export interface IRepository {
@@ -9,4 +9,6 @@ export interface IRepository {
     removeByID(list_id: string[]): Promise<number>;
     
     existByID(id: string): Promise<boolean>;
+
+    updateByID(id: string, fields: UpdateRepository): Promise<boolean>;
 }

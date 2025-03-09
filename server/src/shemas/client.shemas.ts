@@ -20,3 +20,8 @@ export const CheckQueryRequest = Joi.object({
     limit: Joi.number().optional(),
     page: Joi.number().optional(),
 });
+
+export const CheckUpdateRepository = Joi.object({
+    isPrivate: Joi.boolean().optional(),
+    languages: Joi.object().optional(),
+});

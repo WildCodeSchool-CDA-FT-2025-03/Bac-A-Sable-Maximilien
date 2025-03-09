@@ -1,4 +1,4 @@
-import { createID, GitHubRepository, Repositorys, ConstructGitHubRepository, Limit, RepositorysFilter, GetRepositorysConfig, PartialRepository, RepositoryFields } from "@/core/repository";
+import { createID, GitHubRepository, Repositorys, ConstructGitHubRepository, Limit, RepositorysFilter, GetRepositorysConfig, PartialRepository, RepositoryFields, UpdateRepository } from "@/core/repository";
 import { create_url } from "@/core/repository";
 import { IRepository } from "@/core/repositorys.interface";
 import static_data  from "@/datas/static_data.json"
@@ -58,6 +58,7 @@ export class StaticModel implements IRepository {
 
     async removeByID(list_id: string[]): Promise<number> {
         let count = 0;
+        
         StaticModel.repository = StaticModel.repository
             .filter(r => {
                 if(list_id.includes(r.id)) {
@@ -68,6 +69,18 @@ export class StaticModel implements IRepository {
             });
 
         return count;
+    }
+
+    async updateByID(id: string, fields: UpdateRepository): Promise<boolean> {
+        let repo = StaticModel.getByID(StaticModel.repository, id);
+
+        if(repo) {
+            Object.assign(repo, {...repo, ...fields});
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     /**
@@ -147,5 +160,9 @@ export class StaticModel implements IRepository {
         });
 
         return result;
+    }
+
+    private static getByID(repos: Repositorys, id: string): GitHubRepository | undefined {
+        return repos.find(r => r.id === id);
     }
 }

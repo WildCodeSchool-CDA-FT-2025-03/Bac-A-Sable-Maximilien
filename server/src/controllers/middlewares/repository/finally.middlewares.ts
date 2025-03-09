@@ -32,6 +32,12 @@ export default {
     addRepository: async (_: Request, res: Response) => {
         const result = await repositoryModel.add(res.locals.repo);
         res.json({id: result});
-    }
+    },
+
+    updateRepository: async (_: Request, res: Response) => {
+        const id = res.locals.id;
+        const result = await repositoryModel.updateByID(id, res.locals.repo);
+        res.json({id: result});
+    },
 }
 

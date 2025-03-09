@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
-import { CheckQueryRequest, CheckClientAddRepo } from "@/shemas/client.shemas";
-import { RepositoryFields, GetRepositorysConfig, ConstructGitHubRepository } from "@/core/repository";
+import { CheckQueryRequest, CheckClientAddRepo, CheckUpdateRepository } from "@/shemas/client.shemas";
+import { RepositoryFields, GetRepositorysConfig, ConstructGitHubRepository, UpdateRepository } from "@/core/repository";
 
 export default {
   getRepositorys: (req: Request, res: Response, next: NextFunction) => {
@@ -57,5 +57,31 @@ export default {
       res.locals.repo = new_repo;
       next();
     }
-  }
+  },
+
+  updateRepository: (req: Request, res: Response, next: NextFunction) => {
+    const { error } = CheckUpdateRepository.validate(req.body);
+
+    if(req.params.repoid === undefined) {
+      //TODO: handle error
+    }
+
+    if (error) {
+      res.status(422).json(error);
+    }
+    else {
+      let update_repo = {} as UpdateRepository;
+
+      if(req.body.isPrivate !== undefined) {
+        update_repo.isPrivate = req.body.isPrivate
+      }
+      if(req.body.languages !== undefined) {
+        update_repo.isPrivate = req.body.languages
+      }
+      
+      res.locals.repo = update_repo;
+      res.locals.id = req.params.repoid;
+      next();
+    }
+  },
 }

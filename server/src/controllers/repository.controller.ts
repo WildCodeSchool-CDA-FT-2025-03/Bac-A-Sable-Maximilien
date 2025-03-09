@@ -22,6 +22,7 @@ export default {
     ],
 
     Update: [
-        
+        repository.validation.updateRepository,
+        repository.finally.updateRepository
     ]
 }
