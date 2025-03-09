@@ -95,7 +95,7 @@ export class StaticModel implements IRepository {
      */
     async updateByID(id: string, fields: UpdateRepository): Promise<boolean> {
         // Find the repository by ID
-        let repo = StaticModel.getByID(StaticModel.repository, id);
+        const repo = StaticModel.getByID(StaticModel.repository, id);
 
         if(repo) {
             // Merge the existing repository with the new fields

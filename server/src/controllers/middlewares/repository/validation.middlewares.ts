@@ -70,7 +70,7 @@ export default {
       res.status(422).json(error);
     }
     else {
-      let update_repo = {} as UpdateRepository;
+      const update_repo = {} as UpdateRepository;
 
       if(req.body.isPrivate !== undefined) {
         update_repo.isPrivate = req.body.isPrivate

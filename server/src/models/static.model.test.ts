@@ -208,7 +208,7 @@ describe('StaticModel', () => {
       // Assert
       expect(repos).toHaveLength(1);
       expect(Object.keys(repos[0])).toEqual(['id', 'url']);
-      expect((repos[0] as any).id).toBe('123');
+      expect((repos[0] as GitHubRepository).id).toBe('123');
     });
   });
 
