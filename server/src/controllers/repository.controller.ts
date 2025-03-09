@@ -1,12 +1,12 @@
 import repository from "./middlewares/repository/repository"
 
 export default {
-    GetRepositorys: [
+    Get: [
         repository.validation.getRepositorys,
         repository.finally.getRepositorys,
     ],
 
-    GetRepositoryFromID: [
+    GetFromID: [
         repository.validation.getRepositorys,
         repository.finally.getOneRepository,
     ],

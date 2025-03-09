@@ -8,9 +8,9 @@ import repositoryController from "@/controllers/repository.controller";
 const router = express.Router();
 
 // GET Root repos
-router.get("/", repositoryController.GetRepositorys);
+router.get("/", repositoryController.Get);
 
-router.get("/:repoid", repositoryController.GetRepositoryFromID);
+router.get("/:repoid", repositoryController.GetFromID);
 
 router.delete("/:repoid", repositoryController.Delete);
 
