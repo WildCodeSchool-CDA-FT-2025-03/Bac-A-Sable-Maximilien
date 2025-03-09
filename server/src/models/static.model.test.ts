@@ -5,8 +5,8 @@ import {
   GitHubRepository,
   RepositoryFields,
   UpdateRepository
-} from '@/core/repository';
-import { create_url, createID } from '@/core/repository';
+} from '@/core/repository.d';
+import { create_url, create_id } from '@/core/repository';
 
 // Mock the static data import
 jest.mock('@/datas/static_data.json', () => {
@@ -54,7 +54,7 @@ describe('StaticModel', () => {
       const id = await staticModel.add(newRepo);
       
       // Assert
-      expect(id).toBe(createID(create_url(newRepo.user, newRepo.name)));
+      expect(id).toBe(create_id(create_url(newRepo.user, newRepo.name)));
       
       // Verify the repository was added
       const config = new GetRepositorysConfig();

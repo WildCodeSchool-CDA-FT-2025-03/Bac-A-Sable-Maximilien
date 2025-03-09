@@ -1,5 +1,5 @@
-import { createID, GitHubRepository, Repositorys, ConstructGitHubRepository, Limit, RepositorysFilter, GetRepositorysConfig, PartialRepository, RepositoryFields, UpdateRepository } from "@/core/repository";
-import { create_url } from "@/core/repository";
+import { GitHubRepository, Repositorys, ConstructGitHubRepository, Limit, RepositorysFilter, GetRepositorysConfig, PartialRepository, RepositoryFields, UpdateRepository } from "@/core/repository.d";
+import { create_url, create_id } from "@/core/repository";
 import { IRepository } from "@/core/repositorys.interface";
 import static_data  from "@/datas/static_data.json"
 import obj from "@/utiles/obj";
@@ -22,7 +22,7 @@ export class StaticModel implements IRepository {
     async add(repo: ConstructGitHubRepository): Promise<string> {
         // Create a new URL and ID for the repository
         const new_url = create_url(repo.user, repo.name);
-        const new_id = createID(new_url);
+        const new_id = create_id(new_url);
 
         // Check if the repository already exists by ID
         const exist = await this.existByID(new_id);
