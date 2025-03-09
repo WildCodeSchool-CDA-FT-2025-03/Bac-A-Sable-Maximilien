@@ -2,10 +2,14 @@ import { Request, Response } from "express";
 import data_repo from "@/datas/static_data";
 import repository, {Repositorys} from "@/core/repository";
 
-export default {
-    getRepositorys: (_: Request, res: Response) => {
+import repositoryModel from "@/models/repository.model";
 
-        res.json(res.locals.datas);
+export default {
+    getRepositorys: async (_: Request, res: Response) => {
+
+        const config = res.locals.config;
+        const repos = await repositoryModel.get(config);
+        res.json(repos);
 
     },
 

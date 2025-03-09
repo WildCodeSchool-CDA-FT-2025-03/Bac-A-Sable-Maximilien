@@ -33,7 +33,7 @@ export type RepositoryFields = "id" | "isPrivate" | "languages" | "url";
  */
 export type RepositorysFilter = {
     id?: string,
-    isPrivate?: boolean,
+    isPrivate?: string,
     languages?: string,
     url?: string,
     limit?: number,
@@ -42,6 +42,17 @@ export type RepositorysFilter = {
 export type Repositorys = GitHubRepository[];
 
 export type PartialRepository = Partial<GitHubRepository>;
+
+export type Limit = {
+    count: number,
+    page: number,
+}
+
+export class GetRepositorysConfig {
+    filter: RepositorysFilter = {};
+    fields: RepositoryFields[] = [];
+    limit: Limit = {count: 0, page: 0};
+};
 
 /**
  * Generates a GitHub repository URL from username and repository name
@@ -54,9 +65,23 @@ export const create_url = (user: string, repo_name: string): string => {
 }
 
 /**
- * Main repository management class with static CRUD operations
+ * Repository Manager Class
+ * 
+ * A static utility class that provides comprehensive CRUD (Create, Read, Update, Delete) operations
+ * for managing GitHub repositories. This class handles repository collections with features including:
+ * - Adding and removing repositories
+ * - Filtering and searching repositories
+ * - Field selection and pagination
+ * - Repository updates and ID management
+ * 
+ * The class uses immutable operations where possible and maintains type safety through
+ * TypeScript interfaces and types.
  */
 export default class {
+    /**
+     * List of valid filter fields that can be used when querying repositories
+     * These fields correspond to the properties in GitHubRepository type
+     */
     static readonly AcceptFilterRepository: string[] = [
         "id", "isPrivate", "languages", "url"
     ];
@@ -124,12 +149,12 @@ export default class {
                 if(r.id !== filter.id) {
                     return false;
                 }
-            }
+            }/*
             if(filtersKeys.includes("isPrivate")) {
                 if(r.isPrivate !== filter.isPrivate) {
                     return false;
                 }
-            }
+            }*/
             if(filtersKeys.includes("url")) {
                 if(r.url !== filter.url) {
                     return false;
@@ -173,6 +198,12 @@ export default class {
         return result;
     }
 
+    /**
+     * Deletes a repository from the collection by its ID
+     * @param repos - Repository collection to modify
+     * @param id - ID of the repository to delete
+     * @remarks This method modifies the original array using splice
+     */
     static deleteByID(repos: Repositorys, id: string) {
         const index = repos.findIndex(r => {
             return r.id === id;
@@ -201,6 +232,7 @@ export default class {
      * @param repos - Repository collection to update
      * @param update - Partial repository object containing the fields to update
      * @param id - ID of the repository to update
+     * @remarks This method performs a shallow merge of the update object with the existing repository
      */
     static updateRepo(repos: Repositorys, update: PartialRepository, id: string) {
         const repo_find = repos.find(r => {

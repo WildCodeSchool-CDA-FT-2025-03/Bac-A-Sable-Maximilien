@@ -12,6 +12,7 @@ export const CheckClientAddRepo = Joi.object({
 
 export const CheckQueryRequest = Joi.object({
     name: Joi.string().optional(),
+    id: Joi.string().optional(),
     isPrivate: Joi.boolean().optional(),
     languages: Joi.string().optional(),
     user: Joi.string().optional(),
