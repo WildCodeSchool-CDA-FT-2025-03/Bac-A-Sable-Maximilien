@@ -1,4 +1,4 @@
-import { GitHubRepository, Repositories, ConstructGitHubRepository, Limit, RepositoriesFilter, GetRepositoriesConfig, PartialRepository, RepositoryFields, UpdateRepository } from "@/core/repository.d";
+import { GitHubRepository, Repositories, ConstructGitHubRepository, Paging, RepositoriesFilter, GetRepositoriesConfig, PartialRepository, RepositoryFields, UpdateRepository } from "@/core/repository.d";
 import { create_url, create_id } from "@/core/repository";
 import { IRepository } from "@/core/repositorys.interface";
 import static_data  from "@/datas/static_data.json"
@@ -168,7 +168,7 @@ export class StaticModel implements IRepository {
      * @param limit - Limit object containing count and page for pagination
      * @returns Sliced array of repositories
      */
-    private static slice(repos: Repositories, limit?: Limit): Repositories {
+    private static slice(repos: Repositories, limit?: Paging): Repositories {
         if(limit === undefined) {
             return repos;
         }
