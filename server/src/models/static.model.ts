@@ -27,26 +27,26 @@ export class StaticModel implements IRepository {
 
     async get(config: GetRepositorysConfig): Promise<Repositorys | PartialRepository[]> {
         let repos = StaticModel.filter(StaticModel.repository, config.filter);
-        repos = StaticModel.slice(StaticModel.repository, config.limit);
-
+        repos = StaticModel.slice(repos, config.limit)
+        
         if(config.fields.length > 0) {
-            return StaticModel.selectFields(StaticModel.repository, config.fields);
+            return StaticModel.selectFields(repos, config.fields);
         }
 
         return repos;
     }
 
-    /**
-     * Removes repositories by their IDs
-     * @param list_id - Array of repository IDs to remove
-     * @returns Promise resolving to the number of repositories removed
-     */
+
     async removeByID(list_id: string[]): Promise<number> {
+        let size = StaticModel.repository.length;
         let count = 0;
-        StaticModel.repository
+        StaticModel.repository = StaticModel.repository
             .filter(r => {
-                count+=1; 
-                return !list_id.includes(r.id);
+                if(list_id.includes(r.id)) {
+                    count+=1; 
+                    return false;
+                }
+                return true;
             });
 
         return count;

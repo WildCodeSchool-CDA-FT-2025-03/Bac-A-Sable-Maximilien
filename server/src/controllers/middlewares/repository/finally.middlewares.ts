@@ -9,30 +9,27 @@ export default {
 
         const config = res.locals.config;
         const repos = await repositoryModel.get(config);
+
         res.json(repos);
-
     },
 
-    getOneRepository: (_: Request, res: Response) => {
+    getOneRepository: async (_: Request, res: Response) => {
         
-        if(res.locals.datas.length > 0) {
-            res.json(res.locals.datas[0]);
-        }
-        else{
-            //TODO: handle error
-            res.send("error");
-        }
+        const config = res.locals.config;
+        const repos = await repositoryModel.get(config);
+
+        res.json(repos);
     },
 
-    deleteRepository: (_: Request, res: Response) => {
+    deleteRepository: async (req: Request, res: Response) => {
         
-        if(res.locals.datas.length > 0) {
-            const reposSelected = res.locals.datas as Repositorys
-            const reposIdToDelete = reposSelected.map(r => r.id);
-            const repos = data_repo.filter(r => !reposIdToDelete.includes(r.id));
-            Object.assign(data_repo, repos);
+        let count = 0;
+
+        if(req.params.repoid !== undefined) {
+            count = await repositoryModel.removeByID([ req.params.repoid ]);
         }
-        res.send("ok");
+
+        res.json({delete: count});
     },
 }
 

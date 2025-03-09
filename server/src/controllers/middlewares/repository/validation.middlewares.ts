@@ -33,8 +33,9 @@ export default {
       if(req.params.repoid !== undefined) {
         config.filter.id = req.params.repoid;
         config.limit.count = 1;
+        config.limit.page = 0;
       }
-
+      
       res.locals.config = config;
 
       next();
