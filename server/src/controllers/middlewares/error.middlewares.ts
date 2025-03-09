@@ -15,4 +15,6 @@ export default (
   } else {
     res.status(500).json({ error: "Unknown error" });
   }
+
+  next();
 };
