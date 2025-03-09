@@ -1,4 +1,4 @@
-import { GitHubRepository, Repositories, ConstructGitHubRepository, Paging, RepositoriesFilter, GetRepositoriesConfig, PartialRepository, RepositoryFields, UpdateRepository } from "@/core/repository.d";
+import { GitHubRepository, Repositories, ConstructGitHubRepository, Paging, RepositoriesFilter, GetRepositoriesConfig, PartialRepository, RepositoryFields, UpdateRepository } from "@/core/repository.types";
 import { create_url, create_id } from "@/core/repository";
 import { IRepository } from "@/core/repositorys.interface";
 import static_data  from "@/datas/static_data.json"

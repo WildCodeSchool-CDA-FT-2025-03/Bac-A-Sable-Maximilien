@@ -1,10 +1,10 @@
-import { Repositorys, UpdateRepository, ConstructGitHubRepository, GetRepositorysConfig, PartialRepository } from "./repository";
+import { Repositories, UpdateRepository, ConstructGitHubRepository, GetRepositoriesConfig, PartialRepository } from "./repository.types";
 
 
 export interface IRepository {
     add(repo: ConstructGitHubRepository): Promise<string>;
 
-    get(config: GetRepositorysConfig) : Promise<Repositorys | PartialRepository[]>;
+    get(config: GetRepositoriesConfig) : Promise<Repositories | PartialRepository[]>;
 
     removeByID(list_id: string[]): Promise<number>;
     

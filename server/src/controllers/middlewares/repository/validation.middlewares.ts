@@ -1,11 +1,11 @@
 import { Request, Response, NextFunction } from "express";
 import { CheckQueryRequest, CheckClientAddRepo, CheckUpdateRepository } from "@/shemas/client.shemas";
-import { RepositoryFields, GetRepositorysConfig, ConstructGitHubRepository, UpdateRepository } from "@/core/repository";
+import { RepositoryFields, GetRepositoriesConfig, ConstructGitHubRepository, UpdateRepository } from "@/core/repository.types";
 
 export default {
   getRepositorys: (req: Request, res: Response, next: NextFunction) => {
     const { error } = CheckQueryRequest.validate(req.query);
-    const config = new GetRepositorysConfig(); 
+    const config = new GetRepositoriesConfig(); 
 
     if (error) {
       res.status(422).json(error);

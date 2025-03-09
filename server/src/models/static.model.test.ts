@@ -5,7 +5,7 @@ import {
   GitHubRepository,
   RepositoryFields,
   UpdateRepository
-} from '@/core/repository.d';
+} from '@/core/repository.types';
 import { create_url, create_id } from '@/core/repository';
 
 // Mock the static data import
