@@ -1,4 +1,4 @@
-import { RepositoryFields } from "@/core/repository.types";
+import { RepositoryFields } from "@shared/repository.types";
 
 export type ClientAddRepoRequest = {
   name: string;

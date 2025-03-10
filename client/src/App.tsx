@@ -2,7 +2,7 @@ import './App.css'
 import repos from './services/repositories.service'
 
 function App() {
-  const allRepos = repos.getAll();
+  const allRepos = repos.GetAll();
 
   return (
     <>

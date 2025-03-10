@@ -8,7 +8,7 @@ import {
   PartialRepository,
   RepositoryFields,
   UpdateRepository,
-} from "@/core/repository.types";
+} from "@shared/repository.types";
 import { create_url, create_id } from "@/core/repository";
 import { IRepository } from "@/core/repositorys.interface";
 import static_data from "@/datas/static_data.json";

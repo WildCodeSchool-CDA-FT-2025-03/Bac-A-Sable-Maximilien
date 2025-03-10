@@ -4,7 +4,7 @@ import {
   ConstructGitHubRepository,
   GetRepositoriesConfig,
   PartialRepository,
-} from "./repository.types";
+} from "@shared/repository.types";
 
 export interface IRepository {
   add(repo: ConstructGitHubRepository): Promise<string>;

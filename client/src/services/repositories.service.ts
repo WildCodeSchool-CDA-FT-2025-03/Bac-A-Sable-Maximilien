@@ -1,25 +1,19 @@
 import { useEffect, useState } from "react";
-import client from "./client";
+
+import { getAllRepos } from "./http/repositories.http";
+import { Repositories } from "@shared/repository.types";
 
 export default {
-    getAll: () => {
-        const [data, setData] = useState<any[]>([]);
+    GetAll: () => {
+        const [data, setData] = useState<Repositories>([]);
 
-        const getAllRepos = () => {
-            client
-              .get("/repos")
-              .then((repos) => {
-                setData(repos.data as any[]);
-              })
-              .catch((error) => {
-                console.error(error);
-              });
-          };
+        useEffect(() => {
+            getAllRepos().then(repos =>
+                {
+                    setData(repos)
+                });
+        }, []);
 
-          useEffect(() => {
-            getAllRepos();
-          }, []);
-
-          return { data };
+        return { data };
     }
 };

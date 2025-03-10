@@ -9,7 +9,7 @@ import {
   GetRepositoriesConfig,
   ConstructGitHubRepository,
   UpdateRepository,
-} from "@/core/repository.types";
+} from "@shared/repository.types";
 import { BadRequestError } from "@/types/errors.types";
 
 export default {
