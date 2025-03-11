@@ -1,5 +1,5 @@
 import { Repositories } from "@shared/repository.types";
-import { RepoCard } from "../RepoCard/RepoCard";
+import { RepoCard } from "@/components/RepoCard/RepoCard";
 import "./RepositoriesList.css"
 
 type RepositoriesListProps = {
@@ -12,7 +12,7 @@ export const RepositoriesList = (props: RepositoriesListProps) => {
     return (
         <div className="repository_list">
             {
-                repos.map(r => <RepoCard repo={r}></RepoCard>)
+                repos.map(r => <RepoCard key={r.id} repo={r}></RepoCard>)
             }
         </div>
     )

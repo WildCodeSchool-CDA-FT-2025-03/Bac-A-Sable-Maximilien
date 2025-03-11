@@ -1,4 +1,5 @@
 import { GitHubRepository } from "@shared/repository.types";
+import { Link } from "react-router-dom";
 import "./RepoCard.css"
 
 type RepoCardProps = {
@@ -9,8 +10,12 @@ export const RepoCard = (props: RepoCardProps) => {
     const repo = props.repo;
 
     return (
-        <div className="repo_card">
-            <h2>{repo.url}</h2>
-        </div>
+        <article>
+            <Link to={`/${repo.id}`}>
+            <div className="repo_card">
+                <h2>{repo.url}</h2>
+            </div>
+            </Link>
+        </article>
     )
 }

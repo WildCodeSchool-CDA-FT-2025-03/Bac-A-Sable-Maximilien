@@ -4,3 +4,7 @@
     margin: 2px 2px 2px 2px;
     border-radius: 10px;
 }
+
+.repo_card:hover {
+    color: #ff0c0c;
+}

@@ -1,12 +1,10 @@
-import client from "../client";
-import { Repositories } from "@shared/repository.types";
+import client from "@/services/client";
 
-export const getAllRepos = async (): Promise<Repositories> => {
-    try {
-        const repos = await client("/repos");
-        return repos.data;
-    }
-    catch {
-        return [];
-    }
+export const getAllRepos = () => {
+    return client("/repos");
   };
+
+
+export const getRepositoryByID = (id: string) => {
+    return client(`/repos/${id}`);
+};
