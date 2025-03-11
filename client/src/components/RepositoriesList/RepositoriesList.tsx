@@ -1,5 +1,5 @@
 import { Repositories } from "@shared/repository.types";
-import { RepoCard } from "../../components/RepoCard/RepoCard";
+import { RepoCard } from "@/components/RepoCard/RepoCard";
 import "./RepositoriesList.css"
 
 type RepositoriesListProps = {

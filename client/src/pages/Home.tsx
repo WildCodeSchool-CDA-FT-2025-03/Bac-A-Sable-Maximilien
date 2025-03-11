@@ -1,6 +1,6 @@
 // import './App.css';
-import repos from '../services/repositories.service';
-import { RepositoriesList } from '../components/RepositoriesList/RepositoriesList';
+import repos from '@/services/repositories.service';
+import { RepositoriesList } from '@/components/RepositoriesList/RepositoriesList';
 
 function Home() {
 const allRepos = repos.GetAll();

@@ -1,4 +1,4 @@
-import client from "../client";
+import client from "@/services/client";
 import { Repositories } from "@shared/repository.types";
 
 export const getAllRepos = async (): Promise<Repositories> => {
