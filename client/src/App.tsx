@@ -1,6 +1,6 @@
-import './App.css'
-import repos from './services/repositories.service'
-import { RepoCard } from './components/RepoCard/RepoCard';
+import './App.css';
+import repos from './services/repositories.service';
+import { RepositoriesList } from './components/RepositoriesList/RepositoriesList';
 
 function App() {
   const allRepos = repos.GetAll();
@@ -9,7 +9,7 @@ function App() {
     <>
       <h1>App GitHub</h1>
       <h2>Repositories: {allRepos.data.length}</h2>
-      {allRepos.data.map(r => <RepoCard repo={r}/>)}
+      <RepositoriesList repos={allRepos.data}/>
     </>
   )
 }
