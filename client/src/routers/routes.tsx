@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router";
 import App from "@/App.tsx";
 import Home from "@/pages/Home";
+import RepositoryPage from "@/pages/RepositoryPage";
 
 const router = createBrowserRouter([
     {
@@ -8,15 +9,15 @@ const router = createBrowserRouter([
         element: <App />,
         children: [
             {
-                path: "",
+                path: "/",
                 element:<Home/>
-                // loader: async () => {
-                //     const repos = repositoriesService.GetAll();
-                //     return repos;
-                // }
+            },
+            {
+                path: "/:id",
+                element: <RepositoryPage/>,
             }
         ],
-    }
+    },
 ]);
 
 export default router;

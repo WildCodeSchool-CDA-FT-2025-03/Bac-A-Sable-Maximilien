@@ -1,15 +1,21 @@
 // import './App.css';
-import repos from '@/services/repositories.service';
+// import repos from '@/services/repositories.service';
+import { useEffect } from 'react';
+import useRepos from '@/services/repositories.service';
 import { RepositoriesList } from '@/components/RepositoriesList/RepositoriesList';
 
 function Home() {
-const allRepos = repos.GetAll();
+  const {allRepos, getRepositories} = useRepos();
+
+  useEffect(() => {
+    getRepositories();
+  }, []);
 
   return (
     <>
       <h1>App GitHub</h1>
-      <h2>Repositories: {allRepos.data.length}</h2>
-      <RepositoriesList repos={allRepos.data}/>
+      <h2>Repositories: {allRepos.length}</h2>
+      <RepositoriesList repos={allRepos}/>
     </>
   )
 }

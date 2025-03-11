@@ -8,11 +8,11 @@ type RepositoriesListProps = {
 
 export const RepositoriesList = (props: RepositoriesListProps) => {
     const repos: Repositories = props.repos;
-
+    console.log(repos);
     return (
         <div className="repository_list">
             {
-                repos.map(r => <RepoCard repo={r}></RepoCard>)
+                repos.map(r => <RepoCard key={r.id} repo={r}></RepoCard>)
             }
         </div>
     )
