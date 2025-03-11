@@ -8,7 +8,7 @@ type RepositoriesListProps = {
 
 export const RepositoriesList = (props: RepositoriesListProps) => {
     const repos: Repositories = props.repos;
-    console.log(repos);
+
     return (
         <div className="repository_list">
             {

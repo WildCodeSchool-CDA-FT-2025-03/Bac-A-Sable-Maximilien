@@ -14,7 +14,12 @@ const router = createBrowserRouter([
             },
             {
                 path: "/:id",
-                element: <RepositoryPage/>,
+                element: <RepositoryPage />,
+                // loader: async ({params}) => {
+                //     const {currRepo, getOneRepository} = useRepos();
+                //     getOneRepository(params.id || "0");
+                //     return currRepo;
+                // }
             }
         ],
     },

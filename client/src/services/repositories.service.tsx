@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { getAllRepos, getRepositoryByID } from "./http/repositories.http";
-import { Repositories, GitHubRepository, GitHubRepositoryLanguage } from "@shared/repository.types";
+import { Repositories, GitHubRepository } from "@shared/repository.types";
 
 
 const useRepos = () => {
@@ -30,7 +30,9 @@ const useRepos = () => {
     const getOneRepository = (id: string) => {
         getRepositoryByID(id)
         .then(repos => {
-            setCurrRepo(repos.data)
+            if(repos.data.length > 0) {
+                setCurrRepo(repos.data[0])
+            }
         })
         .catch(err => {
             console.log(err);
@@ -39,42 +41,5 @@ const useRepos = () => {
 
     return {allRepos, getRepositories, currRepo, getOneRepository};
 }
-    /*
-    const getRepos: () => {
-
-        const [allRepos, setRepos] = useState<Repositories>([]);
-
-        getAllRepos().then(repos => {
-                setRepos(repos.data)
-            });
-
-        return allRepos;
-    };
-
-    const getOneRepo: (id: string) => {
-
-        const [currRepo, setCurrRepo] = useState<GitHubRepository>(
-            {
-                id: "",
-                isPrivate: true,
-                languages: [
-                    {size: 0,
-                    node:{name: "rust"}}
-                ],
-                url: "asas"
-            }
-        );
-
-        getRepositoryByID(id).then(repo => {
-            setCurrRepo(repo.data);
-        })
-        .catch(raa => {
-            console.error("err")
-            console.log(raa)
-        });
-
-        return currRepo;
-    };*/
-//}
 
 export default useRepos;
