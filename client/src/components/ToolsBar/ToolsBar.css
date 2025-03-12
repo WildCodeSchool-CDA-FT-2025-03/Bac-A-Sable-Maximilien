@@ -4,6 +4,8 @@
     align-items: center;
     flex-direction: row;
     white-space: nowrap;
+    width: 100%;
+    min-width: 800px;
 }
 
 .select_inline {

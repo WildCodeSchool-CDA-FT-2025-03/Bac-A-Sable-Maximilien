@@ -75,6 +75,10 @@ button:focus-visible {
   }
 }
 
+.selectable:hover {
+  color: var(--seleted_color);
+}
+
 .selected {
   color: var(--seleted_color);
 }

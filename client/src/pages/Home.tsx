@@ -12,7 +12,6 @@ function Home() {
 
   return (
     <>
-      <h1>App GitHub</h1>
       <ToolsBar></ToolsBar>
       <p>Repositories: {allRepos.length}</p>
       <RepositoriesList repos={allRepos}/>

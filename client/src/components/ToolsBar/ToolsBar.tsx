@@ -24,8 +24,8 @@ export const ToolsBar = () => {
                 <option value="20">20</option>
             </select>
             <div className="select_inline">
-                <BiListUl className={selectColor("list")} onClick={()=>setDisplayCard("list")}/>
-                <BiGridAlt className={selectColor("grid")} onClick={()=>setDisplayCard("grid")}/>
+                <BiListUl className={"selectable " + selectColor("list")} onClick={()=>setDisplayCard("list")}/>
+                <BiGridAlt className={"selectable " + selectColor("grid")} onClick={()=>setDisplayCard("grid")}/>
             </div>
         </div>
     )
