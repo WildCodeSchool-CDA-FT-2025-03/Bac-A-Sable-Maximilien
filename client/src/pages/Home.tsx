@@ -1,9 +1,11 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import useRepos from '@/services/repositories.service';
 import { RepositoriesList } from '@/components/RepositoriesList/RepositoriesList';
+import { ToolsBar, DisplayType } from '@/components/ToolsBar/ToolsBar';
 
 function Home() {
   const {allRepos, getRepositories} = useRepos();
+  const [display, setDisplay] = useState("list" as DisplayType);
 
   useEffect(() => {
     getRepositories();
@@ -12,8 +14,9 @@ function Home() {
   return (
     <>
       <h1>App GitHub</h1>
-      <h2>Repositories: {allRepos.length}</h2>
-      <RepositoriesList repos={allRepos}/>
+      <ToolsBar onDisplay={(v) => setDisplay(v)}></ToolsBar>
+      <p>Repositories: {allRepos.length}</p>
+      <RepositoriesList repos={allRepos} display={display}/>
     </>
   )
 }

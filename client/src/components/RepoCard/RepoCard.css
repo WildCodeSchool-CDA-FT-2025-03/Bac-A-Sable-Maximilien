@@ -1,10 +1,37 @@
 .repo_card {
     border: 1px solid;
-    /* padding: 2px 2px 1px 1px; */
+    padding: 2px 2px 1px 1px;
     margin: 2px 2px 2px 2px;
     border-radius: 10px;
+    justify-content: space-between;
+    /* flex-direction: ; */
 }
 
-.repo_card:hover {
+.main_layout {
+    display: flex;
+    flex-direction: column;
+}
+
+/* .repo_card:hover {
     color: #ff0c0c;
+} */
+
+.main_title {
+    text-align: center;
+}
+
+.icon_link {
+    display: flex;
+    align-items: center;
+    height: 20px;
+}
+
+.icon_link > a {
+    font-size: 10px;
+    margin-left: 5px;
+}
+
+.icon_link > p {
+    font-size: 10px;
+    margin-left: 5px;
 }
