@@ -5,6 +5,7 @@ const jestConfig: JestConfigWithTsJest = {
   moduleDirectories: ["node_modules", "<rootDir>"],
   moduleNameMapper: {
     "^@/(.*)$": "<rootDir>/src/$1",
+    "^@shared/(.*)$": "<rootDir>/../shared/$1",
   },
 };
 

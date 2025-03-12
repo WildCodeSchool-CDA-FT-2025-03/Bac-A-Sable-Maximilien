@@ -10,6 +10,11 @@ export type GitHubRepository = {
   isPrivate: boolean;
   languages: GitHubRepositoryLanguage[];
   url: string;
+  createdAt:string,
+  description: string,
+  name: string,
+  owner: GitHubRepositoryOwner,
+  primaryLanguage: GitHubRepositoryPrimaryLanguage,
 };
 
 /**
@@ -35,6 +40,15 @@ export type GitHubRepositoryLanguage = {
   node: {
     name: string;
   };
+};
+
+export type GitHubRepositoryOwner = {
+  id: string;
+  login: string;
+};
+
+export type GitHubRepositoryPrimaryLanguage = {
+  name: string;
 };
 
 /**

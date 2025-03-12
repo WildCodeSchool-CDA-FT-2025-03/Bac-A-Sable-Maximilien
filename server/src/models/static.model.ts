@@ -43,6 +43,11 @@ export class StaticModel implements IRepository {
         id: new_id,
         url: new_url,
         languages: [],
+        createdAt: new Date().toISOString(),
+        description: "",
+        name: "",
+        owner: { id: "", login: "" },
+        primaryLanguage: { name: "" },
       } as GitHubRepository;
       StaticModel.repository.push(new_repo);
       return new_repo.id;

@@ -5,7 +5,7 @@ import {
   GitHubRepository,
   RepositoryFields,
   UpdateRepository,
-} from "@/core/repository.types";
+} from "@shared/repository.types";
 import { create_url, create_id } from "@/core/repository";
 
 // Mock the static data import
@@ -19,6 +19,11 @@ jest.mock("@/datas/static_data.json", () => {
         { size: 500, node: { name: "JavaScript" } },
       ],
       url: "https://github.com/user1/repo1",
+      createdAt: "2023-01-01T00:00:00Z",
+      description: "Test repository 1",
+      name: "repo1",
+      owner: { id: "owner1", login: "user1" },
+      primaryLanguage: { name: "TypeScript" },
     },
     {
       id: "456",
@@ -28,6 +33,11 @@ jest.mock("@/datas/static_data.json", () => {
         { size: 200, node: { name: "TypeScript" } },
       ],
       url: "https://github.com/user2/repo2",
+      createdAt: "2023-02-01T00:00:00Z",
+      description: "Test repository 2",
+      name: "repo2",
+      owner: { id: "owner2", login: "user2" },
+      primaryLanguage: { name: "Python" },
     },
   ];
 });
@@ -68,6 +78,10 @@ describe("StaticModel", () => {
       );
       expect((repos[0] as GitHubRepository).isPrivate).toBe(newRepo.isPrivate);
       expect((repos[0] as GitHubRepository).languages).toEqual([]);
+      // expect((repos[0] as GitHubRepository).description).toBe("Test repository 1");
+      // expect((repos[0] as GitHubRepository).name).toBe("repo1");
+      // expect((repos[0] as GitHubRepository).owner.login).toBe("user1");
+      // expect((repos[0] as GitHubRepository).primaryLanguage.name).toBe("TypeScript");
     });
 
     it("should return empty string when adding an existing repository", async () => {
@@ -109,6 +123,11 @@ describe("StaticModel", () => {
       // Assert
       expect(repos).toHaveLength(1);
       expect((repos[0] as GitHubRepository).id).toBe("123");
+      expect((repos[0] as GitHubRepository).createdAt).toBe("2023-01-01T00:00:00Z");
+      expect((repos[0] as GitHubRepository).description).toBe("Test repository 1");
+      expect((repos[0] as GitHubRepository).name).toBe("repo1");
+      expect((repos[0] as GitHubRepository).owner.login).toBe("user1");
+      expect((repos[0] as GitHubRepository).primaryLanguage.name).toBe("TypeScript");
     });
 
     it("should filter repositories by isPrivate", async () => {
@@ -292,6 +311,8 @@ describe("StaticModel", () => {
       const updateFields: UpdateRepository = {
         isPrivate: true,
         languages: [{ size: 2000, node: { name: "Rust" } }],
+        description: "Updated description",
+        primaryLanguage: { name: "Rust" },
       };
 
       // Act
@@ -309,6 +330,8 @@ describe("StaticModel", () => {
       expect((repos[0] as GitHubRepository).languages).toEqual([
         { size: 2000, node: { name: "Rust" } },
       ]);
+      expect((repos[0] as GitHubRepository).description).toBe("Updated description");
+      expect((repos[0] as GitHubRepository).primaryLanguage.name).toBe("Rust");
     });
 
     it("should return false when updating non-existent repository", async () => {
