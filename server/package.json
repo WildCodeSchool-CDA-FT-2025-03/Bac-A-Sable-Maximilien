@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "fetchData": "gh repo list --json id,name,owner,createdAt,diskUsage,assignableUsers,description,url,isPrivate,primaryLanguage,languages > ./new_static_data.json",
+    "fetchData": "gh repo list --json id,name,owner,createdAt,description,url,isPrivate,primaryLanguage,languages > ./new_static_data.json",
     "dev": "nodemon",
     "lint": "eslint . --ext .ts",
     "pretty": "prettier . --write"
@@ -28,6 +28,7 @@
     "@types/express": "^5.0.0",
     "@types/jest": "^29.5.14",
     "@types/node": "^22.13.9",
+    "concurrently": "^9.1.2",
     "eslint": "^9.21.0",
     "globals": "^16.0.0",
     "jest": "^29.7.0",
