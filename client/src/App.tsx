@@ -1,12 +1,16 @@
 import './App.css';
 import { Outlet } from 'react-router';
+import { UserProvider } from './contexts/userContext';
+
+
 
 function App() {
-  // const allRepos = repos.GetAll();
 
   return (
     <>
+    <UserProvider>
       <Outlet></Outlet>
+    </UserProvider>
     </>
   )
 }

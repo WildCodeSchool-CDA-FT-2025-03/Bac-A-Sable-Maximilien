@@ -1,11 +1,19 @@
 :root {
+  --eerie_back: #242424;
+  --powder_blue: #abb4ff;
+  --anti_flash_white: #EFEFEF;
+
+  --main_color: var(--eerie_back);
+  --secondary_color: var(--anti_flash_white);
+  --seleted_color: var(--powder_blue);
+
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: var(--secondary_color);
+  background-color: var(--main_color);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -15,11 +23,11 @@
 
 a {
   font-weight: 500;
-  color: #f5f5f5;
+  color: var(--secondary_color);
   text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2;
+  color: var(--powder_blue);
 }
 
 body {
@@ -47,7 +55,7 @@ button {
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: var(--powder_blue);
 }
 button:focus,
 button:focus-visible {
@@ -65,4 +73,8 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+.selected {
+  color: var(--seleted_color);
 }
