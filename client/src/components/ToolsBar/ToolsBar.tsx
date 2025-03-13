@@ -18,7 +18,7 @@ export const ToolsBar = () => {
 
     return (
         <div className="tools-bar">
-            <Link to={`/`}>
+            <Link to={`/create`}>
                 <BiAddToQueue className="selectable" size="1.5rem"/>
             </Link>
             <div className="box-bar">

@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router";
 import App from "@/App.tsx";
 import Home from "@/pages/Home";
+import CreateRepoPage from "@/pages/CreateRepoPage";
 import RepositoryPage from "@/pages/RepositoryPage";
 
 const router = createBrowserRouter([
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
                 //     getOneRepository(params.id || "0");
                 //     return currRepo;
                 // }
+            },
+            {
+                path: "/create",
+                element: <CreateRepoPage />
             }
         ],
     },
