@@ -45,7 +45,7 @@ export class StaticModel implements IRepository {
         languages: [],
         createdAt: new Date().toISOString(),
         description: "",
-        name: "",
+        name: repo.name,
         owner: { id: "", login: "" },
         primaryLanguage: { name: "" },
       } as GitHubRepository;

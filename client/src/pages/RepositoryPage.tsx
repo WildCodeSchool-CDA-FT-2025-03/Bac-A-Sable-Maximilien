@@ -1,7 +1,7 @@
 import useRepos from "@/services/repositories.service";
 import RepositoryInfo from "@/components/RepositoryInfo/RepositoryInfo";
 import { useEffect } from "react";
-import { /*Navigate,*/ useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 
 
@@ -13,8 +13,17 @@ const RepositoryPage = () => {
         getOneRepository(id as string);
     }, []);
 
+    const GetRepo = () => {
+        if(currRepo !== null) {
+            return <RepositoryInfo repo={currRepo}/>
+        }
+        else {
+            return <div></div>
+        }
+    }
+
     return (
-        <RepositoryInfo repo={currRepo}/>
+        <GetRepo/>
     )
 }
 

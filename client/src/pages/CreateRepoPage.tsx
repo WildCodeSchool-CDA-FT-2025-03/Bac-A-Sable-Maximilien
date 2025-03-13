@@ -1,15 +1,26 @@
-import { useRef } from "react";
+import { useRef, FormEvent } from "react";
 import "./CreateRepoPage.css"
 import InputForm from "@/components/InputForm/InputForm";
+import { ConstructGitHubRepository } from "@shared/repository.types";
+import useRepos from "@/services/repositories.service";
 
 const CreateRepoPage = () => {
+    const {addNewRepository} = useRepos();
+
     const input_user = useRef("");
     const input_name = useRef("");
     const input_private = useRef(false);
 
-    const submit = async () => {
-        console.log(input_user);
-        console.log(input_private);
+    const submit = async (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
+        const repo: ConstructGitHubRepository = {
+            user: input_user.current,
+            name: input_name.current,
+            isPrivate: input_private.current,
+        };
+
+        addNewRepository(repo);
     }
 
     return (
