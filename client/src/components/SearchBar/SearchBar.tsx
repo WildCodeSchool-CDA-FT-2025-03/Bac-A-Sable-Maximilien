@@ -9,7 +9,7 @@ type PropsSearchBar = {
 };
 
 const SearchBar = (props: PropsSearchBar) => {
-    const {languagesFilter, setLanguagesFilter} = useUser();
+    const {languagesFilter, setLanguagesFilter, paging} = useUser();
 
     const repos = props.repos;
 
@@ -51,8 +51,9 @@ const SearchBar = (props: PropsSearchBar) => {
                 )}
             </div>
             <div>
-                <FaAngleLeft className="selectable" size="1.5rem"/>
-                <FaAngleRight className="selectable" size="1.5rem"  />
+                <FaAngleLeft className="selectable" size="1.2rem"/>
+                <span>{paging.page + 1} / 1</span>
+                <FaAngleRight className="selectable" size="1.2rem"  />
             </div>
         </div>
     )
