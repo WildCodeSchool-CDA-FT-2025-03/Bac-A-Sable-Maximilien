@@ -4,12 +4,14 @@ type PropsInputForm = {
     name: string,
     type: "text" | "checkbox",
     value: RefObject<string | boolean>,
+    require?: boolean,
 };
 
 const InputForm = (props: PropsInputForm) => {
     const input_type = props.type;
-    let value = props.value;
-    let name = props.name;
+    const value = props.value;
+    const name = props.name;
+    const require = props.require;
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         if(input_type !== "checkbox") {
@@ -23,7 +25,7 @@ const InputForm = (props: PropsInputForm) => {
     return (
         <label>
             {name}
-            <input type={input_type} onChange={handleChange}/>
+            <input type={input_type} onChange={handleChange} required={require}/>
         </label>
     )
 };
