@@ -5,7 +5,7 @@ const { result } = concurrently(
     [
         'npm:watch-*',
         { command: 'npx nodemon', name: 'server', cwd: '.'},
-        { command: 'npx vite preview', name: 'client', cwd: '../client'},
+        { command: 'npm run dev', name: 'client', cwd: '../client'},
     ],
     {
         prefix: '',
