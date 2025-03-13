@@ -18,7 +18,7 @@ const CreateRepoPage = () => {
         <form className="form_create" onSubmit={submit}>
             <InputForm type="text" name="User" value={input_user} require={true}/>
             <InputForm type="text" name="Project Name" value={input_name} require={true}/>
-            <InputForm type="checkbox" name="Is private" value={input_private} require={true}/>
+            <InputForm type="checkbox" name="Is private" value={input_private}/>
 
             <button type="submit">Ajouter</button>
         </form>
