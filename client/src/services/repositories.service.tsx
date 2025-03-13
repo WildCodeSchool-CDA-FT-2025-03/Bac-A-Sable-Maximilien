@@ -11,7 +11,6 @@ const useRepos = () => {
     const getRepositories = (paging: Paging = {count: 0, page: 0}, filter: string[] = []) => {
         getAllRepos(paging, filter)
         .then(repos => {
-            console.log("FOOOOOOOOo");
             setRepos(repos.data)
         })
         .catch(err => {

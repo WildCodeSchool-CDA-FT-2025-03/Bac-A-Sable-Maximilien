@@ -8,7 +8,7 @@ const toParams = (filter: string[]) => {
 
 export const getAllRepos = (paging: Paging, filter: string[] = []) => {
     let params = "";
-    console.log(filter);
+
     if(filter.length > 0) {
         params = toParams(filter);
     }

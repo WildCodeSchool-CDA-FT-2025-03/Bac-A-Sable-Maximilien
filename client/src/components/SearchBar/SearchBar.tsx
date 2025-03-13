@@ -1,8 +1,9 @@
 import "./SearchBar.css"
+import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 import { Repositories } from "@shared/repository.types";
 import IconLanguage  from "@/components/Language/IconLanguage";
 import useUser from "@/contexts/userContext";
-import useRepos from "@/services/repositories.service";
+
 type PropsSearchBar = {
     repos: Repositories
 };
@@ -13,9 +14,7 @@ const SearchBar = (props: PropsSearchBar) => {
     const repos = props.repos;
 
     const setFilter = (lang: string) => {
-        console.log(languagesFilter);
         let f = [...languagesFilter];
-        console.log(f);
 
         if(languagesFilter.includes(lang)) {
             f = f.filter(l => l !== lang);
@@ -23,7 +22,6 @@ const SearchBar = (props: PropsSearchBar) => {
         else {
             f = [...f, lang];
         }
-        console.log(f);
 
         setLanguagesFilter(f);
     };
@@ -47,11 +45,15 @@ const SearchBar = (props: PropsSearchBar) => {
             <p>Found: {repos.length}</p>
              <div>
                 {list_languages.map(l => 
-                    <span key={crypto.randomUUID()} onClick={()=>setFilter(l)}>
-                        <IconLanguage key={crypto.randomUUID()} lang={l} selected={!languagesFilter.includes(l)}/>
+                    <span key={crypto.randomUUID()} onClick={()=>setFilter(l)} title={l}>
+                        <IconLanguage  key={crypto.randomUUID()} lang={l} selected={!languagesFilter.includes(l)} />
                     </span>
                 )}
-            </div> 
+            </div>
+            <div>
+                <FaAngleLeft className="selectable" size="1.5rem"/>
+                <FaAngleRight className="selectable" size="1.5rem"  />
+            </div>
         </div>
     )
 }

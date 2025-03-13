@@ -187,7 +187,7 @@
           {
               "size": 7011,
               "node": {
-                  "name": "C++"
+                  "name": "cpp"
               }
           }
       ],
@@ -197,7 +197,7 @@
           "login": "Maxwellmilien"
       },
       "primaryLanguage": {
-          "name": "C++"
+          "name": "cpp"
       },
       "url": "https://github.com/Maxwellmilien/labyrinthe"
   },
