@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { getAllRepos, getRepositoryByID } from "./http/repositories.http";
 import { Repositories, GitHubRepository } from "@shared/repository.types";
-
+import { Paging } from "@shared/repository.types";
 
 const useRepos = () => {
     const [allRepos, setRepos] = useState<Repositories>([]);
@@ -17,8 +17,8 @@ const useRepos = () => {
         }
     );
 
-    const getRepositories = () => {
-        getAllRepos()
+    const getRepositories = (paging: Paging = {count: 0, page: 0}) => {
+        getAllRepos(paging)
         .then(repos => {
             setRepos(repos.data)
         })

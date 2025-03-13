@@ -3,7 +3,7 @@ import useUser, {DisplayCard} from "@/contexts/userContext";
 import './ToolsBar.css'
 
 export const ToolsBar = () => {
-    const {displayCard , setDisplayCard} = useUser();
+    const {displayCard , setDisplayCard, paging, setPaging} = useUser();
 
     const selectColor = (type: DisplayCard) => {
         if(type === displayCard) {
@@ -16,8 +16,11 @@ export const ToolsBar = () => {
 
     return (
         <div className="tools-bar">
-            <select className="select_inline" name="limit">
-                <option value="all">all</option>
+            <select className="select_inline" name="limit"
+                    value={paging.count}
+                    onChange={(e) => setPaging({...paging, count: +e.target.value})}
+                    >
+                <option value="0">all</option>
                 <option value="5">5</option>
                 <option value="10">10</option>
                 <option value="15">15</option>

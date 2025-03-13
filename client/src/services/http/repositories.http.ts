@@ -1,7 +1,9 @@
 import client from "@/services/client";
+import { Paging } from "@shared/repository.types";
 
-export const getAllRepos = () => {
-    return client("/repos");
+
+export const getAllRepos = (paging: Paging) => {
+    return client(`/repos?limit=${paging.count}&page=${paging.page}`);
   };
 
 
