@@ -165,7 +165,7 @@ describe("StaticModel", () => {
 
       // Act
       const repos = await staticModel.get(config);
-
+      console.log(StaticModel.repository);
       // Assert
       expect(repos).toHaveLength(1);
       expect((repos[0] as GitHubRepository).id).toBe("456");
@@ -173,6 +173,7 @@ describe("StaticModel", () => {
 
     it("should filter repositories by multiple languages", async () => {
       // Arrange
+      
       const config = new GetRepositoriesConfig();
       config.filter.languages = "TypeScript,JavaScript";
 
@@ -181,6 +182,19 @@ describe("StaticModel", () => {
 
       // Assert
       expect(repos).toHaveLength(1);
+      expect((repos[0] as GitHubRepository).id).toBe("123");
+    });
+
+    it("should filter languages present in the repository", async () => {
+      // Arrange
+      const config = new GetRepositoriesConfig();
+      config.filter.filterLanguages = "Python";
+
+      // Act
+      const repos = await staticModel.get(config);
+
+      // Assert
+      expect(repos).toHaveLength(2);
       expect((repos[0] as GitHubRepository).id).toBe("123");
     });
 

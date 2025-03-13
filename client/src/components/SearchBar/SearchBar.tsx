@@ -2,7 +2,7 @@ import "./SearchBar.css"
 import { Repositories } from "@shared/repository.types";
 import IconLanguage  from "@/components/Language/IconLanguage";
 import useUser from "@/contexts/userContext";
-
+import useRepos from "@/services/repositories.service";
 type PropsSearchBar = {
     repos: Repositories
 };
@@ -13,12 +13,19 @@ const SearchBar = (props: PropsSearchBar) => {
     const repos = props.repos;
 
     const setFilter = (lang: string) => {
+        console.log(languagesFilter);
+        let f = [...languagesFilter];
+        console.log(f);
+
         if(languagesFilter.includes(lang)) {
-            setLanguagesFilter(languagesFilter.filter(l => l !== lang));
+            f = f.filter(l => l !== lang);
         }
         else {
-            setLanguagesFilter([...languagesFilter, lang]);
+            f = [...f, lang];
         }
+        console.log(f);
+
+        setLanguagesFilter(f);
     };
 
 

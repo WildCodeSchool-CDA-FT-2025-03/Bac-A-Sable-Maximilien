@@ -7,12 +7,11 @@ import SearchBar from '@/components/SearchBar/SearchBar';
 
 function Home() {
   const {allRepos, getRepositories} = useRepos();
-  // const {languages, setLanguages} = useUser();
-  const {paging} = useUser();
+  const {paging, languagesFilter} = useUser();
 
   useEffect(() => {
-    getRepositories(paging);
-  }, [paging]);
+    getRepositories(paging, languagesFilter);
+  }, [paging, languagesFilter]);
 
   return (
     <>

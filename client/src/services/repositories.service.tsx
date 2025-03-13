@@ -7,9 +7,11 @@ const useRepos = () => {
     const [allRepos, setRepos] = useState<Repositories>([]);
     const [currRepo, setCurrRepo] = useState<GitHubRepository|null>(null);
 
-    const getRepositories = (paging: Paging = {count: 0, page: 0}) => {
-        getAllRepos(paging)
+
+    const getRepositories = (paging: Paging = {count: 0, page: 0}, filter: string[] = []) => {
+        getAllRepos(paging, filter)
         .then(repos => {
+            console.log("FOOOOOOOOo");
             setRepos(repos.data)
         })
         .catch(err => {

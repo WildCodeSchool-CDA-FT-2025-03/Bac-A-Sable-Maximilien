@@ -2,8 +2,17 @@ import client from "@/services/client";
 import { Paging } from "@shared/repository.types";
 import { ConstructGitHubRepository } from "@shared/repository.types";
 
-export const getAllRepos = (paging: Paging) => {
-    return client.get(`/repos?limit=${paging.count}&page=${paging.page}`);
+const toParams = (filter: string[]) => {
+    return "filterLanguages=" +filter.map(l => `${l}`).join(",");
+}
+
+export const getAllRepos = (paging: Paging, filter: string[] = []) => {
+    let params = "";
+    console.log(filter);
+    if(filter.length > 0) {
+        params = toParams(filter);
+    }
+    return client.get(`/repos?limit=${paging.count}&page=${paging.page}&${params}`);
   };
 
 

@@ -17,6 +17,7 @@ export const CheckQueryRequest = Joi.object({
   fields: Joi.string().optional(),
   limit: Joi.number().optional(),
   page: Joi.number().optional(),
+  filterLanguages: Joi.string().optional(),
 });
 
 export const CheckUpdateRepository = Joi.object({

@@ -38,6 +38,10 @@ export default {
         }
       }
 
+      if (req.query.filterLanguages !== undefined) {
+        config.filter.filterLanguages = req.query.filterLanguages as string;
+      }
+
       if (req.params.repoid !== undefined) {
         config.filter.id = req.params.repoid;
         config.limit.count = 1;

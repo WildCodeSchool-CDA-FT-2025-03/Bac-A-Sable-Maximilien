@@ -78,6 +78,7 @@ export type RepositoriesFilter = {
   languages?: string;
   url?: string;
   limit?: number;
+  filterLanguages?: string;
 };
 
 /**

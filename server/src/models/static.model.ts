@@ -21,7 +21,7 @@ import obj from "@/utiles/obj";
  */
 export class StaticModel implements IRepository {
   /** Static array to store repository data in memory */
-  private static repository = [...static_data];
+  static repository = [...static_data];
 
   /**
    * Adds a new repository to the static storage
@@ -162,14 +162,27 @@ export class StaticModel implements IRepository {
         return false;
       }
 
+      const langs = r.languages.map((l) => l.node.name.toLowerCase());
+
       // Filter by programming languages if specified
       if (filter.languages !== undefined && filter.languages !== "") {
-        const langs = r.languages.map((l) => l.node.name);
-        const langsList = filter.languages.split(",");
+        
+        const langsList = filter.languages.split(",").map((l) => l.trim().toLowerCase());
         const intersection = langsList.filter((l) => langs.includes(l));
 
         if (intersection.length !== langsList.length) {
           return false;
+        }
+      }
+      
+      if (filter.filterLanguages !== undefined && filter.filterLanguages !== "") {
+
+        const langsFilter = filter.filterLanguages.toLowerCase().split(",");
+
+        for (const lang of langsFilter) {
+          if (langs.includes(lang)) {
+            return false;
+          }
         }
       }
 
