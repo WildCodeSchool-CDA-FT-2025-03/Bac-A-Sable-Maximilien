@@ -57,7 +57,6 @@ const SearchBar = (props: PropsSearchBar) => {
         }
     };
 
-    // const list_languages = [...languages.filter(l => !languagesFilter.includes(l)), ...languagesFilter].sort();
     const list_languages = data.languages;
 
     const arrowCallClass = (dir: 'back' | 'next') => {
