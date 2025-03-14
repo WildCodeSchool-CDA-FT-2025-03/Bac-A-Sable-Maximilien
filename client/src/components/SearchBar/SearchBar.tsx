@@ -91,7 +91,7 @@ const SearchBar = (props: PropsSearchBar) => {
             </div>
             <div>
                 <FaAngleLeft className={arrowCallClass('back')} size="1.2rem" onClick={()=>{turnPage('back')}}/>
-                <span>{current_page} / {count_page}</span>
+                <span className="unselectable">{current_page} / {count_page}</span>
                 <FaAngleRight className={arrowCallClass('next')} size="1.2rem" onClick={()=>{turnPage('next')}}/>
             </div>
         </div>
