@@ -9,6 +9,7 @@ import {
   RepositoryFields,
   UpdateRepository,
 } from "@shared/repository.types";
+import { ResponseRepositoryMetadata } from "@shared/requests.types";
 import { create_url, create_id } from "@/core/repository";
 import { IRepository } from "@/core/repositorys.interface";
 import static_data from "@/datas/static_data.json";
@@ -81,6 +82,37 @@ export class StaticModel implements IRepository {
     return repos;
   }
 
+    /**
+   * Retrieves repositories with metadata, based on configuration
+   * @param config - Configuration object containing filter, fields, and limit
+   * @returns Promise resolving to filtered repositories or selected fields
+   */
+    async getWithMetadata(
+      config: GetRepositoriesConfig,
+    ): Promise<ResponseRepositoryMetadata> {
+
+      // Filter repositories based on the provided filter criteria
+      let repos = StaticModel.filter(StaticModel.repository, config.filter);
+
+      const count = repos.length;
+      const langs = repos.reduce((acc, r) => {
+        const lang = r.languages
+              .filter(l => !acc.includes(l.node.name))
+              .map(l => l.node.name);
+        return acc.concat(lang);
+      }, [] as string[]);
+
+      // Apply pagination if a limit is specified
+      if (config.limit.count > 0) {
+        repos = StaticModel.slice(repos, config.limit);
+      }
+
+      return {
+        repositories: repos,
+        languages: langs,
+        total: count,
+      };
+    }
   /**
    * Removes repositories by their IDs
    * @param list_id - Array of repository IDs to remove

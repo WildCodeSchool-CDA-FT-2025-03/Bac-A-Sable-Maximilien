@@ -9,6 +9,13 @@ export default {
     res.status(200).json(repos);
   },
 
+  getMetadataRepositories: async (_: Request, res: Response) => {
+    const config = res.locals.config;
+    const repos = await repositoryModel.getWithMetadata(config);
+
+    res.status(200).json(repos);
+  },
+
   getOneRepository: async (_: Request, res: Response) => {
     const config = res.locals.config;
     const repos = await repositoryModel.get(config);

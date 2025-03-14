@@ -1,6 +1,6 @@
 import { Repositories } from "./repository.types";
 
-export type ResponseRepository = {
+export type ResponseRepositoryMetadata = {
     repositories: Repositories,
     total: number,
     languages: string[],

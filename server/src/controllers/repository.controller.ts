@@ -1,11 +1,19 @@
 import repository from "./middlewares/repository/repository";
 import errorHandler from "./middlewares/error.middlewares";
 import log from "./middlewares/repository/log.middlewares";
+
 export default {
   Get: [
     log,
     repository.validation.getRepositorys,
     repository.finally.getRepositorys,
+    errorHandler,
+  ],
+
+  GetMetadata: [
+    log,
+    repository.validation.getRepositorys,
+    repository.finally.getMetadataRepositories,
     errorHandler,
   ],
 
