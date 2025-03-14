@@ -12,7 +12,7 @@ export const getAllRepos = (paging: Paging, filter: string[] = []) => {
     if(filter.length > 0) {
         params = toParams(filter);
     }
-    return client.get(`/repos?limit=${paging.count}&page=${paging.page}&${params}`);
+    return client.get(`/repos/metadata?limit=${paging.count}&page=${paging.page}&${params}`);
   };
 
 

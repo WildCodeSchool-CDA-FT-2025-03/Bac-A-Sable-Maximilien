@@ -91,16 +91,20 @@ export class StaticModel implements IRepository {
       config: GetRepositoriesConfig,
     ): Promise<ResponseRepositoryMetadata> {
 
-      // Filter repositories based on the provided filter criteria
-      let repos = StaticModel.filter(StaticModel.repository, config.filter);
+      let repos = StaticModel.repository;
 
-      const count = repos.length;
       const langs = repos.reduce((acc, r) => {
         const lang = r.languages
-              .filter(l => !acc.includes(l.node.name))
-              .map(l => l.node.name);
+              .filter(l => !acc.includes(l.node.name.trim().toLowerCase()))
+              .map(l => l.node.name.trim().toLowerCase());
         return acc.concat(lang);
-      }, [] as string[]);
+      }, [] as string[]).sort();
+
+      // Filter repositories based on the provided filter criteria
+      repos = StaticModel.filter(StaticModel.repository, config.filter);
+
+      const count = repos.length;
+
 
       // Apply pagination if a limit is specified
       if (config.limit.count > 0) {

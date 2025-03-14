@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { getAllRepos, getRepositoryByID, addRepository } from "./http/repositories.http";
-import { Repositories, GitHubRepository, ConstructGitHubRepository } from "@shared/repository.types";
+import { GitHubRepository, ConstructGitHubRepository } from "@shared/repository.types";
+import { ResponseRepositoryMetadata} from "@shared/requests.types";
+
 import { Paging } from "@shared/repository.types";
 
 const useRepos = () => {
-    const [allRepos, setRepos] = useState<Repositories>([]);
+    const [allRepos, setRepos] = useState<ResponseRepositoryMetadata>({repositories: [], languages: [], total: 0});
     const [currRepo, setCurrRepo] = useState<GitHubRepository|null>(null);
 
 

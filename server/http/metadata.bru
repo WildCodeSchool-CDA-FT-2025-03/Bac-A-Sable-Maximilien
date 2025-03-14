@@ -5,7 +5,11 @@ meta {
 }
 
 get {
-  url: 
+  url: http://{{HOST}}:{{PORT}}/repos/metadata?limit=2
   body: none
   auth: none
+}
+
+params:query {
+  limit: 2
 }

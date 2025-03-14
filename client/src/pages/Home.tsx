@@ -16,8 +16,8 @@ function Home() {
   return (
     <>
       <ToolsBar></ToolsBar>
-      <SearchBar repos={allRepos}/>
-      <RepositoriesList repos={allRepos}/>
+      <SearchBar data={allRepos}/>
+      <RepositoriesList repos={allRepos.repositories}/>
     </>
   )
 }
