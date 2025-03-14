@@ -12,7 +12,6 @@ const SearchBar = (props: PropsSearchBar) => {
     const {languagesFilter, setLanguagesFilter, paging, setPaging} = useUser();
 
     const data = props.data;
-    const repos = props.data.repositories;
 
     const setFilter = (lang: string) => {
         let f = [...languagesFilter];
