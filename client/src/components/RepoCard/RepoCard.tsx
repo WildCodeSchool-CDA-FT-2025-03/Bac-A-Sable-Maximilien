@@ -1,7 +1,10 @@
 import { GitHubRepository } from "@shared/repository.types";
 import { Link } from "react-router-dom";
-import "./RepoCard.css"
 import { BiLogoGithub, BiSolidUser } from "react-icons/bi";
+import IconLanguage from '@/components/Language/IconLanguage'
+
+import "./RepoCard.css"
+
 
 type RepoCardProps = {
     repo: GitHubRepository
@@ -14,9 +17,14 @@ export const RepoCard = (props: RepoCardProps) => {
         <article>
 
             <div className="repo_card main_layout">
-                <div className="icon_link">
-                    <BiSolidUser/>
-                    <p>{repo.owner.login}</p>
+                <div className="repo_card-top-bar">
+                    <div className="icon_link">
+                        <BiSolidUser/>
+                        <p>{repo.owner.login}</p>
+                    </div>
+                    <div>
+                        {repo.languages.map(l => <IconLanguage lang={l.node.name.toLowerCase()} selected={false}/>)}
+                    </div>
                 </div>
 
                 <Link to={`/${repo.id}`}>
