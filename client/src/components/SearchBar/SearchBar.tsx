@@ -27,17 +27,6 @@ const SearchBar = (props: PropsSearchBar) => {
         setLanguagesFilter(f);
     };
 
-
-    const languages = repos.reduce((acc, r) => {
-        r.languages.forEach(l => {
-            const lang = l.node.name.toLowerCase();
-            if (!acc.includes(lang)) {
-                acc.push(lang);
-            }
-        });
-        return acc;
-    }, [] as string[])
-
     let count_page = 1;
     let max_page = 1;
     if(data.total !== 0 && paging.count !== 0) {
