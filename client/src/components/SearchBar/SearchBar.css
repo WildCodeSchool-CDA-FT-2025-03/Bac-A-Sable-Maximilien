@@ -2,6 +2,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: var(--secondary_color);
+    border-radius: 10px;
 }
 
 .search-bar *{

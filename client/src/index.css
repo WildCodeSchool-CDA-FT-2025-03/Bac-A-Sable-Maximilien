@@ -1,29 +1,37 @@
 :root {
   --eerie_back: #242424;
   --powder_blue: #abb4ff;
-  --anti_flash_white: #EFEFEF;
+  --anti_flash_white: #FFFFFF;
+  --delft_blure: #183055;
 
+  --eerie_back-tints-2: #333333;
+  --eerie_back-tints-5: #535353;
+
+  --main-background: var(--eerie_back-tints-2);
   --main_color: var(--eerie_back);
-  --secondary_color: var(--anti_flash_white);
+  --secondary_color: var(--delft_blure);
   --seleted_color: var(--powder_blue);
+  --text_color: var(--anti_flash_white);
 
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
-  color: var(--secondary_color);
-  background-color: var(--main_color);
+  color: var(--text_color);
+  background-color: var(--main-background);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  background-image: url("github-img-background-2.webp");
 }
 
 a {
   font-weight: 500;
-  color: var(--secondary_color);
+  color: var(--text_color);
   text-decoration: inherit;
 }
 a:hover {
@@ -34,7 +42,12 @@ body {
   margin: 0;
   display: flex;
   place-items: center;
+  /* width: fit-content; */
   min-width: 320px;
+  max-width: 1280px;
+  /* background-color: var(--main_color); */
+  /* border: 20px 20px 20px 20px; */
+  /* padding: 20px 20px 20px 20px;; */
   /* min-height: 100vh; */
 }
 
@@ -90,4 +103,9 @@ button:focus-visible {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+.core-page {
+  background-color: var(--secondary_color);
+  border-radius: 10px;
 }

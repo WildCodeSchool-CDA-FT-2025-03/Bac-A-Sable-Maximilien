@@ -1,10 +1,10 @@
 .repo_card {
-    border: 1px solid;
-    padding: 2px 2px 1px 1px;
-    margin: 2px 2px 2px 2px;
+    border: 1px;
+    padding: 5px 5px 5px 5px;
+    margin: 10px;
     border-radius: 10px;
-    justify-content: space-between;
-    /* flex-direction: ; */
+    background-color: var(--main_color);
+    box-shadow: 2px 2px 3px #535353;
 }
 
 .repo_card-top-bar {

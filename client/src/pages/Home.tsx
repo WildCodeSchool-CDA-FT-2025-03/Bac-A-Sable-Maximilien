@@ -16,8 +16,11 @@ function Home() {
   return (
     <>
       <ToolsBar></ToolsBar>
+
       <SearchBar data={allRepos}/>
-      <RepositoriesList repos={allRepos.repositories}/>
+      <div className="core-page">
+        <RepositoriesList repos={allRepos.repositories}/>
+      </div>
     </>
   )
 }

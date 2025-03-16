@@ -6,6 +6,8 @@
     white-space: nowrap;
     width: 100%;
     min-width: 800px;
+    background-color: var(--secondary_color);
+    border-radius: 10px;
 }
 
 .box-bar {
