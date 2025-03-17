@@ -113,3 +113,10 @@ export class GetRepositoriesConfig {
   fields: RepositoryFields[] = [];
   limit: Paging = { count: 0, page: 0 };
 }
+
+export class GetGithubRepositoriesConfig {
+  owner: string = "";
+  filter: RepositoriesFilter = {};
+  fields: RepositoryFields[] = [];
+  limit: Paging = { count: 0, page: 0 };
+}

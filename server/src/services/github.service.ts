@@ -44,7 +44,7 @@ const getLangs = async (repo: PartialGitHubRepo): Promise<GitHubRepository> => {
 const github = {
   async getRepository(userName: string): Promise<Repositories> {
     const results = await githubFetch.repository(userName);
-    const datas = (await results.json()) as PartialGitHubRepo[];
+    const datas = await results.json();
 
     const waiting = [];
 
