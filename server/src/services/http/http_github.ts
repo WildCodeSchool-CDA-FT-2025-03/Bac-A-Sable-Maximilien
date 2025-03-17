@@ -23,7 +23,7 @@ function github_fetch(url: string) {
   ) {
     options = {
       ...options,
-      headers: { Authorization: process.env.GITHUB_API_KEY },
+      headers: { Authorization: `token ${process.env.GITHUB_API_KEY}` },
     };
   }
 
