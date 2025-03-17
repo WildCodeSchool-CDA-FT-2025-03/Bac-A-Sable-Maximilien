@@ -1,25 +1,22 @@
 .repo_card {
-    border: 1px solid;
-    padding: 2px 2px 1px 1px;
+    border: 1px;
+    padding: 10px 10px 10px 10px;
     margin: 2px 2px 2px 2px;
     border-radius: 10px;
     justify-content: space-between;
-    /* flex-direction: ; */
+    background-color: var(--test2);
 }
 
 .repo_card-top-bar {
     display: flex;
     justify-content: space-between;
+    align-content: center;
 }
 
 .main_layout {
     display: flex;
     flex-direction: column;
 }
-
-/* .repo_card:hover {
-    color: #ff0c0c;
-} */
 
 .main_title {
     text-align: center;

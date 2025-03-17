@@ -12,11 +12,13 @@ export const RepositoriesList = (props: RepositoriesListProps) => {
     const {displayCard} = useUser();
 
     return (
+        <div className="test-center">
         <div className={
             displayCard === "list" ? "repository_list" : "repository_grid"}>
             {
                 repos.map(r => <RepoCard key={r.id} repo={r}></RepoCard>)
             }
+        </div>
         </div>
     )
 }

@@ -1,10 +1,15 @@
 .search-bar {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    /* align-items: center; */
+    width: 100%;
 }
 
 .search-bar *{
     display: flex;
     align-items: center;
+}
+
+.search-bar_side {
+    min-width: 15%;
 }

@@ -1,9 +1,24 @@
+.test-center {
+    display: flex;
+    justify-content: center;
+    /* width: 100%; */
+}
+
 .repository_list {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+.repository_list > *{
+    width: 100%;
 }
 
 .repository_grid {
     display: grid;
-    grid-template-columns: 33% 33% 33%;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 3px;
+    width: 100%;
+    box-sizing: border-box;
 }

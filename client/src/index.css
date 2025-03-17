@@ -3,7 +3,10 @@
   --powder_blue: #abb4ff;
   --anti_flash_white: #EFEFEF;
 
-  --main_color: var(--eerie_back);
+  --test1: #232532;
+  --test2: #384051;
+
+  --main_color: var(--test1);
   --secondary_color: var(--anti_flash_white);
   --seleted_color: var(--powder_blue);
 
@@ -34,7 +37,8 @@ body {
   margin: 0;
   display: flex;
   place-items: center;
-  min-width: 320px;
+  /* min-width: 320px; */
+  /* max-width: 800px; */
   /* min-height: 100vh; */
 }
 
