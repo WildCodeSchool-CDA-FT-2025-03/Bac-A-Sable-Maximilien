@@ -10,7 +10,6 @@ function App() {
     <>
     <TopBar></TopBar>
     <div className='body-core'>
-      <h1>Repositories</h1>
       <div>
         <UserProvider>
           <Outlet></Outlet>

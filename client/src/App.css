@@ -3,6 +3,7 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
+  gap: 1rem;
 }
 
 .body-core {
@@ -16,8 +17,4 @@
 
 .disable {
   opacity: 30%;
-}
-
-h1 {
-  text-align: center;
 }
