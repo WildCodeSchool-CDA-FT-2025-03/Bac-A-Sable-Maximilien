@@ -123,11 +123,17 @@ describe("StaticModel", () => {
       // Assert
       expect(repos).toHaveLength(1);
       expect((repos[0] as GitHubRepository).id).toBe("123");
-      expect((repos[0] as GitHubRepository).createdAt).toBe("2023-01-01T00:00:00Z");
-      expect((repos[0] as GitHubRepository).description).toBe("Test repository 1");
+      expect((repos[0] as GitHubRepository).createdAt).toBe(
+        "2023-01-01T00:00:00Z",
+      );
+      expect((repos[0] as GitHubRepository).description).toBe(
+        "Test repository 1",
+      );
       expect((repos[0] as GitHubRepository).name).toBe("repo1");
       expect((repos[0] as GitHubRepository).owner.login).toBe("user1");
-      expect((repos[0] as GitHubRepository).primaryLanguage.name).toBe("TypeScript");
+      expect((repos[0] as GitHubRepository).primaryLanguage.name).toBe(
+        "TypeScript",
+      );
     });
 
     it("should filter repositories by isPrivate", async () => {
@@ -173,7 +179,7 @@ describe("StaticModel", () => {
 
     it("should filter repositories by multiple languages", async () => {
       // Arrange
-      
+
       const config = new GetRepositoriesConfig();
       config.filter.languages = "TypeScript,JavaScript";
 
@@ -344,7 +350,9 @@ describe("StaticModel", () => {
       expect((repos[0] as GitHubRepository).languages).toEqual([
         { size: 2000, node: { name: "Rust" } },
       ]);
-      expect((repos[0] as GitHubRepository).description).toBe("Updated description");
+      expect((repos[0] as GitHubRepository).description).toBe(
+        "Updated description",
+      );
       expect((repos[0] as GitHubRepository).primaryLanguage.name).toBe("Rust");
     });
 

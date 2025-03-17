@@ -1,7 +1,5 @@
 import { ClientAddRepoRequest } from "@/types/client.types";
-import {
-  GitHubRepository,
-} from "@shared/repository.types";
+import { GitHubRepository } from "@shared/repository.types";
 
 import { create_url, create_id } from "@/core/repository";
 
@@ -16,8 +14,8 @@ export function toGitHubRepository(
     createdAt: "",
     description: "",
     name: "",
-    owner: {id: "", login: ""},
-    primaryLanguage: {name: ""}
+    owner: { id: "", login: "" },
+    primaryLanguage: { name: "" },
   } as GitHubRepository;
 
   new_repo.id = create_id(new_repo.url);
