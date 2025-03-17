@@ -16,7 +16,6 @@ export default {
     if (error) {
       throw new BadRequestError("Invalid query parameters");
     } else {
-
       if (req.params.owner === undefined) {
         throw new BadRequestError("Invalid query parameters: need owner");
       }
