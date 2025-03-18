@@ -7,7 +7,8 @@ export default {
 
     try {
         const repos = await GitHubModel.new(config.owner);
-        res.status(200).json(repos);
+        const meta = await repos.getWithMetadata(config);
+        res.status(200).json(meta);
     }
     catch(err) {
         res.status(400).send(err);
