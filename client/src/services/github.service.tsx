@@ -3,26 +3,9 @@ import { useState } from "react";
 import { getAllRepos } from "./http/github.https";
 import { Paging, Repositories } from "@shared/repository.types";
 
-type UsersRepos = Record<string, ResponseRepositoryMetadata>
-
 const useGithub = () => {
-    const [usersRepos, setUsersRepos] = useState<UsersRepos>({});
+    const [usersRepos, setUsersRepos] = useState<ResponseRepositoryMetadata[]>([]);
     const [repositories, setRepositories] = useState<Repositories>([]);
-
-    const getRepositories = (name: string, paging: Paging = {count: 0, page: 0}, filter: string[] = []) => {
-        return getAllRepos(name, paging, filter);
-            // .then(repos => {
-            //     usersRepos[name] = repos.data;
-            //     setUsersRepos(usersRepos);
-            // })
-            // .catch(err => {
-            //     console.log(err);
-            // });
-    }
-
-    // const getAllRepositories = async (names: string[], paging: Paging = {count: 0, page: 0}, filter: string[] = []) => {
-    //     // getAllMetaData.
-    // }
 
     const getAllMetaData = (names: string[], paging: Paging = {count: 0, page: 0}, filter: string[] = []) => {
         const wainting = [];
@@ -30,24 +13,22 @@ const useGithub = () => {
         for(const n of names) {
             wainting.push(getAllRepos(n, paging, filter));
         }
-        // names.forEach(n => wainting.push(getAllRepos(n, paging, filter)));
 
         Promise.all(wainting).then(datas => {
 
             let repos = [] as Repositories;
-            for(const d of datas) {
-                repos = repos.concat(d.data.repositories);
-                /*
-                console.log(datas);
-                const metadata = d.data;
-                console.log(metadata);
-                const rrr = Object.entries(metadata).reduce((acc, [_, b]) => {
-                    return acc.concat(b.repositories);
-                }, [] as Repositories);
-                console.log(rrr);*/
-            }
+            const meta = [] as ResponseRepositoryMetadata[];
 
+            for(const d of datas) {
+                const r = d.data.repositories;
+                if(r.length > 0) {
+                    repos = repos.concat(r);
+                }
+                meta.push(d.data);
+            }
+            setUsersRepos(meta);
             setRepositories(repos);
+
         }).catch(err => {
             console.log(err)
             setRepositories([]);
@@ -56,7 +37,7 @@ const useGithub = () => {
     }
 
     return {
-        usersRepos, getRepositories,
+        usersRepos,
         repositories, setUsersRepos,
         getAllMetaData,
     }

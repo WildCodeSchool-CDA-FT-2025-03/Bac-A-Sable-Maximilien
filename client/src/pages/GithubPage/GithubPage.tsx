@@ -4,12 +4,12 @@ import { ToolsBar } from "@/components/ToolsBar/ToolsBar";
 import { RepositoriesList } from "@/components/RepositoriesList/RepositoriesList";
 import useGithub from "@/services/github.service";
 import useUser from "@/contexts/userContext";
-import { Repositories } from "@shared/repository.types";
+import SearchBar from "@/components/SearchBar/SearchBar";
 
 import "./GithubPage.css"
 
 const GithubPage = () => {
-    const {repositories, getAllMetaData} = useGithub();
+    const {repositories, usersRepos, getAllMetaData} = useGithub();
     const {paging, languagesFilter, githubUser} = useUser();
 
     useEffect(() => {
@@ -21,6 +21,7 @@ const GithubPage = () => {
         <div className="github-page">
             <BarSearchRepo/>
             <ToolsBar githubUsers={githubUser}/>
+            <SearchBar datas={usersRepos}/>
             <RepositoriesList repos={repositories}/>
         </div>
     )

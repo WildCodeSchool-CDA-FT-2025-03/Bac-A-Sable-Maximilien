@@ -16,7 +16,7 @@ function Home() {
   return (
     <>
       <ToolsBar githubUsers={[]}></ToolsBar>
-      <SearchBar data={allRepos}/>
+      <SearchBar datas={[allRepos]}/>
       <RepositoriesList repos={allRepos.repositories}/>
     </>
   )

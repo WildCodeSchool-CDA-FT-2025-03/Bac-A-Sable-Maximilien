@@ -5,13 +5,21 @@ import IconLanguage  from "@/components/Language/IconLanguage";
 import useUser from "@/contexts/userContext";
 
 type PropsSearchBar = {
-    data: ResponseRepositoryMetadata
+    datas: ResponseRepositoryMetadata[]
 };
 
 const SearchBar = (props: PropsSearchBar) => {
     const {languagesFilter, setLanguagesFilter, paging, setPaging} = useUser();
 
-    const data = props.data;
+    const data = props.datas;
+    console.log(data);
+    const totaux = data.reduce((acc, d) => {
+        acc.total += d.total;
+        acc.languages.push(...d.languages);
+        return acc;
+    }, {total: 0, languages: []} as {total: number, languages: string[]});
+
+    console.log(totaux);
 
     const setFilter = (lang: string) => {
         let f = [...languagesFilter];
@@ -26,10 +34,11 @@ const SearchBar = (props: PropsSearchBar) => {
         setLanguagesFilter(f);
     };
 
+
     let count_page = 1;
     let max_page = 1;
-    if(data.total !== 0 && paging.count !== 0) {
-        max_page = Math.ceil( data.total / paging.count );
+    if(totaux.total !== 0 && paging.count !== 0) {
+        max_page = Math.ceil( totaux.total / paging.count );
         if(paging.count !== 0) {
             count_page = max_page;
         }
@@ -45,7 +54,7 @@ const SearchBar = (props: PropsSearchBar) => {
         }
     };
 
-    const list_languages = data.languages;
+    const list_languages = totaux.languages;
 
     const arrowCallClass = (dir: 'back' | 'next') => {
         if(dir === 'back') {
@@ -68,7 +77,7 @@ const SearchBar = (props: PropsSearchBar) => {
 
     return (
         <div className="search-bar">
-            <p className="search-bar_side ">Found: {data.total}</p>
+            <p className="search-bar_side ">Found: {totaux.total}</p>
              <div>
                 {list_languages.map(l =>
                     <span key={crypto.randomUUID()} onClick={()=>setFilter(l)} title={l}>

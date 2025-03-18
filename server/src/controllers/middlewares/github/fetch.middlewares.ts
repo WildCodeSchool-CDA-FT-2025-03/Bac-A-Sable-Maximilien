@@ -6,12 +6,11 @@ export default {
     const config = res.locals.config;
 
     try {
-        const repos = await GitHubModel.new(config.owner);
-        const meta = await repos.getWithMetadata(config);
-        res.status(200).json(meta);
-    }
-    catch(err) {
-        res.status(400).send(err);
+      const repos = await GitHubModel.new(config.owner);
+      const meta = await repos.getWithMetadata(config);
+      res.status(200).json(meta);
+    } catch (err) {
+      res.status(400).send(err);
     }
   },
 };
