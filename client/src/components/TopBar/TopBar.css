@@ -7,6 +7,7 @@
     height: 50px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 .icon-top-bar {
@@ -16,4 +17,26 @@
 .icon-img {
     width: 120px;
     height: auto;
+}
+
+.top-bar-icon-right {
+    height: 100%;
+    margin-right: 15px;
+    display: flex;
+    align-items: center;
+    gap: 1px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.icon-github-button {
+    padding: 10px;
+    background-color: #26283d;
+    transform: translateY(2px);
+    box-shadow: inset 3px 5px 8px rgba(0, 0, 0, 0.4);
+
+}
+
+.top-bar-selected {
+    background-color: var(--test2);
 }

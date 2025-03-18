@@ -1,7 +1,8 @@
 import { createContext, useState, ReactNode, useContext } from 'react';
 import { Paging } from '@shared/repository.types';
 
-export type DisplayCard = "list" | "grid"
+export type DisplayCard = "list" | "grid";
+export type Api = "static" | "github";
 
 export type UserContextType = {
     displayCard: DisplayCard;

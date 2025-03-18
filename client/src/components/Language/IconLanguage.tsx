@@ -1,6 +1,6 @@
 import { IoDocumentText } from "react-icons/io5";
 import { FaPython, FaRust, FaQuestion, FaJava, FaNodeJs, FaPhp, FaSwift, FaHtml5, FaCss3Alt, FaDocker, FaReact, FaMarkdown } from "react-icons/fa6";
-import { TbBrandPowershell, TbBrandTypescript, TbBrandCSharp, TbBrandKotlin, TbBrandGolang, TbSql, TbBrandJavascript, TbBrandAngular, TbBrandNuxt, TbBrandVue, TbBrandNextjs, TbBrandSvelte, TbBrandDjango, TbZigzag } from "react-icons/tb";
+import { TbBrandPowershell, TbBrandTypescript, TbBrandCSharp, TbBrandKotlin, TbBrandGolang, TbSql, TbBrandJavascript, TbBrandAngular, TbBrandNuxt, TbBrandVue, TbBrandNextjs, TbBrandSvelte, TbBrandDjango } from "react-icons/tb";
 import { SiVim, SiCmake, SiDart, SiRuby, SiScala, SiHaskell, SiLua, SiElixir, SiClojure, SiGradle, SiNim, SiExpress, SiLaravel, SiFlask, SiSpring, SiZig } from "react-icons/si";
 import { PiFileCppBold } from "react-icons/pi";
 

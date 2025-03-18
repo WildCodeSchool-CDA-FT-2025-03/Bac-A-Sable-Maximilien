@@ -1,3 +1,4 @@
+import { useLocation } from "react-router";
 import { ReactNode } from "react";
 import { BiListUl, BiGridAlt, BiAddToQueue } from "react-icons/bi";
 import { Link } from "react-router-dom";
@@ -14,8 +15,7 @@ type PropsToolsBar = {
 export const ToolsBar = (props: PropsToolsBar = {githubUsers: []}) => {
     const githubUsers = props.githubUsers;
     const {displayCard , setDisplayCard, paging, setPaging} = useUser();
-
-    const githubApi = true;
+    const location = useLocation();
 
     const selectColor = (type: DisplayCard) => {
         if(type === displayCard) {
@@ -27,7 +27,7 @@ export const ToolsBar = (props: PropsToolsBar = {githubUsers: []}) => {
     }
 
     const getOptional = (): ReactNode => {
-        if(githubApi === false) {
+        if(location.pathname !== "/") {
             return (
                 <Link to={`/create`}>
                     <BiAddToQueue className="selectable" size="1.5rem"/>

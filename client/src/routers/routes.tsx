@@ -12,7 +12,7 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "/",
-                element:<Home/>
+                element:<GithubPage/>,
             },
             {
                 path: "/:id",
@@ -28,8 +28,8 @@ const router = createBrowserRouter([
                 element: <CreateRepoPage />
             },
             {
-                path: "/github",
-                element: <GithubPage />
+                path: "/static",
+                element: <Home />
             }
         ],
     },

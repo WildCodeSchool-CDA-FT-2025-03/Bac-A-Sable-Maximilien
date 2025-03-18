@@ -7,6 +7,7 @@ const BarSearchRepo = () => {
 
     const input = useRef<HTMLInputElement>(null);
     const {githubUser, setGithubUsers} = useUser();
+
     const pushUser = () => {
         const name = input.current ? input.current.value : "";
         if(name.length > 0 && !githubUser.includes(name)) {
