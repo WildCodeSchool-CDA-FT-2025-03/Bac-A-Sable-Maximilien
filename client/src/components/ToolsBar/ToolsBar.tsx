@@ -36,7 +36,7 @@ export const ToolsBar = (props: PropsToolsBar = {githubUsers: []}) => {
         }
         else {
             return (
-                <div className="tools-bar-users">
+                <div className="tools-bar-users ">
                     {githubUsers.map(u => <UserName key={u} name={u} hidden={false}/>)}
                 </div>
             )

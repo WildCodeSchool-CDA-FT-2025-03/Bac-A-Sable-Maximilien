@@ -36,10 +36,10 @@ const UserName = (props: PropsUserName) => {
     return (
         <div className='user_name' title={name}>
             <div>{name}</div>
-            <div className="user_name-icon user_name-eye" title="hidden">
+            <div className="user_name-icon user_name-eye ptr_click" title="hidden">
                 {setIcon()}
             </div>
-            <div className="user_name-icon user_name-close" title="delete" onClick={()=>deleteUser()}>
+            <div className="user_name-icon user_name-close ptr_click" title="delete" onClick={()=>deleteUser()}>
                 <IoCloseSharp size="1rem"/>
             </div>
         </div>
