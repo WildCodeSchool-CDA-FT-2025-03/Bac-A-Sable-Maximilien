@@ -12,14 +12,12 @@ const SearchBar = (props: PropsSearchBar) => {
     const {languagesFilter, setLanguagesFilter, paging, setPaging} = useUser();
 
     const data = props.datas;
-    console.log(data);
+
     const totaux = data.reduce((acc, d) => {
         acc.total += d.total;
         acc.languages.push(...d.languages);
         return acc;
     }, {total: 0, languages: []} as {total: number, languages: string[]});
-
-    console.log(totaux);
 
     const setFilter = (lang: string) => {
         let f = [...languagesFilter];

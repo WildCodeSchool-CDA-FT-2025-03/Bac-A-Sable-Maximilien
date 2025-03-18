@@ -16,7 +16,6 @@ const GithubPage = () => {
         getAllMetaData(githubUser, paging, languagesFilter);
       }, [githubUser, paging, languagesFilter]);
 
-
     return (
         <div className="github-page">
             <BarSearchRepo/>

@@ -10,7 +10,9 @@ type PropsUserName = {
 
 const UserName = (props: PropsUserName) => {
     const name = props.name;
-    const {githubUser, setGithubUsers} = useUser();
+    const {githubUser, setGithubUsers, hiddenUser, setHidenUser} = useUser();
+
+    const isHidden = hiddenUser.includes(name);
 
     const deleteUser = () => {
         const new_users = [...githubUser];
@@ -19,11 +21,23 @@ const UserName = (props: PropsUserName) => {
         setGithubUsers(new_users);
     }
 
+    const setIcon = () => {
+        if(!isHidden) {
+            return <FaRegEye size="1rem" onClick={()=>{setHidenUser([...hiddenUser, name])}}/>
+        }
+        else {
+            return <FaRegEyeSlash size="1rem" onClick={()=>{
+                const newHiddenUser = hiddenUser.filter(e => e !== name);
+                setHidenUser(newHiddenUser);
+            }}/>
+        }
+    }
+
     return (
         <div className='user_name' title={name}>
             <div>{name}</div>
             <div className="user_name-icon user_name-eye" title="hidden">
-                <FaRegEye size="1rem"/>
+                {setIcon()}
             </div>
             <div className="user_name-icon user_name-close" title="delete" onClick={()=>deleteUser()}>
                 <IoCloseSharp size="1rem"/>
