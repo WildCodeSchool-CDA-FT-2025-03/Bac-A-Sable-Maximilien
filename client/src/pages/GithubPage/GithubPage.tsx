@@ -3,7 +3,9 @@ import BarSearchRepo from "@/components/BarSearchRepo/BarSearchRepo";
 const GithubPage = () => {
 
     return (
-        <BarSearchRepo/>
+        <div>
+            <BarSearchRepo/>
+        </div>
     )
 }
 export default GithubPage;
