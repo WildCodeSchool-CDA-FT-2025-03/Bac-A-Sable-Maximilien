@@ -3,6 +3,7 @@ import App from "@/App.tsx";
 import Home from "@/pages/Home";
 import CreateRepoPage from "@/pages/CreateRepoPage";
 import RepositoryPage from "@/pages/RepositoryPage";
+import GithubPage from "@/pages/GithubPage";
 
 const router = createBrowserRouter([
     {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
             {
                 path: "/create",
                 element: <CreateRepoPage />
+            },
+            {
+                path: "/github",
+                element: <GithubPage />
             }
         ],
     },
