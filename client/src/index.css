@@ -83,10 +83,15 @@ button:focus-visible {
 
 .selectable:hover {
   color: var(--seleted_color);
+  cursor: pointer;
 }
 
 .selected {
   color: var(--seleted_color);
+}
+
+.ptr_click {
+  cursor: pointer;
 }
 
 .unselectable {

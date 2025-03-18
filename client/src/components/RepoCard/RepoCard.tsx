@@ -23,7 +23,10 @@ export const RepoCard = (props: RepoCardProps) => {
                         <p>{repo.owner.login}</p>
                     </div>
                     <div>
-                        {repo.languages.map(l => <span key={l.node.name} title={l.node.name.toLowerCase()}><IconLanguage lang={l.node.name.toLowerCase()} selected={true}/></span>)}
+                        {repo.languages.map(l => 
+                            <span key={l.node.name} title={l.node.name.toLowerCase()}>
+                                <IconLanguage lang={l.node.name.toLowerCase()} selected={true}/>
+                            </span>)}
                     </div>
                 </div>
 

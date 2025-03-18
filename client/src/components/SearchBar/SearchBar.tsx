@@ -78,7 +78,7 @@ const SearchBar = (props: PropsSearchBar) => {
             <p className="search-bar_side ">Found: {totaux.total}</p>
              <div>
                 {list_languages.map(l =>
-                    <span key={crypto.randomUUID()} onClick={()=>setFilter(l)} title={l}>
+                    <span className="ptr_click" key={crypto.randomUUID()} onClick={()=>setFilter(l)} title={l}>
                         <IconLanguage  key={crypto.randomUUID()} lang={l} selected={!languagesFilter.includes(l)} />
                     </span>
                 )}
