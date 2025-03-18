@@ -14,8 +14,9 @@ const SearchBar = (props: PropsSearchBar) => {
     const data = props.datas;
 
     const totaux = data.reduce((acc, d) => {
+        const langs = d.languages.filter(l => !acc.languages.includes(l))
         acc.total += d.total;
-        acc.languages.push(...d.languages);
+        acc.languages.push(...langs);
         return acc;
     }, {total: 0, languages: []} as {total: number, languages: string[]});
 
