@@ -5,10 +5,12 @@
 
   --test1: #232532;
   --test2: #384051;
-
+  --test3: #26283d;
+/*8da5bc*/
   --main_color: var(--test1);
   --secondary_color: var(--anti_flash_white);
   --seleted_color: var(--powder_blue);
+  --alert: #bd3f2f;
 
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

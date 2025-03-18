@@ -1,0 +1,35 @@
+.user_name {
+    background-color: var(--test2);
+    font-size: 12px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    width: fit-content;
+    margin: 0;
+    /* width: 100px; */
+}
+
+.user_name > div{
+    display: flex;
+    align-items: center;
+    padding: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.user_name-icon {
+    border: 2px;
+}
+
+.user_name-eye {
+    background-color: var(--test3);
+}
+
+.user_name-close {
+    background-color: var(--alert);
+    border-radius: 8px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}

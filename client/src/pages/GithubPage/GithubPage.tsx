@@ -14,11 +14,10 @@ const GithubPage = () => {
         getAllRepositories(githubUser, paging, languagesFilter);
       }, [paging, languagesFilter, githubUser]);
 
-    console.log(usersRepos);
     return (
         <div className="github-page">
             <BarSearchRepo/>
-            <ToolsBar/>
+            <ToolsBar githubUsers={githubUser}/>
         </div>
     )
 }

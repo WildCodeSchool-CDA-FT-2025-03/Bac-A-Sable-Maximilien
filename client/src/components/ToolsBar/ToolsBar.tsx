@@ -7,8 +7,12 @@ import useUser, {DisplayCard} from "@/contexts/userContext";
 
 import './ToolsBar.css'
 
+type PropsToolsBar = {
+    githubUsers: string[],
+};
 
-export const ToolsBar = ({githubUsers = []}) => {
+export const ToolsBar = (props: PropsToolsBar = {githubUsers: []}) => {
+    const githubUsers = props.githubUsers;
     const {displayCard , setDisplayCard, paging, setPaging} = useUser();
 
     const githubApi = true;
@@ -31,10 +35,9 @@ export const ToolsBar = ({githubUsers = []}) => {
             )
         }
         else {
-            console.log(githubUsers);
             return (
-                <div>
-                    {githubUsers.map(u => <UserName name={u}/>)}
+                <div className="tools-bar-users">
+                    {githubUsers.map(u => <UserName key={u} name={u} hidden={false}/>)}
                 </div>
             )
         }
