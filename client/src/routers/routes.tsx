@@ -3,7 +3,7 @@ import App from "@/App.tsx";
 import Home from "@/pages/Home";
 import CreateRepoPage from "@/pages/CreateRepoPage";
 import RepositoryPage from "@/pages/RepositoryPage";
-import GithubPage from "@/pages/GithubPage";
+import GithubPage from "@/pages/GithubPage/GithubPage";
 
 const router = createBrowserRouter([
     {
