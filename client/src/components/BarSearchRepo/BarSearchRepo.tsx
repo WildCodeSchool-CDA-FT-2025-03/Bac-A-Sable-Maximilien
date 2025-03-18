@@ -13,9 +13,9 @@ const BarSearchRepo = () => {
 
             if(input.current !== null) {
                 setGithubUsers([...githubUser, name]);
-                // addUser(name);
                 input.current.value = "";
             }
+            
             console.log(githubUser);
         }
     }
