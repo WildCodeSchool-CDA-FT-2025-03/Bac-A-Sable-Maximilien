@@ -13,7 +13,7 @@ export const getAllRepos = (paging: Paging, filter: string[] = []) => {
         params = toParams(filter);
     }
     return client.get(`/repos/metadata?limit=${paging.count}&page=${paging.page}&${params}`);
-  };
+};
 
 
 export const getRepositoryByID = (id: string) => {

@@ -1,20 +1,22 @@
 import { useRef } from 'react';
 import './BarSearchRepo.css'
 import { FaGithub, FaSearch } from "react-icons/fa";
-import useGithub from '@/services/github.service';
+import useUser from '@/contexts/userContext';
 
 const BarSearchRepo = () => {
-    const {users, setUsers} = useGithub();
-    const input = useRef<HTMLInputElement>(null);
 
-    const addUser = () => {
+    const input = useRef<HTMLInputElement>(null);
+    const {githubUser, setGithubUsers} = useUser();
+    const pushUser = () => {
         const name = input.current ? input.current.value : "";
-        if(name.length > 0 && !users.includes(name)) {
+        if(name.length > 0 && !githubUser.includes(name)) {
 
             if(input.current !== null) {
-                setUsers([...users, name ]);
+                setGithubUsers([...githubUser, name]);
+                // addUser(name);
                 input.current.value = "";
             }
+            console.log(githubUser);
         }
     }
 
@@ -24,7 +26,7 @@ const BarSearchRepo = () => {
 
             <FaGithub size="1.7rem"/>
             <input ref={input} className="bar-input" type="text"/>
-            <div className="bar-enter" onClick={()=>addUser()}>
+            <div className="bar-enter" onClick={()=>pushUser()}>
                 <FaSearch size="1.3rem"/>
             </div>
 

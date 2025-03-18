@@ -1,11 +1,17 @@
+import { ReactNode } from "react";
 import { BiListUl, BiGridAlt, BiAddToQueue } from "react-icons/bi";
 import { Link } from "react-router-dom";
+import UserName from "@/components/UserName/UserName";
 
 import useUser, {DisplayCard} from "@/contexts/userContext";
+
 import './ToolsBar.css'
 
-export const ToolsBar = () => {
+
+export const ToolsBar = ({githubUsers = []}) => {
     const {displayCard , setDisplayCard, paging, setPaging} = useUser();
+
+    const githubApi = true;
 
     const selectColor = (type: DisplayCard) => {
         if(type === displayCard) {
@@ -16,11 +22,27 @@ export const ToolsBar = () => {
         }
     }
 
+    const getOptional = (): ReactNode => {
+        if(githubApi === false) {
+            return (
+                <Link to={`/create`}>
+                    <BiAddToQueue className="selectable" size="1.5rem"/>
+                </Link>
+            )
+        }
+        else {
+            console.log(githubUsers);
+            return (
+                <div>
+                    {githubUsers.map(u => <UserName name={u}/>)}
+                </div>
+            )
+        }
+    }
+
     return (
         <div className="tools-bar">
-            <Link to={`/create`}>
-                <BiAddToQueue className="selectable" size="1.5rem"/>
-            </Link>
+            {getOptional()}
             <div className="box-bar">
                 <select className="select_inline" name="limit"
                         value={paging.count}

@@ -8,6 +8,8 @@ export type UserContextType = {
     paging: Paging;
     languages: string[];
     languagesFilter: string[];
+    githubUser: string[];
+    setGithubUsers: (name: string[]) => void;
     setDisplayCard: (value: DisplayCard) => void;
     setPaging: (value: Paging) => void;
     setLanguages: (value: string[]) => void;
@@ -19,6 +21,8 @@ const UserContext = createContext<UserContextType>({
     paging: {count: 0, page: 0},
     languages: [],
     languagesFilter: [],
+    githubUser: [],
+    setGithubUsers: (_: string[]) => {},
     setDisplayCard: (_: DisplayCard) => {},
     setPaging: (_: Paging) => {},
     setLanguages: (_: string[]) => {},
@@ -31,6 +35,7 @@ const UserContext = createContext<UserContextType>({
     const [paging, setPaging] = useState({count: 0, page: 0});
     const [languages, setLanguages] = useState([] as string[]);
     const [languagesFilter, setLanguagesFilter] = useState([] as string[]);
+    const [githubUser, setGithubUsers] = useState<string[]>([]);
 
     return (
         <UserContext.Provider value={
@@ -38,7 +43,8 @@ const UserContext = createContext<UserContextType>({
             displayCard, setDisplayCard,
             paging, setPaging,
             languages, setLanguages,
-            languagesFilter, setLanguagesFilter
+            languagesFilter, setLanguagesFilter,
+            githubUser, setGithubUsers,
         }}>
             {children}
         </UserContext.Provider>
