@@ -9,11 +9,13 @@ export type UserContextType = {
     languages: string[];
     languagesFilter: string[];
     githubUser: string[];
+    hiddenUser: string[];
     setGithubUsers: (name: string[]) => void;
     setDisplayCard: (value: DisplayCard) => void;
     setPaging: (value: Paging) => void;
     setLanguages: (value: string[]) => void;
     setLanguagesFilter: (value: string[]) => void;
+    setHidenUser: (name: string[]) => void;
 };
 
 const UserContext = createContext<UserContextType>({
@@ -22,11 +24,13 @@ const UserContext = createContext<UserContextType>({
     languages: [],
     languagesFilter: [],
     githubUser: [],
+    hiddenUser: [],
     setGithubUsers: (_: string[]) => {},
     setDisplayCard: (_: DisplayCard) => {},
     setPaging: (_: Paging) => {},
     setLanguages: (_: string[]) => {},
     setLanguagesFilter: (_: string[]) => {},
+    setHidenUser: (_: string[]) => {},
   });
 
   export const UserProvider = ({ children }: { children: ReactNode }) => {
@@ -36,6 +40,7 @@ const UserContext = createContext<UserContextType>({
     const [languages, setLanguages] = useState([] as string[]);
     const [languagesFilter, setLanguagesFilter] = useState([] as string[]);
     const [githubUser, setGithubUsers] = useState<string[]>([]);
+    const [hiddenUser, setHidenUser] = useState<string[]>([]);
 
     return (
         <UserContext.Provider value={
@@ -45,6 +50,7 @@ const UserContext = createContext<UserContextType>({
             languages, setLanguages,
             languagesFilter, setLanguagesFilter,
             githubUser, setGithubUsers,
+            hiddenUser, setHidenUser,
         }}>
             {children}
         </UserContext.Provider>
