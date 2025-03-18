@@ -9,16 +9,13 @@ import { Repositories } from "@shared/repository.types";
 import "./GithubPage.css"
 
 const GithubPage = () => {
-    const {usersRepos, getAllRepositories} = useGithub();
+    const {repositories, getAllMetaData} = useGithub();
     const {paging, languagesFilter, githubUser} = useUser();
 
     useEffect(() => {
-        getAllRepositories(githubUser, paging, languagesFilter);
-      }, [paging, languagesFilter, githubUser]);
+        getAllMetaData(githubUser, paging, languagesFilter);
+      }, [githubUser, paging, languagesFilter]);
 
-    const repositories = Object.entries(usersRepos).reduce((acc, [_, b]) => {
-        return acc.concat(b.repositories);
-    }, [] as Repositories);
 
     return (
         <div className="github-page">
