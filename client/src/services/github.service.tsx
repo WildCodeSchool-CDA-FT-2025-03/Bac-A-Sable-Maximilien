@@ -36,10 +36,16 @@ const useGithub = () => {
 
     }
 
+    const fetchUserRepos = async (user: string): Promise<ResponseRepositoryMetadata> => {
+        const repos = await getAllRepos(user, {count: 0, page: 0}, []);
+        return repos.data;
+    }
+
     return {
         usersRepos,
         repositories, setUsersRepos,
         getAllMetaData,
+        fetchUserRepos,
     }
 
 }

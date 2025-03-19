@@ -8,7 +8,13 @@ import { ResponseRepositoryMetadata } from "@shared/requests.types";
 import { filter, slice, selectFields } from "@/utiles/repositorie.utiles";
 
 export class RepositoriesModel {
+  private owner: string = "";
   protected repositories: Repositories = [];
+
+  constructor(owner: string) {
+    this.owner = owner;
+  }
+
   /**
    * Retrieves repositories based on configuration
    * @param config - Configuration object containing filter, fields, and limit
@@ -63,6 +69,7 @@ export class RepositoriesModel {
     }
 
     return {
+      owner: this.owner,
       repositories: repos,
       languages: langs,
       total: count,

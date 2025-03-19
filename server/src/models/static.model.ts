@@ -16,8 +16,8 @@ const repos = [...static_data];
  * and development purposes.
  */
 export class StaticModel extends RepositoriesModel {
-  constructor() {
-    super();
+  constructor(owner: string) {
+    super(owner);
     this.repositories = repos;
   }
 
