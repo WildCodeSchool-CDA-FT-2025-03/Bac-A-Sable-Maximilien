@@ -1,5 +1,4 @@
 import { useQueries } from "@tanstack/react-query";
-import { useEffect } from "react";
 import BarSearchRepo from "@/components/BarSearchRepo/BarSearchRepo";
 import { ToolsBar } from "@/components/ToolsBar/ToolsBar";
 import { RepositoriesList } from "@/components/RepositoriesList/RepositoriesList";
