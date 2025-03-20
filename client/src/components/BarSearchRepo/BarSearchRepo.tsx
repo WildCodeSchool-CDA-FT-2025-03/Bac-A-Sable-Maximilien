@@ -19,12 +19,19 @@ const BarSearchRepo = () => {
         }
     }
 
+    const catchKey = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        console.log(e.key);
+        if(e.key === 'Enter') {
+            pushUser()
+        }
+    }
+
     return (
 
         <div className='bar-search'>
 
             <FaGithub size="1.7rem"/>
-            <input ref={input} className="bar-input" type="text"/>
+            <input ref={input} className="bar-input" type="text" onKeyUp={catchKey}/>
             <div className="bar-enter" onClick={()=>pushUser()}>
                 <FaSearch size="1.3rem"/>
             </div>
