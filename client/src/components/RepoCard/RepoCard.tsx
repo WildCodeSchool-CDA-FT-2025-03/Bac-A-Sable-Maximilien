@@ -24,7 +24,7 @@ export const RepoCard = (props: RepoCardProps) => {
     const path = pathname[0];
 
     return (
-        <article>
+        // <article>
 
             <div className="repo_card main_layout">
                 <div className="repo_card-top-bar">
@@ -51,6 +51,6 @@ export const RepoCard = (props: RepoCardProps) => {
 
             </div>
 
-        </article>
+        // </article>
     )
 }

@@ -5,7 +5,6 @@
     flex-direction: row;
     white-space: nowrap;
     width: 100%;
-    min-width: 800px;
 }
 
 .box-bar {
