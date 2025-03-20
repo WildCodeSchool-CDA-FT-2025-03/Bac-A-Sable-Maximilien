@@ -7,7 +7,6 @@ const TopBar = () => {
     const selectedApi = () => {
         const className =  location.pathname === "/static" ?
             "top-bar-selected-right" : "top-bar-selected-left";
-        console.log(className);
         return className;
     }
 
