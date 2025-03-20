@@ -4,8 +4,11 @@ import "./TopBar.css"
 const TopBar = () => {
     const location = useLocation();
 
-    const selectedApi = (path: string) => {
-        return location.pathname === path ? "top-bar-selected" : "";
+    const selectedApi = () => {
+        const className =  location.pathname === "/static" ?
+            "top-bar-selected-right" : "top-bar-selected-left";
+        console.log(className);
+        return className;
     }
 
     return (
@@ -13,13 +16,17 @@ const TopBar = () => {
             <div className=".icon-top-bar">
                 <img src="GitHub_Logo_White.png" className="icon-img"></img>
             </div>
-            <div className="top-bar-icon-right">
-                <Link to="/">
-                    <div className={"icon-github-button "+selectedApi("/")}>API GitHub</div>
-                </Link>
-                <Link to="/static">
-                    <div className={"icon-github-button "+selectedApi("/static")}>Static</div>
-                </Link>
+            <div className="icons">
+
+                <div className="top-bar-icon">
+                    <Link to="/">API GitHub</Link>
+                </div>
+
+                <div className="top-bar-icon">
+                    <Link to="/static">Static</Link>
+                </div>
+
+                <div className={"top-bar-selected "+selectedApi()}></div>
             </div>
         </div>
     )
