@@ -26,8 +26,8 @@ const RepositoryInfo = (props: RepoCardProps) => {
         return acc.concat(
             <IconLanguage lang={l.node.name} selected={true}/>,
             <div>{l.node.name}</div>,
-            <div>{(l.size/1024).toPrecision(3)}Ko</div>,
-            <div>{(l.size / total*100).toPrecision(3)}%</div>
+            <div className="repo_card-lage-size">{(l.size/1024).toPrecision(3)} Ko</div>,
+            <div className="repo_card-lage-size">{(l.size / total*100).toPrecision(3)} %</div>
         );
     }, [] as JSX.Element[]);
 
