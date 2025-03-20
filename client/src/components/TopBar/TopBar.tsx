@@ -7,7 +7,7 @@ const TopBar = () => {
                         .filter(p => p != '');
 
     const selectedApi = () => {
-        const className =  pathname.length > 0 ?
+        const className =  pathname.length > 0 && pathname[0] === 'static'?
             "top-bar-selected-right" : "top-bar-selected-left";
         return className;
     }

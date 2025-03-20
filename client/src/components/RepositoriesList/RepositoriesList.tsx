@@ -8,8 +8,13 @@ type RepositoriesListProps = {
 }
 
 export const RepositoriesList = (props: RepositoriesListProps) => {
-    const repos: Repositories = props.repos;
-    const {displayCard, hiddenUser} = useUser();
+    let repos: Repositories = props.repos;
+    const {displayCard, hiddenUser, paging} = useUser();
+
+    if(repos.length > paging.count) {
+        const start = paging.count * paging.page;
+        repos = repos.slice(start, start+(!paging.count ? repos.length : paging.count));
+    }
 
     return (
         <div className="test-center">
