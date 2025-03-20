@@ -4,22 +4,17 @@
 .search-bar-1 {
     display: flex;
     justify-content: space-between;
-    /* flex-direction: row; */
-    /* align-items: center; */
+    align-items: flex-start;
     width: 100%;
-}
-
-.search-bar-1 *{
-    display: flex;
-    align-items: center;
 }
 
 .search-bar_side {
-    min-width: 15%;
+    display: flex;
+    flex-direction: row;
+    white-space: nowrap;
 }
-
 .search-bar-icon {
-    width: 100%;
+    /* width: 100%; */
     display: flex;
     justify-content: center;
     gap: 3px;

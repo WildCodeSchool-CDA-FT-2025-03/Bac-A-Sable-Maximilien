@@ -80,21 +80,21 @@ const SearchBar = (props: PropsSearchBar) => {
     return (
         <div className="search-bar">
             <div className="search-bar-1">
-                <p className="search-bar_side ">Found: {totaux.total}</p>
-
-                <div className="">
-                    <FaAngleLeft className={arrowCallClass('back')} size="1.2rem" onClick={()=>{turnPage('back')}}/>
-                    <span className="unselectable">{current_page} / {count_page}</span>
-                    <FaAngleRight className={arrowCallClass('next')} size="1.2rem" onClick={()=>{turnPage('next')}}/>
-                </div>
-            </div>
-            <div className="search-bar-icon">
+                <span className="search-bar_side ">Found: {totaux.total}</span>
+                <div className="search-bar-icon">
                 {list_languages.map(l =>
                     <span className="ptr_click" key={crypto.randomUUID()} onClick={()=>setFilter(l)} title={l}>
                         <IconLanguage  key={crypto.randomUUID()} lang={l} selected={!languagesFilter.includes(l)} />
                     </span>
                 )}
+                </div>
+                <div className="search-bar_side">
+                    <FaAngleLeft className={arrowCallClass('back')} size="1.2rem" onClick={()=>{turnPage('back')}}/>
+                    <span className="unselectable">{current_page} / {count_page}</span>
+                    <FaAngleRight className={arrowCallClass('next')} size="1.2rem" onClick={()=>{turnPage('next')}}/>
+                </div>
             </div>
+
         </div>
     )
 }
