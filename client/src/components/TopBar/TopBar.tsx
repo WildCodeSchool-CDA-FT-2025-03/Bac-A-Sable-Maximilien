@@ -2,10 +2,12 @@ import { Link, useLocation } from "react-router-dom";
 import "./TopBar.css"
 
 const TopBar = () => {
-    const location = useLocation();
+    const pathname = useLocation().pathname
+                        .split('/')
+                        .filter(p => p != '');
 
     const selectedApi = () => {
-        const className =  location.pathname === "/static" ?
+        const className =  pathname.length > 0 ?
             "top-bar-selected-right" : "top-bar-selected-left";
         return className;
     }

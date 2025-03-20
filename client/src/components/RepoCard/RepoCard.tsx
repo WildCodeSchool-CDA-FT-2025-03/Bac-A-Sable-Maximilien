@@ -30,7 +30,7 @@ export const RepoCard = (props: RepoCardProps) => {
                     </div>
                 </div>
 
-                <Link to={`/${repo.id}`}>
+                <Link to={`/static/${repo.id}`}>
                     <p className="main_title" title={repo.name}>{repo.name}</p>
                 </Link>
 

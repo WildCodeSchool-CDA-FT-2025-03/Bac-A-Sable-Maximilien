@@ -15,7 +15,7 @@ const router = createBrowserRouter([
                 element:<GithubPage/>,
             },
             {
-                path: "/:id",
+                path: "/static/:id",
                 element: <RepositoryPage />,
                 // loader: async ({params}) => {
                 //     const {currRepo, getOneRepository} = useRepos();
