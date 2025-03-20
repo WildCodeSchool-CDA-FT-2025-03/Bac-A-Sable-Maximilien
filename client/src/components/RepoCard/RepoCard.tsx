@@ -1,5 +1,5 @@
 import { GitHubRepository } from "@shared/repository.types";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { BiLogoGithub, BiSolidUser } from "react-icons/bi";
 import IconLanguage from '@/components/Language/IconLanguage'
 
@@ -12,6 +12,16 @@ type RepoCardProps = {
 
 export const RepoCard = (props: RepoCardProps) => {
     const repo = props.repo;
+    const pathname = useLocation().pathname
+                        .split('/')
+                        .filter(p => p != '');
+    if(pathname.length === 0) {
+        pathname.push('');
+    }
+    else {
+        pathname[0] = pathname[0].concat('/');
+    }
+    const path = pathname[0];
 
     return (
         <article>
@@ -30,7 +40,7 @@ export const RepoCard = (props: RepoCardProps) => {
                     </div>
                 </div>
 
-                <Link to={`/static/${repo.id}`}>
+                <Link to={`/${path}${repo.id}`}>
                     <p className="main_title" title={repo.name}>{repo.name}</p>
                 </Link>
 

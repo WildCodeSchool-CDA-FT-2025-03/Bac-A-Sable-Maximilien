@@ -4,6 +4,7 @@ import Home from "@/pages/Home";
 import CreateRepoPage from "@/pages/CreateRepoPage";
 import RepositoryPage from "@/pages/RepositoryPage";
 import GithubPage from "@/pages/GithubPage/GithubPage";
+import RepositoryGithub from "@/pages/RepositoryGithub";
 
 const router = createBrowserRouter([
     {
@@ -11,12 +12,16 @@ const router = createBrowserRouter([
         element: <App />,
         children: [
             {
+                path: "/:id",
+                element:<RepositoryGithub/>,
+            },
+            {
                 path: "/",
                 element:<GithubPage/>,
             },
             {
                 path: "/static/:id",
-                element: <RepositoryPage />,
+                element: <RepositoryPage/>,
                 // loader: async ({params}) => {
                 //     const {currRepo, getOneRepository} = useRepos();
                 //     getOneRepository(params.id || "0");
