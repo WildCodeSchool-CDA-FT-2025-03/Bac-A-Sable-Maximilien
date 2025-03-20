@@ -18,12 +18,14 @@
     align-self: center;
     font-weight: bold;
     font-size: 1.5rem;
+
 }
 
 .repo_card-info {
     display: flex;
     align-items: center;
     gap: 1rem;
+    overflow: hidden;
 }
 .repo_card-info > p {
     font-weight: bold;
@@ -32,7 +34,7 @@
 .repo_card-detail{
     margin-top: 1rem;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
     gap: 0.5rem;
 }
 
