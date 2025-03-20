@@ -1,15 +1,27 @@
 .search-bar {
+    width: 100%;
+}
+.search-bar-1 {
     display: flex;
     justify-content: space-between;
+    /* flex-direction: row; */
     /* align-items: center; */
     width: 100%;
 }
 
-.search-bar *{
+.search-bar-1 *{
     display: flex;
     align-items: center;
 }
 
 .search-bar_side {
     min-width: 15%;
+}
+
+.search-bar-icon {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 3px;
+    flex-wrap: wrap;
 }
