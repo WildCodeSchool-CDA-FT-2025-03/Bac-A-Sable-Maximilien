@@ -19,8 +19,10 @@
 }
 
 .main_title {
+    height: 1.5rem;
     text-align: center;
     font-weight: 900;
+    overflow: hidden;
 }
 
 .icon_link {

@@ -13,7 +13,9 @@ const TopBar = () => {
     return (
         <div className="top-bar">
             <div className=".icon-top-bar">
-                <img src="GitHub_Logo_White.png" className="icon-img"></img>
+                <Link to={location}>
+                    <img src="GitHub_Logo_White.png" className="icon-img"></img>
+                </Link>
             </div>
             <div className="icons">
 
