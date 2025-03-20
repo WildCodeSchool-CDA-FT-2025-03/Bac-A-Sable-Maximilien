@@ -11,9 +11,9 @@ const BarSearchRepo = () => {
     const pushUser = () => {
         const name = input.current ? input.current.value : "";
         if(name.length > 0 && !githubUser.includes(name)) {
-
+            const list_name = name.split(';').map(n => n.trim());
             if(input.current !== null) {
-                setGithubUsers([...githubUser, name]);
+                setGithubUsers([...githubUser, ...list_name]);
                 input.current.value = "";
             }
         }
