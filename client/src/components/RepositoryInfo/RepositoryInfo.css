@@ -1,0 +1,32 @@
+
+.repo_card {
+    display: flex;
+    flex-direction: column;
+}
+
+.repo_card-title {
+    align-self: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.repo_card-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.repo_card-info > p {
+    font-weight: bold;
+}
+
+.repo_card-detail{
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+}
+
+.repo_card-langs {
+    display: grid;
+    grid-template-columns: 0.5fr 1fr 1fr 1fr;
+}
