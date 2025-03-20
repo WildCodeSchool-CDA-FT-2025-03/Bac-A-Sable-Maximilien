@@ -4,6 +4,7 @@ import { FaGithub } from "react-icons/fa";
 import { LuEye, LuEyeClosed } from "react-icons/lu";
 import { GitHubRepository } from "@shared/repository.types";
 import IconLanguage from "../Language/IconLanguage";
+import { FaEquals } from "react-icons/fa";
 import "./RepositoryInfo.css"
 
 type RepoCardProps = {
@@ -63,7 +64,8 @@ const RepositoryInfo = (props: RepoCardProps) => {
                     <hr/>
                     <div className="repo_card-langs">
                         {langs.map(e => e)}
-                        <div/><div/>
+                        <FaEquals/>
+                        <div/>
                         <div className="repo_card-lage-size ">{(total/1024).toPrecision(3)} Ko</div>
                         <div/>
                     </div>
