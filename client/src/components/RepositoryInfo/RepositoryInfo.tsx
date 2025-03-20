@@ -1,10 +1,10 @@
 import { JSX } from "react";
+import { Link } from "react-router-dom";
 import { FaGithub } from "react-icons/fa";
 import { LuEye, LuEyeClosed } from "react-icons/lu";
 import { GitHubRepository } from "@shared/repository.types";
 import IconLanguage from "../Language/IconLanguage";
 import "./RepositoryInfo.css"
-
 
 type RepoCardProps = {
     repo: GitHubRepository
@@ -48,7 +48,9 @@ const RepositoryInfo = (props: RepoCardProps) => {
             <p className="repo_card-title">{repo.name}</p>
             <div className="repo_card-info">
                 <FaGithub size="2rem"/>
-                <p>{repo.url}</p>
+                <Link to={repo.url}>
+                    <p>{repo.url}</p>
+                </Link>
             </div>
             <div className="repo_card-detail">
                 <div>

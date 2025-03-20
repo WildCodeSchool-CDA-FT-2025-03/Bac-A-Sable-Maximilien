@@ -8,7 +8,7 @@ import githubFetch from "./http/http_github";
 type PartialGitHubRepo = {
   name: string;
   private: boolean;
-  url: string;
+  html_url: string;
   node_id: string;
   owner: {
     login: string;
@@ -29,7 +29,7 @@ const getLangs = async (repo: PartialGitHubRepo): Promise<GitHubRepository> => {
   const repos: GitHubRepository = {
     id: repo.node_id,
     isPrivate: repo.private,
-    url: repo.url,
+    url: repo.html_url,
     description: repo.description,
     createdAt: repo.created_at,
     primaryLanguage: { name: repo.language },
