@@ -4,6 +4,16 @@
     flex-direction: column;
 }
 
+.repo_card-topbar {
+    display: flex;
+    justify-content: space-between;
+}
+
+.repo_card-topbar-item {
+    display: flex;
+    gap: 5px;
+}
+
 .repo_card-title {
     align-self: center;
     font-weight: bold;

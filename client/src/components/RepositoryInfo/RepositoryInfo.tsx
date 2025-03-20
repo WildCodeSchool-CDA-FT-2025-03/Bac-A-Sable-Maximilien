@@ -1,8 +1,11 @@
+import { JSX } from "react";
 import { FaGithub } from "react-icons/fa";
+import { LuEye, LuEyeClosed } from "react-icons/lu";
 import { GitHubRepository } from "@shared/repository.types";
 import IconLanguage from "../Language/IconLanguage";
 import "./RepositoryInfo.css"
-import { JSX } from "react";
+
+
 type RepoCardProps = {
     repo: GitHubRepository
 }
@@ -13,6 +16,11 @@ const RepositoryInfo = (props: RepoCardProps) => {
     const total = repo.languages.reduce((acc, l) => {
         return acc + l.size;
     }, 0);
+
+    const date = new Date(repo.createdAt);
+    const local = Intl.DateTimeFormat().resolvedOptions().locale;
+    const formatter = new Intl.DateTimeFormat(local, { day: '2-digit', month: '2-digit', year: 'numeric' });
+    const date_format = formatter.format(date);
 
     const langs = repo.languages.reduce((acc, l) => {
         return acc.concat(
@@ -25,6 +33,15 @@ const RepositoryInfo = (props: RepoCardProps) => {
 
     return (
         <div className="repo_card">
+            <div className="repo_card-topbar">
+                <div className="repo_card-topbar-item">
+                    {repo.isPrivate ? <LuEyeClosed size="1.5rem"/> : <LuEye size="1.5rem"/>}
+                    {repo.isPrivate ? "Private" : "Public"}
+                </div>
+                <div>
+                    {date_format}
+                </div>
+            </div>
             <p className="repo_card-title">{repo.name}</p>
             <div className="repo_card-info">
                 <FaGithub size="2rem"/>
