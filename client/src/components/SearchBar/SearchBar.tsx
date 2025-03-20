@@ -42,7 +42,10 @@ const SearchBar = (props: PropsSearchBar) => {
             count_page = max_page;
         }
     }
-    const current_page = paging.page + 1;
+    let current_page = paging.page + 1;
+    if(current_page > max_page) {
+        current_page = max_page
+    }
 
     const turnPage = (dir: 'back' | 'next') => {
         if(dir === 'next' && current_page < count_page) {
