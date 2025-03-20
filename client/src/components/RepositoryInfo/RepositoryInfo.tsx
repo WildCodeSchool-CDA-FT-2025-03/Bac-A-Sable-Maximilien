@@ -22,14 +22,17 @@ const RepositoryInfo = (props: RepoCardProps) => {
     const formatter = new Intl.DateTimeFormat(local, { day: '2-digit', month: '2-digit', year: 'numeric' });
     const date_format = formatter.format(date);
 
-    const langs = repo.languages.reduce((acc, l) => {
-        return acc.concat(
-            <IconLanguage lang={l.node.name} selected={true}/>,
-            <div>{l.node.name}</div>,
-            <div className="repo_card-lage-size">{(l.size/1024).toPrecision(3)} Ko</div>,
-            <div className="repo_card-lage-size">{(l.size / total*100).toPrecision(3)} %</div>
-        );
-    }, [] as JSX.Element[]);
+    const langs = repo.languages
+        .sort((a, b) => b.size - a.size)
+        .reduce((acc, l) => {
+            const name = l.node.name;
+            return acc.concat(
+                <IconLanguage key={"a"+name} lang={name} selected={true}/>,
+                <div key={"b"+name}>{name}</div>,
+                <div key={"c"+name} className="repo_card-lage-size">{(l.size/1024).toPrecision(3)} Ko</div>,
+                <div key={"d"+name} className="repo_card-lage-size">{(l.size / total*100).toPrecision(3)} %</div>
+            );
+        }, [] as JSX.Element[]);
 
     return (
         <div className="repo_card">
@@ -58,6 +61,9 @@ const RepositoryInfo = (props: RepoCardProps) => {
                     <hr/>
                     <div className="repo_card-langs">
                         {langs.map(e => e)}
+                        <div/><div/>
+                        <div className="repo_card-lage-size ">{(total/1024).toPrecision(3)} Ko</div>
+                        <div/>
                     </div>
                 </div>
             </div>
