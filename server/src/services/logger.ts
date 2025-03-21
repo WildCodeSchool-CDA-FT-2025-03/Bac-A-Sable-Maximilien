@@ -1,9 +1,10 @@
 import { createLogger, format, transports } from "winston";
-import chalk from "chalk";
+// import chalk from "chalk";
 
 const toText = format.printf(({ timestamp, message, level }) => {
   if (level === "error") {
-    return chalk.red(`${timestamp} [${level}] ${JSON.stringify(message)}`);
+   // return chalk.red(`${timestamp} [${level}] ${JSON.stringify(message)}`);
+    return `${timestamp} [${level}] ${JSON.stringify(message)}`;
   }
 
   return `${timestamp} [${level}] ${JSON.stringify(message)}`;
