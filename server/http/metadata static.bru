@@ -1,0 +1,15 @@
+meta {
+  name: metadata static
+  type: http
+  seq: 7
+}
+
+get {
+  url: http://{{HOST}}:{{PORT}}/api/github/mkirchner?limit=1
+  body: none
+  auth: none
+}
+
+params:query {
+  limit: 1
+}

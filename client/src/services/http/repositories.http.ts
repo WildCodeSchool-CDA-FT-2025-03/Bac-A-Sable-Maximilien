@@ -12,14 +12,14 @@ export const getAllRepos = (paging: Paging, filter: string[] = []) => {
     if(filter.length > 0) {
         params = toParams(filter);
     }
-    return client.get(`/repos/metadata?limit=${paging.count}&page=${paging.page}&${params}`);
+    return client.get(`/api/repos/metadata?limit=${paging.count}&page=${paging.page}&${params}`);
 };
 
 
 export const getRepositoryByID = (id: string) => {
-    return client.get(`/repos/${id}`);
+    return client.get(`/api/repos/${id}`);
 };
 
 export const addRepository = (repo: ConstructGitHubRepository) => {
-  return client.post(`/repos`, repo);
+  return client.post(`/api/repos`, repo);
 };

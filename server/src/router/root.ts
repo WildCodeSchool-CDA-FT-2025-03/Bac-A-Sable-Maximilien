@@ -4,7 +4,7 @@ import githubRouter from "./api/github.router";
 
 const router = express.Router();
 
-router.use("/repos", repos);
+router.use("/api/repos", repos);
 router.use("/api/github", githubRouter);
 
 // server root
