@@ -1,4 +1,4 @@
-// import 'devicon';
+import 'devicon';
 
 type PropsLanguage = {
     lang: string,
