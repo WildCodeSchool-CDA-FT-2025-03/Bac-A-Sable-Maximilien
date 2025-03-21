@@ -1,5 +1,5 @@
-import React from 'react';
-import 'devicon';
+// import 'devicon';
+
 type PropsLanguage = {
     lang: string,
     selected: boolean,

@@ -6,7 +6,7 @@ import { ResponseRepositoryMetadata} from "@shared/requests.types";
 import { Paging } from "@shared/repository.types";
 
 const useRepos = () => {
-    const [allRepos, setRepos] = useState<ResponseRepositoryMetadata>({repositories: [], languages: [], total: 0});
+    const [allRepos, setRepos] = useState<ResponseRepositoryMetadata>({owner: "", repositories: [], languages: [], total: 0});
     const [currRepo, setCurrRepo] = useState<GitHubRepository|null>(null);
 
 
