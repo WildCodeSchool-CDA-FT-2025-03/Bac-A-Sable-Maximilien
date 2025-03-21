@@ -20,7 +20,6 @@ const BarSearchRepo = () => {
     }
 
     const catchKey = (e: React.KeyboardEvent<HTMLInputElement>) => {
-        console.log(e.key);
         if(e.key === 'Enter') {
             pushUser()
         }
